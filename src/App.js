@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import bulma from 'bulma';
-import logo from './logo.svg';
-
+import SideMenu from './SideMenu';
+import milligram from 'milligram';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <p>Bulma is here</p>
+      <div>
+        <SideMenu/>
       </div>
     );
   }
