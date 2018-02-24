@@ -3,15 +3,23 @@ import React, { Component } from 'react';
 class NavBar extends Component {
   render() {
 
+    let navStyle = {
+      fontFamily: "'Barlow Semi Condensed', sans-serif",
+      fontSize: '30px',
+      height: '10vh',
+      color: '#556C8E',
+      marginTop: '25px',
+      marginLeft: '15px',
+    }
+
+    let brandStyle = {    
+      marginTop: '40px',
+    }
+
     return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">Navbar</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+        <nav style={navStyle}>
+          <p>Navbar</p>
         </nav>
-      </div>
     );
   }
 }
