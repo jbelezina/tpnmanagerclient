@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
+import './css/SideMenu.css';
 
-
-class SideMenu extends Component {
-  
-  
-
+class SideMenu extends Component {  
   render() {
 
     let menuItemsStyle = {
-      marginTop: '20%'
+      marginTop: '30%',
     }
 
     return (
@@ -16,16 +13,16 @@ class SideMenu extends Component {
         <div style={menuItemsStyle}>
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a className="nav-link active" href="#">Active</a>
+              <a className="nav-link" href="#">Panel</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
+              <a className="nav-link" href="#">Aktywności</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
+              <a className="nav-link" href="#">Zadania</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#">Disabled</a>
+              <a className="nav-link" href="#">Magazyn</a>
             </li>
           </ul>
         </div>

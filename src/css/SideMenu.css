@@ -1,0 +1,12 @@
+.nav-link {
+  color: #EEE7E7;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 30px;
+}
+
+.nav-link:hover {
+  color: #556C8E;
+  font-size: 35px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  background-color: rgb(202, 212, 214);
+}

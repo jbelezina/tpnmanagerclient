@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 
-class MainContent extends Component {
+class MainContainer extends Component {
 
   render() {
 
     return (
       <div>
-        Main content
+        {this.props.children}     
       </div>
     );
   }
 }
 
-export default MainContent;
+export default MainContainer;
