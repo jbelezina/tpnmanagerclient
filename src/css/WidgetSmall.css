@@ -1,0 +1,15 @@
+.widget {
+  padding: 20px 20px 20px 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 200px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.card-text {
+  font-size: 70px;
+  text-align: center;
+}
+

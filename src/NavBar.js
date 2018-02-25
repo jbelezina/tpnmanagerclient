@@ -18,7 +18,7 @@ class NavBar extends Component {
 
     return (
         <nav style={navStyle}>
-          <p>Navbar</p>
+          <p>TPN Manager</p>
         </nav>
     );
   }
