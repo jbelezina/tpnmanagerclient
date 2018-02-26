@@ -9,13 +9,11 @@ class WidgetSmall extends Component {
         maxWidth: '18rem'
       }
 
-      let classes = "widget card text-white bg-primary mb-3";
-
       return (
-        <div className={classes} style={style}>
+        <div className="widget card" style={style}>
+          <div class="card-header text-center align-middle"><h5>Success card title</h5></div>
           <div className="card-body">
-            <h5 className="card-title">Success card title</h5>
-            <p className="card-text">2</p>
+            <p className="card-text">2 <span><i class="fas fa-exclamation"></i></span></p>
           </div>
         </div>
       );

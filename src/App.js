@@ -5,25 +5,26 @@ import MainContainer from './MainContainer';
 import Panel from './Panel';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 class App extends Component {
   
   render() {
 
-    let menustyle = {
+    let sideMenuStyle = {
       backgroundColor: '#556C8E',
       height: '100vh',
     }
     
     let contentStyle = {
-      backgroundColor: '#DAD0CB',
-      color: 'white'
+      backgroundColor: '#f1f1f1',
+      padding: '0px 0px 0px 0px',
     }
 
     return (
       <div className="container-fluid">
         <NavBar/>
         <div className="row">
-          <div className="col-2" style={menustyle} >
+          <div className="col-2" style={sideMenuStyle} >
             <SideMenu/>
           </div>
           <div className="col-10" style={contentStyle}>
