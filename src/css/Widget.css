@@ -1,15 +1,16 @@
 .widget {
-  position:relative;
-  width: 20vw;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  height: 200px;
+  height: 400px;
   font-family: 'Barlow Semi Condensed', sans-serif;
   color: #556C8E;
   border-color: #556C8E;
-  border-radius: 2px;  
+}
+
+.widget-sml {
+  height: 200px;
+}
+
+.widget-lrg {
+  height: 400px;
 }
 
 .card-text {

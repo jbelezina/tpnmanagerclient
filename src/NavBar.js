@@ -12,10 +12,6 @@ class NavBar extends Component {
       marginLeft: '15px',
     }
 
-    let brandStyle = {    
-      marginTop: '40px',
-    }
-
     return (
         <nav style={navStyle}>
           <p>TPN Manager</p>

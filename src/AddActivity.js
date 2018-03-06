@@ -39,20 +39,6 @@ class AddActivity extends Component {
     }
 
     render(){
-
-      // styling
-      
-      let style = {
-        maxWidth: '18rem'
-      }
-
-      let addActivityButtonStyle = {
-        padding: '20px 20px 20px 20px',
-        margin: '30px 40px 10px 40px',
-        fontFamily: "'Barlow Semi Condensed', sans-serif",
-      }
-
-      // conditional behaviour
       let content;
 
       if(this.state.addingActivity) { 
@@ -64,13 +50,13 @@ class AddActivity extends Component {
             </button>
             <ul className="nav nav-tabs card-header-tabs">
               <li className="nav-item">
-                <a className="nav-link active" href="#">Przyjęcia</a>
+                <a className="nav-link active">Przyjęcia</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Wydalenia</a>
+                <a className="nav-link">Wydalenia</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Pomiary</a>
+                <a className="nav-link">Pomiary</a>
               </li>
             </ul>
           </div>

@@ -13,16 +13,16 @@ class SideMenu extends Component {
         <div style={menuItemsStyle}>
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a className="nav-link" href="#">Panel</a>
+              <a className="nav-link">Panel</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Aktywności</a>
+              <a className="nav-link">Aktywności</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Zadania</a>
+              <a className="nav-link">Zadania</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Magazyn</a>
+              <a className="nav-link">Magazyn</a>
             </li>
           </ul>
         </div>
