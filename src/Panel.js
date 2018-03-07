@@ -8,20 +8,20 @@ class Panel extends Component {
   render() {
 
     return (
-      <div className="container-fluid">
+      <div>
           <AddActivity/>
-        <div className="row d-flex justify-content-around">
-          <div className="col">
-            <div className="row">
+        <div className="row">
+          <div className="col-lg-2">
               <WidgetSmall/>
-              <WidgetSmall/>
-            </div>
           </div>
-          <div className="col">
-            <div className="row">
+          <div className="col-lg-2">
               <WidgetSmall/>
+          </div>
+          <div className="col-lg-2">
               <WidgetSmall/>
-            </div>
+          </div>
+          <div className="col-lg-2">
+              <WidgetSmall/>
           </div>
         </div>
         <div className="flex-row d-flex justify-content-around">
