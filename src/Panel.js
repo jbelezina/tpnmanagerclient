@@ -24,8 +24,8 @@ class Panel extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="offset-lg-1 col-lg-4 offset-lg-1"><WidgetMedium/></div>
-          <div className="offset-lg-1 col-lg-4 offset-lg-1"><WidgetMedium/></div>
+          <div className="offset-lg-1 col-lg-4 offset-lg-1"><WidgetMedium name='Ostatnio zalogowane' modalName='Dodaj Aktywność'><AddActivity/></WidgetMedium></div>
+          <div className="offset-lg-1 col-lg-4 offset-lg-1"><WidgetMedium name='Ostatnie zadania' modalName='Dodaj Zadanie'><WidgetSmall/></WidgetMedium></div>
         </div>
         <div className="row">Row with a chart</div>
       </div>
