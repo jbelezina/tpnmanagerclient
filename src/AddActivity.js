@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ActivityTile from './ActivityTile'
-import './css/AddActivity.css';
 
 class AddActivity extends Component {  
 
@@ -30,24 +29,12 @@ class AddActivity extends Component {
         },
         selectedActivityTile: false,
       }
-
-      this.toggleAddActivity = this.toggleAddActivity.bind(this);
-    }
-
-    toggleAddActivity(){
-      this.setState({addingActivity:!this.state.addingActivity});
     }
 
     render(){
-      let content;
-
-      if(this.state.addingActivity) { 
-      content = (  
-        <div className="addActivity card text-center">
+    return (
+      <div className="style card text-center">
           <div className="card-header">
-            <button type="button" onClick={this.toggleAddActivity} class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
             <ul className="nav nav-tabs card-header-tabs">
               <li className="nav-item">
                 <a className="nav-link active">Przyjęcia</a>
@@ -70,19 +57,6 @@ class AddActivity extends Component {
             </div>
               <button type="button" className="btn btn-lg pull-right">Dodaj Aktywność</button>
           </div>
-        </div>
-      )
-    } else {
-      content = (
-          <button onClick={this.toggleAddActivity} type="button" className="btn btn-lg pull-right">Dodaj Aktywność</button>
-      )
-    }
-
-    return (
-      <div className="row">
-        <div className="col-12">
-        {content}
-        </div>
       </div>
     )     
   }

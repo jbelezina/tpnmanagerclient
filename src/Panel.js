@@ -9,24 +9,23 @@ class Panel extends Component {
 
     return (
       <div>
-          <AddActivity/>
         <div className="row">
-          <div className="col-lg-2">
+          <div className="offset-lg-1 col-lg-2 ">
               <WidgetSmall/>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-2  ">
               <WidgetSmall/>
           </div>
-          <div className="col-lg-2">
+          <div className="offset-lg-1 col-lg-2 ">
               <WidgetSmall/>
           </div>
           <div className="col-lg-2">
               <WidgetSmall/>
           </div>
         </div>
-        <div className="flex-row d-flex justify-content-around">
-          <div className="col"><WidgetMedium/></div>
-          <div className="col"><WidgetMedium/></div>
+        <div className="row">
+          <div className="offset-lg-1 col-lg-4 offset-lg-1"><WidgetMedium/></div>
+          <div className="offset-lg-1 col-lg-4 offset-lg-1"><WidgetMedium/></div>
         </div>
         <div className="row">Row with a chart</div>
       </div>

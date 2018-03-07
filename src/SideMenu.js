@@ -6,6 +6,7 @@ class SideMenu extends Component {
 
     let menuItemsStyle = {
       marginTop: '30%',
+      padding: '0px 0px 0px 0px',
     }
 
     return (

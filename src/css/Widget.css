@@ -3,13 +3,14 @@
   font-family: 'Barlow Semi Condensed', sans-serif;
   color: #556C8E;
   border-color: #556C8E;
+  margin: 30px 30px 30px 30px;
 }
 
 .widget-sml {
   height: 200px;
 }
 
-.widget-lrg {
+.widget-md {
   height: 400px;
   margin-right: 20px;
   margin-left: 20px;

@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 import MainContainer from './MainContainer';
 import Panel from './Panel';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     let sideMenuStyle = {
       backgroundColor: '#556C8E',
       height: '100vh',
+      padding: '0px 0px 0px 0px',
     }
     
     let contentStyle = {
