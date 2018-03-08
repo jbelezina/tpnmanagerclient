@@ -5,8 +5,10 @@ class SideMenu extends Component {
   render() {
 
     let menuItemsStyle = {
-      marginTop: '30%',
+      marginTop: '30px',
       padding: '0px 0px 0px 0px',
+      opacity: '1',
+      textAlign: 'center',
     }
 
     return (

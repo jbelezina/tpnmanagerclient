@@ -6,7 +6,7 @@ class NavBar extends Component {
     let navStyle = {
       fontFamily: "'Barlow Semi Condensed', sans-serif",
       fontSize: '30px',
-      height: '10vh',
+      height: '70px',
       color: '#556C8E',
       marginTop: '25px',
       marginLeft: '15px',
