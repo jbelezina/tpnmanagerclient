@@ -15,7 +15,7 @@ class ActivityTile extends Component {
         style = {
           backgroundColor: '#EEE7E7',
         }
-      }
+      } 
 
       return (
         <div className="activityTile text-white mb-3" style={style}>

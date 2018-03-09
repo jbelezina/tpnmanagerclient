@@ -28,7 +28,7 @@ class WidgetMedium extends Component {
           
           
           <div className="widget widget-md card mx-auto">
-            <div class="card-header text-center align-middle"><h5>{this.props.name}</h5></div>
+            <div class="card-header text-center text-primary align-middle"><h5>{this.props.name}</h5></div>
             <div className="card-body">
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
               {this.props.modalName}

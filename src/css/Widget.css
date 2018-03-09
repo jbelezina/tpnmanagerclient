@@ -1,14 +1,12 @@
 .widget {
   height: 400px;
   font-family: 'Barlow Semi Condensed', sans-serif;
-  color: #556C8E;
-  border-color: #556C8E;
   margin: 30px 30px 30px 30px;
 }
 
 .widget-sml {
   height: 200px;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 .widget-md {

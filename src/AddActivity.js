@@ -33,20 +33,18 @@ class AddActivity extends Component {
 
     return (
       <div className="style card text-center">
-          <div className="card-header">
-            <ul className="nav nav-tabs card-header-tabs">
-              <li className="nav-item">
-                <a className="nav-link active">Przyjęcia</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link">Wydalenia</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link">Pomiary</a>
-              </li>
-            </ul>
-          </div>
           <div className="card-body">
+          <div className="btn-group btn-group-toggle" data-toggle="buttons">
+            <label className="btn btn-primary active">
+              <input type="radio" name="options" id="Przyjecia" autocomplete="off" checked=""/> Przyjęcia
+            </label>
+            <label className="btn btn-primary">
+              <input type="radio" name="options" id="Wydalenia" autocomplete="off"/> Wydalenia 
+            </label>
+            <label className="btn btn-primary">
+              <input type="radio" name="options" id="Pomiary" autocomplete="off"/> Pomiary 
+            </label>
+          </div>      
             <div className="row d-flex justify-content-center">
             {activityTiles}
             </div>

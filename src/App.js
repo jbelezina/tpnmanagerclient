@@ -10,26 +10,26 @@ import 'bootstrap/dist/js/bootstrap.js';
 class App extends Component {
   
   render() {
-
+    
     let sideMenuStyle = {
-      backgroundColor: '#556C8E',
       height: '100vh',
       padding: '0px 0px 0px 0px',
     }
     
     let contentStyle = {
-      backgroundColor: '#f1f1f1',
       padding: '0px 0px 0px 0px',
-    }
+    } 
 
     return (
       <div className="container-fluid">
+        <div className="row bg-secondary">
         <NavBar/>
+        </div>
         <div className="row">
-          <div className="col-2" style={sideMenuStyle} >
+          <div className="col-2 bg-primary text-white" style={sideMenuStyle}>
             <SideMenu/>
           </div>
-          <div className="col-10" style={contentStyle}>
+          <div className="col-10 bg-light text-white" style={contentStyle}>
             <MainContainer>
               <Panel/>
             </MainContainer>
