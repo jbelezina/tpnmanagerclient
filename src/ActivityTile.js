@@ -9,7 +9,7 @@ class ActivityTile extends Component {
       let style;
       if (this.props.isSelected) {
         style = {
-          backgroundColor: '#556C8E',  
+          backgroundColor: '#2C3E50',  
         }
       } else { 
         style = {
@@ -20,7 +20,7 @@ class ActivityTile extends Component {
       return (
         <div className="activityTile text-white mb-3" style={style}>
           <div>
-            <div><i class={this.props.icon}></i></div>
+            <div><i className={this.props.icon}></i></div>
             <div>{this.props.name}</div>
           </div>
         </div>
