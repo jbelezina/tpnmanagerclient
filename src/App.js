@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import SideMenu from './SideMenu';
 import NavBar from './NavBar';
-import MainContainer from './MainContainer';
+import Dummy from './Dummy';
+import AddActivity from './AddActivity';
 import Panel from './Panel';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-
+import { Link, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   
@@ -21,21 +22,20 @@ class App extends Component {
     } 
 
     return (
-      <div className="container-fluid">
-        <div className="row bg-secondary">
-        <NavBar/>
+        <div className="container-fluid">
+          <div className="row bg-secondary">
+          <NavBar/>
+          </div>
+          <div className="row">
+            <div className="col-2 bg-primary text-white" style={sideMenuStyle}>
+              <SideMenu/>
+            </div>
+            <div className="col-10 bg-light text-white" style={contentStyle}>
+              <Route exact path='/' component={Panel}/>
+              <Route path='/aktywnosci' component={AddActivity}/>
+            </div>
+          </div>  
         </div>
-        <div className="row">
-          <div className="col-2 bg-primary text-white" style={sideMenuStyle}>
-            <SideMenu/>
-          </div>
-          <div className="col-10 bg-light text-white" style={contentStyle}>
-            <MainContainer>
-              <Panel/>
-            </MainContainer>
-          </div>
-        </div>  
-      </div>
     );
   }
 }

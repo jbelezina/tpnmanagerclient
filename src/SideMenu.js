@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/SideMenu.css';
-
+import { Link } from 'react-router-dom';
 class SideMenu extends Component {  
   render() {
 
@@ -16,10 +16,10 @@ class SideMenu extends Component {
         <div style={menuItemsStyle}>
           <ul className="nav flex-column">
             <li className="nav-item">
-              <a className="nav-link">Panel</a>
+              <span className="nav-link"><Link to="/">Panel</Link></span>
             </li>
             <li className="nav-item">
-              <a className="nav-link">Aktywności</a>
+              <span className="nav-link"><Link to="/aktywnosci">Aktywności</Link></span>
             </li>
             <li className="nav-item">
               <a className="nav-link">Zadania</a>

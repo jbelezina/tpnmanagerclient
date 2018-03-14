@@ -7,12 +7,14 @@ class AddActivity extends Component {
     constructor(){
       super();
       this.state = {
-        addingActivity: false,
-        tilesState: [
+        addingActivity: true,
+        wydalenia: [],
+        pomiary: [],
+        przyjecia: [
         {
           name: 'Dożylne',
           icon: 'fas fa-syringe fa-2x',
-          isSelected: true,
+          isSelected: false,
           options: [
           {
             category: 'TPN',
@@ -34,11 +36,45 @@ class AddActivity extends Component {
         {
           name: 'Jedzenie i Picie',
           icon: 'fas fa-utensils fa-2x',
-          isSelected: false,
+          isSelected: true,
+          options: [
+            {
+              category: 'Jedzenie',
+              name: 'Makaron z serem',
+            },
+            {
+              category: 'Jedzenie',
+              name: 'Groch z kapustą',
+            },
+            {
+              category: 'Picie',
+              name: 'Sok marchwiowy',
+            },
+            {
+              category: 'Picie',
+              name: 'Sok z buraka',
+            },
+            ]
         },
         ],
-        selectedActivityTile: false,
+      } // end of this.state
+      this.setActiveTile = this.setActiveTile.bind(this);
+    } // end of constructor
+
+    setActiveTile(i){
+      let przyjecia = this.state.przyjecia
+      let newState = przyjecia.map((option, index)=>{
+        if (i === index) {
+          option.isSelected = true;
+        } else {
+           option.isSelected = false; 
+        }
       }
+      );
+      this.setState({Przyjecia:newState})
+      console.log('hello from set activity tile')
+      console.log(this.state.przyjecia)
+      this.forceUpdate();
     }
 
     render(){
@@ -47,22 +83,20 @@ class AddActivity extends Component {
       width:'100%',
     }
 
-    let AddActivityItems = this.state.tilesState.map((tile)=>{
-      
+    let AddActivityItems = this.state.przyjecia.map((tile)=>{
       let rows = []
-      
             if (tile.isSelected) {
               tile.options.map((option)=>{
                 console.log(option.category)
-                rows.push((<AddActivityItem category={option.category} name={option.name}/>));
+                rows.push((<AddActivityItem key={option.name} category={option.category} name={option.name}/>));
               })
             }
       return rows;
     });
 
-    let activityTiles = this.state.tilesState.map((tile, index)=>{
+    let activityTiles = this.state.przyjecia.map((tile, index)=>{
       return (
-        <ActivityTile name={tile.name} icon={tile.icon} isSelected={tile.isSelected} />
+        <ActivityTile key={index} index={index} name={tile.name} icon={tile.icon} isSelected={tile.isSelected} setActiveTile={this.setActiveTile}/>
       )
     });
 
@@ -73,13 +107,13 @@ class AddActivity extends Component {
           <div className="card-body">
           <div className="btn-group btn-group-toggle" data-toggle="buttons" style={btn}>
             <label className="btn btn-secondary active" style={btn}>
-              <input type="radio" name="options" id="Przyjecia" autoComplete="off" checked=""/> Przyjęcia
+              <input type="radio" name="options" id="Przyjecia" checked=""/> Przyjęcia
             </label>
             <label className="btn btn-secondary" style={btn}>
-              <input type="radio" name="options" id="Wydalenia" autoComplete="off"/> Wydalenia 
+              <input type="radio" name="options" id="Wydalenia"/> Wydalenia 
             </label>
             <label className="btn btn-secondary" style={btn}>
-              <input type="radio" name="options" id="Pomiary" autoComplete="off"/> Pomiary 
+              <input type="radio" name="options" id="Pomiary"/> Pomiary 
             </label>
           </div>      
             <div className="row d-flex justify-content-center">

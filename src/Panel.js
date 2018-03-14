@@ -7,8 +7,16 @@ class Panel extends Component {
 
   render() {
 
+    let style = {
+      marginTop : '30px',
+    }
     return (
       <div>
+        <div className="row">
+          <div className="offset-lg-1 col-lg-9">
+            <button style={ style } className="btn btn-primary btn-lg btn-block">Dodaj aktywność</button>
+          </div>
+        </div>
         <div className="row">
           <div className="offset-lg-1 col-lg-2 ">
               <WidgetSmall/>
