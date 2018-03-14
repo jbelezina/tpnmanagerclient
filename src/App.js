@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SideMenu from './SideMenu';
 import NavBar from './NavBar';
 import Dummy from './Dummy';
-import AddActivity from './AddActivity';
+import ActivityPage from './ActivityPage';
 import Panel from './Panel';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
@@ -32,7 +32,7 @@ class App extends Component {
             </div>
             <div className="col-10 bg-light text-white" style={contentStyle}>
               <Route exact path='/' component={Panel}/>
-              <Route path='/aktywnosci' component={AddActivity}/>
+              <Route path='/aktywnosci' component={ActivityPage}/>
             </div>
           </div>  
         </div>
