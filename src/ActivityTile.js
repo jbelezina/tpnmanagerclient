@@ -13,10 +13,10 @@ class ActivityTile extends Component {
       return (
         <div className="activityTile">
           <div>
-            <div style={header}><br/>Pobranie</div>
+            <div style={header}><br/>{this.props.data.category}</div>
             <div className="dropdown-divider"></div>
-            <div><i className="far fa-address-book fa-2x"></i></div>
-            <div>Name</div>
+            <div><i className={this.props.data.icon}></i></div>
+            <div>{this.props.data.name}</div>
           </div>
         </div>
       );
