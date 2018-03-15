@@ -5,10 +5,6 @@ import WidgetMedium from './WidgetMedium';
 class Panel extends Component {
 
   render() {
-
-    let style = {
-      marginTop : '30px',
-    }
     return (
       <div>
         <div className="row">

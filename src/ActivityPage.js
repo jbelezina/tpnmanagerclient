@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ActivityTile from './ActivityTile';
 import LoggedActivity from './LoggedActivity';
+import AddActivitySection from './AddActivitySection';
 
 class ActivityPage extends Component {
 
@@ -11,47 +11,56 @@ class ActivityPage extends Component {
         {
           name: 'TPN',
           category: 'Przyjęcie',
-          icon: 'fas fa-tint fa-2x'
+          icon: 'fas fa-tint fa-2x',
+          isSelected: false,
         },
         {
           name: 'Kroplówka',
           category: 'Przyjęcie',
-          icon: 'fas fa-tint fa-2x'
+          icon: 'fas fa-tint fa-2x',
+          isSelected: false,
         },
         {
           name: 'Lek',
           category: 'Przyjęcie',
-          icon: 'fas fa-pills fa-2x'
+          icon: 'fas fa-pills fa-2x',
+          isSelected: false,
         },
         {
           name: 'Kolostomia',
           category: 'Wydalenie',
-          icon: 'far fa-dot-circle fa-2x'
+          icon: 'far fa-dot-circle fa-2x',
+          isSelected: false,
         },
         {
           name: 'Ilestomia',
           category: 'Wydalenie',
-          icon: 'far fa-dot-circle fa-2x'
+          icon: 'far fa-dot-circle fa-2x',
+          isSelected: false,
         },
         {
           name: 'Mocz',
           category: 'Wydalenie',
-          icon: 'fas fa-flask fa-2x'
+          icon: 'fas fa-flask fa-2x',
+          isSelected: false,
         },
         {
           name: 'Waga',
           category: 'Pomiar',
-          icon: 'fas fa-weight fa-2x'
+          icon: 'fas fa-weight fa-2x',
+          isSelected: false,
         },
         {
           name: 'Ciśnienie',
           category: 'Pomiar',
-          icon: 'fas fa-heartbeat fa-2x'
+          icon: 'fas fa-heartbeat fa-2x',
+          isSelected: false,
         },
         {
           name: 'Temperatura',
           category: 'Pomiar',
-          icon: 'fas fa-thermometer fa-2x'
+          icon: 'fas fa-thermometer fa-2x',
+          isSelected: false,
         },
       ]
     }
@@ -73,25 +82,9 @@ class ActivityPage extends Component {
       fontColor: 'darkgrey',
     }
 
-    let activityTiles = this.state.activityTiles.map((tile, index)=>{
-      return (
-        <ActivityTile data={tile}/>
-      )
-    })
-
-
     return (
       <div>
-        <div>
-          <div className="row">
-            <div style={style} className="offset-lg-1 col-lg-10 text-primary">
-              <div className="m-3">Dodaj aktywność</div>
-              <div className="d-flex flex-wrap flex-row ">
-                {activityTiles}
-              </div>
-            </div>
-          </div>
-        </div>
+        <AddActivitySection tiles={this.state.activityTiles}/>
         <div>
           <div className="row">
             <div style={style} className="offset-lg-1 col-lg-10 text-primary">

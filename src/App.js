@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import SideMenu from './SideMenu';
 import NavBar from './NavBar';
-import Dummy from './Dummy';
 import ActivityPage from './ActivityPage';
 import Panel from './Panel';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   
   render() {
-    
-    let height = {
-      height: '100%',
-    }
-    
     let contentStyle = {
       padding: '0px 0px 0px 0px',
     } 

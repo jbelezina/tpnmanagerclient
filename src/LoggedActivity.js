@@ -5,11 +5,6 @@ import 'font-awesome/css/font-awesome.css';
 class LoggedActivity extends Component {  
 
     render(){
-
-      let style = {
-        width:"100%",
-      }
-
       let iconArea = {
         height: "110px",
         width: "100px",
@@ -46,17 +41,17 @@ class LoggedActivity extends Component {
                 <div>Name</div>
               </div>
               <div style={innerArea}>
-                <div style={iconHeader}><br/><i class="far fa-clock"></i></div>
+                <div style={iconHeader}><br/><i className="far fa-clock"></i></div>
                 <div className="dropdown-divider"></div>
                 <div>blablabla</div>
               </div>
               <div style={innerArea}>
-                <div style={iconHeader}><br/><i class="far fa-clock"></i></div>
+                <div style={iconHeader}><br/><i className="far fa-clock"></i></div>
                 <div className="dropdown-divider"></div>
                 <div>blablabla</div>
               </div>
               <div style={innerArea}>
-                <div style={iconHeader}><br/><i class="far fa-clock"></i></div>
+                <div style={iconHeader}><br/><i className="far fa-clock"></i></div>
                 <div className="dropdown-divider"></div>
                 <div>blablabla</div>
               </div>

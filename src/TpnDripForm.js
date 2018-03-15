@@ -10,7 +10,7 @@ class TpnDripForm extends Component {
       }
 
       let iconArea = {
-        height: "110px",
+        height: "100%",
         width: "100px",
         borderRightStyle: 'solid',
         borderRightWidth: 'thin',
@@ -37,12 +37,21 @@ class TpnDripForm extends Component {
                 <div>Name</div>
               </div>
               <div style={innerArea}>
-                <div>blablabla</div>
-                <input/>
-              </div>
+                <div className="d-flex flex-column">
+                <form>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Produkt</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>Multimel</option>
+                      <option>NaCl</option>
+                    </select>
+                  </div>
+                </form>
+                </div>
             </div>
           </div>
         </div>
+      </div>
       );
     }
 }
