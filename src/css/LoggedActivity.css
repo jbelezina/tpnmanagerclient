@@ -11,7 +11,8 @@
   text-align: center;
 } 
  
- .activityTile:hover {
+ .loggedActivity:hover {
    border-color: darkgrey;
    color: darkgray;
+   background-color: AliceBlue;
  }

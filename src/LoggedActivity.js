@@ -18,19 +18,47 @@ class LoggedActivity extends Component {
         borderColor: 'lightgrey',
       }
 
+      let innerArea = {
+        height: "110px",
+        width: "35%",
+        borderRightStyle: 'solid',
+        borderRightWidth: 'thin',
+        borderColor: 'lightgrey',
+      }
+
       let header = {
         fontSize: '10px',
+      }
+
+      let iconHeader = {
+        fontSize: '15px',
+        marginTop: '-15px',
       }
 
       return (
         <div className="container">
           <div className="row">
-            <div className="col loggedActivity pl-0 m-3">
+            <div className="col d-flex flex-row loggedActivity pl-0 pr-0 m-3">
               <div style={iconArea}>
                 <div style={header}><br/>Pobranie</div>
                 <div className="dropdown-divider"></div>
                 <div><i className="far fa-address-book fa-2x"></i></div>
                 <div>Name</div>
+              </div>
+              <div style={innerArea}>
+                <div style={iconHeader}><br/><i class="far fa-clock"></i></div>
+                <div className="dropdown-divider"></div>
+                <div>blablabla</div>
+              </div>
+              <div style={innerArea}>
+                <div style={iconHeader}><br/><i class="far fa-clock"></i></div>
+                <div className="dropdown-divider"></div>
+                <div>blablabla</div>
+              </div>
+              <div style={innerArea}>
+                <div style={iconHeader}><br/><i class="far fa-clock"></i></div>
+                <div className="dropdown-divider"></div>
+                <div>blablabla</div>
               </div>
             </div>
           </div>

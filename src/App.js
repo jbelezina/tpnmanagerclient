@@ -12,9 +12,8 @@ class App extends Component {
   
   render() {
     
-    let sideMenuStyle = {
-      height: '100vh',
-      padding: '0px 0px 0px 0px',
+    let height = {
+      height: '100%',
     }
     
     let contentStyle = {
@@ -22,20 +21,21 @@ class App extends Component {
     } 
 
     return (
-        <div className="container-fluid">
+      
+        <div className="container-fluid h-100">
           <div className="row bg-secondary">
-          <NavBar/>
+              <NavBar/>
           </div>
           <div className="row">
-            <div className="col-2 bg-primary text-white" style={sideMenuStyle}>
+            <div className="col-2 bg-primary">
               <SideMenu/>
             </div>
-            <div className="col-10 bg-light text-white" style={contentStyle}>
+            <div className="col-10 bg-white text-white h-100" style={contentStyle}>
               <Route exact path='/' component={Panel}/>
               <Route path='/aktywnosci' component={ActivityPage}/>
             </div>
-          </div>  
-        </div>
+          </div>
+        </div>  
     );
   }
 }
