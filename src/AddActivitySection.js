@@ -11,7 +11,7 @@ class AddActivitySection extends Component {
       }
       this.toggleTileSelected = this.toggleTileSelected.bind(this);
     }
-
+    
     toggleTileSelected(){
       this.setState({anyTileSelected:!this.state.anyTileSelected});
     }

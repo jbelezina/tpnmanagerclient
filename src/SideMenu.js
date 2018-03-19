@@ -5,9 +5,10 @@ class SideMenu extends Component {
   render() {
 
     let sideMenuStyle = {
-      height: '100vh',
-      width: '70px',
+      height: '100%',
+      width: '160px',
       padding: '0px 0px 0px 0px',
+      backgroundColor: 'grey',
     }
     
     let menuItemsStyle = {
