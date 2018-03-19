@@ -13,6 +13,7 @@ class TpnDripForm extends Component {
       this.state = {
         stopMoment:'',
         stop: '',
+        start: 'podaj łączną długość przyjmowania',
         lacznie: 0,
       }
 
@@ -22,24 +23,24 @@ class TpnDripForm extends Component {
     }
 
     logState(){
-      console.log(this.state)
+      console.log(this.state.stopMoment)
     }
 
     handleDatePicker(mom){
+      this.setState({stopMoment:mom});
       let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
       this.setState({stop:myString});
       console.log(myString);
     }
 
-    handleTotalDuration(){
-      let stop = this.state.stop;
-      
-      
+    handleTotalDuration(){      
       let enteredDuration = this.refs.totalDuration.value;
-      let time = moment.duration(parseInt(enteredDuration), 'hours');
-      
-      console.log(time);
-      console.log('date is' + stop);
+      let enteredDurationNumber = parseInt(enteredDuration);
+      let stop = this.state.stop;
+      let stopMoment = moment(stop.toString());
+      let startTime = stopMoment.subtract(enteredDurationNumber, 'hours');
+      startTime = startTime.format("DD.MM.YYYY HH:mm");
+      this.setState({start:startTime});
       }
 
     render(){
@@ -56,7 +57,6 @@ class TpnDripForm extends Component {
       }
 
       let innerArea = {
-        height: "300px",
         width: "100%",
       }
 
@@ -104,9 +104,17 @@ class TpnDripForm extends Component {
                   <div className="form-group row m-3">
                     <label className="col-sm-2 col-form-label">Start:</label>
                     <div className="col-10">
-                      <input className="form-control-plaintext" type="text" placeholder="Podaj ile trwało przyjmowanie" value={this.state.start} readOnly/>  
+                      <input className="form-control-plaintext" type="text" value={this.state.start} readOnly/>  
                     </div>
-                    <button onClick={this.logState}>LOG</button>
+                  </div>
+                  <div className="form-group row m-3">
+                    <label className="col-sm-2 col-form-label">Komentarz:</label>
+                    <div className="col-10">
+                      <textarea className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>  
+                    </div>
+                  </div>
+                  <div className="form-group row m-3">
+                    <button type="button" className="pr-3 col-12 btn btn-dark">Dodaj</button>
                   </div>
                 </form>
               </div>
