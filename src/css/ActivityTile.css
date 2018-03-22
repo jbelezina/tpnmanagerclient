@@ -17,6 +17,7 @@
 
 .activityTile:hover {
   border-color: darkgrey;
-  color: darkgray;
-  background-color: AliceBlue;
+  color: dimgray;
+  box-shadow:  0 0 20px dimgray;
 }
+

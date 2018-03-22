@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import LoggedActivity from './LoggedActivity';
 import AddActivitySection from './AddActivitySection';
+import LoggedActivitySection from './LoggedActivitySection';
 
 class ActivityPage extends Component {
 
   constructor(){
     super()
     this.state={
+      anyTileSelected: false,
       activityTiles: [
         {
           name: 'TPN',
@@ -64,6 +66,11 @@ class ActivityPage extends Component {
         },
       ]
     }
+    this.toggleTileSelected = this.toggleTileSelected.bind(this);
+  }
+
+  toggleTileSelected(){
+    this.setState({anyTileSelected:!this.state.anyTileSelected});
   }
 
   render() {
@@ -84,33 +91,8 @@ class ActivityPage extends Component {
 
     return (
       <div>
-        <AddActivitySection tiles={this.state.activityTiles}/>
-        <div>
-          <div className="row">
-            <div style={style} className="offset-lg-1 col-lg-10 text-primary">
-              <div className="m-3">Zalogowane aktywności</div>
-              <div className="d-flex flex-row ">
-              <LoggedActivity/>
-              </div>
-              <div className="d-flex flex-row ">
-              <LoggedActivity/>
-              </div>
-              <div className="divider"></div>
-              <div className="d-flex flex-row ">
-              <LoggedActivity/>
-              </div>
-              <div className="d-flex flex-row ">
-              <LoggedActivity/>
-              </div>
-              <div className="d-flex flex-row ">
-              <LoggedActivity/>
-              </div>
-              <div className="d-flex flex-row ">
-              <LoggedActivity/>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AddActivitySection tiles={this.state.activityTiles} anyTileSelected={this.state.anyTileSelected} toggleTileSelected={this.toggleTileSelected}/>
+        <LoggedActivitySection/>
       </div>
       
     );

@@ -11,8 +11,14 @@
   text-align: center;
 } 
  
- .loggedActivity:hover {
-   border-color: darkgrey;
-   color: darkgray;
-   background-color: AliceBlue;
- }
+.loggedActivity:hover {
+  border-color: darkgrey;
+  color: dimgrey;
+  box-shadow:  0 0 20px dimgray;
+}
+
+.loggedActivity:focus {
+ border-color: darkgrey;
+ color: dimgray;
+ box-shadow:  0 0 20px dimgray;
+}

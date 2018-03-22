@@ -4,18 +4,6 @@ import TpnDripForm from './TpnDripForm';
 
 class AddActivitySection extends Component {  
 
-    constructor(){
-      super();
-      this.state = {
-        anyTileSelected: false,
-      }
-      this.toggleTileSelected = this.toggleTileSelected.bind(this);
-    }
-    
-    toggleTileSelected(){
-      this.setState({anyTileSelected:!this.state.anyTileSelected});
-    }
-  
     render(){
 
     let style={
@@ -35,15 +23,15 @@ class AddActivitySection extends Component {
     
     let activityTiles = this.props.tiles.map((tile, index)=>{
       return (
-        <ActivityTile key={index} data={tile} selectTile={this.toggleTileSelected}/>
+        <ActivityTile key={index} data={tile} selectTile={this.props.toggleTileSelected}/>
       )
     })
 
 
     let content; 
 
-    if (this.state.anyTileSelected) {
-      content = <TpnDripForm/>
+    if (this.props.anyTileSelected) {
+      content = <TpnDripForm toggleTileSelected={this.props.toggleTileSelected}/>
     } else {
       content = <div className="d-flex flex-wrap flex-row ">{activityTiles}</div>
     }

@@ -3,16 +3,11 @@
   border-style: solid;
   border-width: 2px;
   border-radius: 5px;
-  border-color: lightgrey;
-  color: lightgrey;
+  border-color: darkgrey;
+  color: dimgrey;
   margin: 0px 0px 0px 0px; 
   font-family: 'Barlow Semi Condensed', sans-serif;
   font-size: 15px;
   text-align: center;
+  box-shadow:  0 0 20px dimgray;
 } 
- 
- .form:hover {
-   border-color: darkgrey;
-   color: darkgray;
-   background-color: AliceBlue;
- }
