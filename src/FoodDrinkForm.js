@@ -5,7 +5,7 @@ import Datetime from 'react-datetime';
 import moment from 'moment';
 import 'moment/locale/pl';
 
-class TpnDripForm extends Component {  
+class FoodDrinkForm extends Component {  
     constructor(){
       super();
       this.state = {
@@ -16,13 +16,7 @@ class TpnDripForm extends Component {
         comment: '',
       }
       this.handleDatePicker = this.handleDatePicker.bind(this);
-      this.handleTotalDuration = this.handleTotalDuration.bind(this);
-      this.logState = this.logState.bind(this);
       this.handleProduct = this.handleProduct.bind(this);
-    }
-
-    logState(){
-      console.log(this.state.stopMoment)
     }
 
     handleProduct(e){
@@ -36,17 +30,10 @@ class TpnDripForm extends Component {
       console.log(myString);
     }
 
-    handleTotalDuration(){      
-      let enteredDuration = this.refs.totalDuration.value;
-      let enteredDurationNumber = parseInt(enteredDuration, 10);
-      let stop = this.state.stop;
-      let stopMoment = moment(stop.toString());
-      let startTime = stopMoment.subtract(enteredDurationNumber, 'hours');
-      startTime = startTime.format("DD.MM.YYYY HH:mm");
-      this.setState({start:startTime});
-      }
-
     render(){
+      let style = {
+        width:"100%",
+      }
 
       let iconArea = {
         height: "100%",
@@ -81,38 +68,53 @@ class TpnDripForm extends Component {
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Produkt:</label>
-                    <div className="col-sm-10">
+                  <div className="form-group row m-3">                  
+                    <label className="col-sm-2 col-form-label">Jedzenie:</label>
+                    <div className="col-sm-8">
                       <select onChange={this.handleProduct} value={this.state.product} ref="product" className="form-control" id="exampleFormControlSelect1">
-                        <option>Multimel</option>
+                        <option>Makaron</option>
+                        <option>Ser</option>
                       </select>
                     </div>
                   </div>
-                  <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Porcja:</label>
-                    <div className="col-4">
-                      <input className="form-control"/>
+                  <div className="form-group row m-3">  
+                  <label className="col-sm-2 col-form-label">Porcja:</label>
+                    <div className="col-10">
+                      <div className="btn-group" role="group" aria-label="...">
+                        <button style={{width:'20%'}} type="button" className="btn btn-secondary">S</button>
+                        <button style={{width:'20%'}} type="button" className="btn btn-secondary">M</button>
+                        <button style={{width:'20%'}} type="button" className="btn btn-secondary">L</button>
+                        <button style={{width:'20%'}} type="button" className="btn btn-secondary">XL</button>
+                      </div>
                     </div>
-                    <label className="col-sm-1 col-form-label text-left pl-0">ml</label>
                   </div>
+                  <div className="dropdown-divider"></div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Stop:</label>
+                    <label className="col-sm-2 col-form-label">Picie:</label>
+                    <div className="col-sm-8">
+                      <select onChange={this.handleProduct} value={this.state.product} ref="product" className="form-control" id="exampleFormControlSelect1">
+                        <option>Makaron</option>
+                        <option>Ser</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="form-group row m-3">  
+                  <label className="col-sm-2 col-form-label">Porcja:</label>
+                    <div className="col-sm-10">
+                      <div className="btn-group" role="group">
+                      <button type="button" className="btn btn-secondary">S</button>
+                      <button type="button" className="btn btn-secondary">M</button>
+                      <button type="button" className="btn btn-secondary">L</button>
+                      <button type="button" className="btn btn-secondary">XL</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="dropdown-divider"></div>
+                  <div className="form-group row m-3">
+                    <label className="col-sm-2 col-form-label">Start:</label>
                       <div className="col-4">
                       <Datetime ref='stopTime' onChange={data=>this.handleDatePicker(data)} defaultValue={moment()} locale="pl" timeFormat={true}/>
                       </div>
-                  </div>
-                  <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Łącznie:</label>
-                    <div className="col-4">
-                      <input onChange={this.handleTotalDuration} ref='totalDuration' className="form-control"/>
-                    </div>
-                  </div>
-                  <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Start:</label>
-                    <div className="col-10">
-                      <input className="form-control-plaintext" type="text" value={this.state.start} readOnly/>  
-                    </div>
                   </div>
                   <div className="form-group row m-3">
                     <label className="col-sm-2 col-form-label">Komentarz:</label>
@@ -132,4 +134,6 @@ class TpnDripForm extends Component {
     }
 }
 
-export default TpnDripForm;
+export default FoodDrinkForm;
+
+

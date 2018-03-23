@@ -4,6 +4,15 @@ import 'font-awesome/css/font-awesome.css';
 
 class ActivityTile extends Component {  
 
+    constructor(){
+      super();
+      this.selectTile = this.selectTile.bind(this);
+    }
+
+    selectTile(){
+      this.props.selectTile(this.props.index); 
+    }
+
     render(){
       
       let header = {
@@ -11,7 +20,7 @@ class ActivityTile extends Component {
       }
 
       return (
-        <div className="activityTile" onClick={this.props.selectTile}>
+        <div className="activityTile" onClick={this.selectTile}>
           <div>
             <div style={header}><br/>{this.props.data.category}</div>
             <div className="dropdown-divider"></div>

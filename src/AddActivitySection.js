@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import ActivityTile from './ActivityTile';
 import TpnDripForm from './TpnDripForm';
+import FoodDrinkForm from './FoodDrinkForm';
 
 class AddActivitySection extends Component {  
+    
+    componentDidMount(){
+      console.log('selected tile index:' + this.props.selectedTileIndex)
+    }
 
     render(){
 
@@ -23,16 +28,25 @@ class AddActivitySection extends Component {
     
     let activityTiles = this.props.tiles.map((tile, index)=>{
       return (
-        <ActivityTile key={index} data={tile} selectTile={this.props.toggleTileSelected}/>
+        <ActivityTile key={index} index={index} 
+                      data={tile} 
+                      selectTile={this.props.selectTile}/>
       )
     })
 
-
     let content; 
 
-    if (this.props.anyTileSelected) {
-      content = <TpnDripForm toggleTileSelected={this.props.toggleTileSelected}/>
-    } else {
+    if (this.props.selectedTileIndex === 1 || this.props.selectedTileIndex === 2) {
+      content =  <TpnDripForm cancelForm={this.props.cancelForm}
+                             name={this.props.tiles[this.props.selectedTileIndex]['name']}
+                             icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                             />
+    } else if (this.props.selectedTileIndex === 0){
+      content =  <FoodDrinkForm cancelForm={this.props.cancelForm}
+                             name={this.props.tiles[this.props.selectedTileIndex]['name']}
+                             icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                             />
+    } else{
       content = <div className="d-flex flex-wrap flex-row ">{activityTiles}</div>
     }
 

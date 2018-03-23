@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import LoggedActivity from './LoggedActivity';
 import AddActivitySection from './AddActivitySection';
 import LoggedActivitySection from './LoggedActivitySection';
 
@@ -8,8 +7,14 @@ class ActivityPage extends Component {
   constructor(){
     super()
     this.state={
-      anyTileSelected: false,
+      selectedTileIndex: false,
       activityTiles: [
+        {
+          name: 'Jedzenie i Picie',
+          category: 'Przyjęcie',
+          icon: 'fas fas fa-utensils fa-2x',
+          isSelected: false,
+        },
         {
           name: 'TPN',
           category: 'Przyjęcie',
@@ -66,32 +71,27 @@ class ActivityPage extends Component {
         },
       ]
     }
-    this.toggleTileSelected = this.toggleTileSelected.bind(this);
+    this.cancelForm = this.cancelForm.bind(this);
+    this.selectTile = this.selectTile.bind(this);
   }
 
-  toggleTileSelected(){
-    this.setState({anyTileSelected:!this.state.anyTileSelected});
+  cancelForm(){
+    this.setState({selectedTileIndex: false});
+  }
+
+  selectTile(index){
+    this.setState({selectedTileIndex: index});
   }
 
   render() {
-    let style={
-      backgroundColor: 'white',
-      borderStyle: 'solid',
-      borderWidth: '2px',
-      borderRadius: '5px',
-      borderColor: 'lightgrey',    
-      width: '100%',
-      marginTop:'30px',
-      paddingBottom:'20px',
-      paddingTop: '15px',
-      fontFamily: "'Barlow Semi Condensed', sans-serif",
-      fontSize: '15px',
-      fontColor: 'darkgrey',
-    }
-
     return (
       <div>
-        <AddActivitySection tiles={this.state.activityTiles} anyTileSelected={this.state.anyTileSelected} toggleTileSelected={this.toggleTileSelected}/>
+        <AddActivitySection tiles={this.state.activityTiles} 
+                            selectTile={this.selectTile}
+                            selectedTileIndex={this.state.selectedTileIndex} 
+                            cancelForm={this.cancelForm}
+                            />
+
         <LoggedActivitySection/>
       </div>
       
