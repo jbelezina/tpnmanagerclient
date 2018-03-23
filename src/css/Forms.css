@@ -11,3 +11,22 @@
   text-align: center;
   box-shadow:  0 0 20px dimgray;
 } 
+
+.btn-group {
+  width: 100%;
+}
+
+.btn {
+  width: 25%;
+}
+
+.btn:active
+{
+  background-color:darkgrey;
+}
+
+.btn.active
+{
+  color: #ffffff;
+  background-color: dimgrey;
+}
