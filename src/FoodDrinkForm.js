@@ -11,13 +11,11 @@ class FoodDrinkForm extends Component {
     constructor(){
       super();
       this.state = {
-        foodSelect: ['active','','',''],
-        drinkSelect: ['active','','',''],
-        drink: '',
         food: '',
-        portion: '',
-        stop: '',
-        start: 'podaj łączną długość przyjmowania',
+        foodSelect: ['active','','',''],
+        drink: '',
+        drinkSelect: ['active','','',''],
+        start: '',
         comment: '',
       }
       this.handleDatePicker = this.handleDatePicker.bind(this);
@@ -25,6 +23,16 @@ class FoodDrinkForm extends Component {
       this.handleDrinkSize = this.handleDrinkSize.bind(this);
       this.handleDrinkSelect = this.handleDrinkSelect.bind(this);
       this.handleFoodSelect = this.handleFoodSelect.bind(this);
+      this.handleComment = this.handleComment.bind(this);
+      this.logState = this.logState.bind(this);
+    }
+
+    logState(){
+      console.log(this.state);
+    }
+
+    handleComment(e){
+      this.setState({comment:e.target.value});
     }
 
     handleFoodSize(index){
@@ -70,11 +78,9 @@ class FoodDrinkForm extends Component {
       }
     }
 
-    
-
     handleDatePicker(mom){
       let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({stop:myString});
+      this.setState({start:myString});
       console.log(myString);
     }
 
@@ -184,11 +190,11 @@ class FoodDrinkForm extends Component {
                   <div className="form-group row m-3">
                     <label className="col-sm-2 col-form-label">Komentarz:</label>
                     <div className="col-10">
-                      <textarea className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>  
+                      <textarea onChange={this.handleComment} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <button type="button" className="pr-3 mt-4 mb-4 col-12 btn btn-dark">Dodaj</button>
+                    <button onClick={this.logState} type="button" className="pr-3 mt-4 mb-4 col-12 btn btn-dark">Dodaj</button>
                   </div>
                 </form>
               </div>

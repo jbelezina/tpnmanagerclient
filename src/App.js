@@ -21,9 +21,9 @@ class App extends Component {
               <NavBar/>
           </div>
           <div className="row">
-            
+            <div className="col-2 h-100" style={contentStyle}>
               <SideMenu/>
-            
+            </div>
             <div className="col-10 bg-white text-white h-100" style={contentStyle}>
               <Route exact path='/' component={Panel}/>
               <Route path='/aktywnosci' component={ActivityPage}/>

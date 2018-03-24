@@ -12,13 +12,13 @@
 } 
  
 .loggedActivity:hover {
-  border-color: darkgrey;
-  color: dimgrey;
-  box-shadow:  0 0 20px dimgray;
-}
+    border-color: darkgrey;
+    color: dimgray;
+    box-shadow: 0px 0px 10px 2px lightgray;
+  }
 
 .loggedActivity:focus {
- border-color: darkgrey;
- color: dimgray;
- box-shadow:  0 0 20px dimgray;
+  border-color: darkgrey;
+  color: dimgray;
+  box-shadow: 0px 0px 10px 2px lightgray;
 }

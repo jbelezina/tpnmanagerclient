@@ -52,15 +52,15 @@ class ActivityPage extends Component {
           isSelected: false,
         },
         {
-          name: 'Waga',
-          category: 'Pomiar',
-          icon: 'fas fa-weight fa-2x',
-          isSelected: false,
-        },
-        {
           name: 'Ciśnienie',
           category: 'Pomiar',
           icon: 'fas fa-heartbeat fa-2x',
+          isSelected: false,
+        },
+        {
+          name: 'Waga',
+          category: 'Pomiar',
+          icon: 'fas fa-weight fa-2x',
           isSelected: false,
         },
         {
