@@ -1,9 +1,9 @@
 .activityTile {
-  background-color: whitesmoke;
+  background-color: #FFFFFF;
   border-style: solid;
   border-width: 2px;
   border-radius: 5px;
-  border-color: lightgrey;
+  border-color: #E8E8E8;
   color: lightgrey;
   margin: 10px 10px 10px 10px;
   min-height: 110px;

@@ -8,7 +8,7 @@ class LoggedActivitySection extends Component {
         borderStyle: 'solid',
         borderWidth: '2px',
         borderRadius: '5px',
-        borderColor: 'lightgrey',    
+        borderColor: '#E8E8E8',    
         width: '100%',
         marginTop:'30px',
         paddingBottom:'20px',

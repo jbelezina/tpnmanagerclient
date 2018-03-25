@@ -7,7 +7,7 @@ class SideMenu extends Component {
       height: '100%',
       backgroundColor: 'white',
       borderRight: '2px solid',
-      borderColor: 'lightgrey',
+      borderColor: '#E8E8E8',
       color: 'lightgrey',
       position: 'fixed',
       marginTop: '30px',

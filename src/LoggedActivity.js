@@ -10,7 +10,7 @@ class LoggedActivity extends Component {
         width: "100px",
         borderRightStyle: 'solid',
         borderRightWidth: 'thin',
-        borderColor: 'lightgrey',
+        borderColor: '#E8E8E8',
       }
 
       let innerArea = {
@@ -18,7 +18,7 @@ class LoggedActivity extends Component {
         width: "35%",
         borderRightStyle: 'solid',
         borderRightWidth: 'thin',
-        borderColor: 'lightgrey',
+        borderColor: '#E8E8E8',
       }
 
       let header = {

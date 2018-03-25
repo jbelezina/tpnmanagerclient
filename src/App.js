@@ -11,20 +11,29 @@ class App extends Component {
   
   render() {
     let contentStyle = {
-      padding: '0px 0px 0px 0px',
-    } 
+      backgroundColor: '#F9F9F9',
+    }
+    
+    let navStyle = {
+      backgroundColor: 'white',
+      borderBottom: '2px solid',
+      borderColor: 'lightgrey',
+      color: 'lightgrey',
+    }
 
     return (
       
-        <div className="container-fluid h-100">
-          <div className="row bg-secondary">
+        <div className="container-fluid h-100" style={contentStyle}>
+          <div className="row">
+            <div className="col-12 m-0 p-0">
               <NavBar/>
+            </div>
           </div>
           <div className="row">
-            <div className="col-2 h-100" style={contentStyle}>
+            <div className="col-2 h-100 m-0 p-0">
               <SideMenu/>
             </div>
-            <div className="col-10 bg-white text-white h-100" style={contentStyle}>
+            <div className="col-10 text-white m-0 p-0 h-100" style={contentStyle}>
               <Route exact path='/' component={Panel}/>
               <Route path='/aktywnosci' component={ActivityPage}/>
             </div>

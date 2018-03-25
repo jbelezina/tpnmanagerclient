@@ -9,16 +9,25 @@ class NavBar extends Component {
       marginTop: '5px',
       marginLeft: '15px',
       marginBottom: '10px',
+      fontSize: '20px',
+      color: 'black',
+      padding: '0px 0px 0px 0px',
+      margin: '0px 0px 0px 0px',
+      backgroundColor: '#FFFFFF',
+      borderBottom: 'solid 2px',
+      borderColor: '#E8E8E8',
+      color: '#000000',
     }
 
     let brandStyle = {
-      paddingLeft: '50px',
-      fontSize: '30px',
+      padding: '100px',
     }
 
     return (
-        <nav className="text-white" style={navStyle}>
-          <div className="navbar-brand" style={brandStyle} >TPN Manager</div>
+        <nav style={navStyle}>
+          <div className="p-2 ml-4">
+            TPN Manager
+          </div>
         </nav>
     );
   }
