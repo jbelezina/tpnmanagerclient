@@ -22,11 +22,11 @@ class AddActivitySection extends Component {
       borderStyle: 'solid',
       borderWidth: '2px',
       borderRadius: '5px',
-      borderColor: '#E8E8E8',    
-      width: '100%',
-      marginTop:'30px',
-      paddingBottom:'20px',
-      paddingTop: '15px',
+      borderColor: '#E8E8E8',
+      marginLeft: '250px',
+      marginTop: '85px',
+      marginRight: '50px',    
+      width: '80vw',
       fontFamily: "'Barlow Semi Condensed', sans-serif",
       fontSize: '15px',
       fontColor: 'darkgrey',
@@ -85,7 +85,7 @@ class AddActivitySection extends Component {
                            measurementMetric='kg'
                              />
     } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 9 ){
-      content =  <GenericMeasurementForm cancelForm={this.props.cancelForm}
+      content = <GenericMeasurementForm cancelForm={this.props.cancelForm}
                            name={this.props.tiles[this.props.selectedTileIndex]['name']}
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
                            measurementType='Temperatura'
@@ -96,14 +96,14 @@ class AddActivitySection extends Component {
     }
 
     return (
-    <div>
       <div className="row">
-        <div style={style} className="offset-lg-1 col-lg-10 text-primary">
-          <div className="m-3">Dodaj aktywność</div>
-            {content}
+        <div style={style} className="text-primary">
+          <div className="m-3 ml-4">Dodaj aktywność</div>
+            <div className="m-3">
+              {content}
+            </div>
           </div>
       </div>
-    </div>
     )     
   }
 }

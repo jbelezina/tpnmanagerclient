@@ -3,21 +3,44 @@
   border-style: solid;
   border-width: 2px;
   border-radius: 5px;
-  border-color: #E8E8E8;
+  border-color:  darkgreen;
   color: lightgrey;
   margin: 10px 10px 10px 10px;
-  min-height: 110px;
-  max-height: 110px;
-  min-width: 110px;
-  max-width: 110px;
+  height: 110px;
+  width: 110px;
   font-family: 'Barlow Semi Condensed', sans-serif;
   font-size: 15px;
   text-align: center;
-} 
+  transition: width 1s, height 1s, margin-top 1s, font-size 1s;  
+}
 
 .activityTile:hover {
-  border-color: darkgrey;
-  color: dimgray;
-  box-shadow: 0px 0px 10px 2px lightgray;
+  border-color: darkolivegreen;
+  color: darkolivegreen;
+  box-shadow: 0px 0px 20px 0px lightgray;
+  width: 118px;
+  height: 118px;
+  margin-top: 0px;
+  font-size: 17px;
+}
+
+#headerCategoryText{
+  margin: -5px 5px 10px 5px;
+}
+
+.activityTileHeader {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  font-size: 10px;
+  background-color: #FFFFFF;
+  color: darkgrey; 
+  border-color: darkolivegreen;
+  border-width: 1px;
+  border-bottom-style: solid;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.iconAndName {
+  margin: 10px 5px 10px 5px;
 }
 

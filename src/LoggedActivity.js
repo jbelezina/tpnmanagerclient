@@ -15,7 +15,7 @@ class LoggedActivity extends Component {
 
       let innerArea = {
         height: "110px",
-        width: "35%",
+        width: "20%",
         borderRightStyle: 'solid',
         borderRightWidth: 'thin',
         borderColor: '#E8E8E8',
@@ -33,7 +33,7 @@ class LoggedActivity extends Component {
       return (
         <div className="container">
           <div className="row">
-            <div className="col d-flex flex-row loggedActivity pl-0 pr-0 m-3">
+            <div className="col d-flex flex-row loggedActivity pl-0 pr-0 m-4">
               <div style={iconArea}>
                 <div style={header}><br/>Pobranie</div>
                 <div className="dropdown-divider"></div>

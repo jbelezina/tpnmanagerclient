@@ -14,18 +14,12 @@ class ActivityTile extends Component {
     }
 
     render(){
-      
-      let header = {
-        fontSize: '10px',
-      }
-
       return (
         <div className="activityTile" onClick={this.selectTile}>
-          <div>
-            <div style={header}><br/>{this.props.data.category}</div>
-            <div className="dropdown-divider"></div>
-            <div><i className={this.props.data.icon}></i></div>
-            <div>{this.props.data.name}</div>
+          <div className="activityTileHeader"><br/><div id='headerCategoryText'>{this.props.data.category}</div></div>
+          <div className="iconAndName">  
+          <div><i className={this.props.data.icon}></i></div>
+          <div>{this.props.data.name}</div>
           </div>
         </div>
       );

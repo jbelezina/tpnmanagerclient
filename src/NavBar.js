@@ -5,9 +5,11 @@ class NavBar extends Component {
 
     let navStyle = {
       fontFamily: "'Barlow Semi Condensed', sans-serif",
+      position: 'fixed',
+      zIndex: '2',
       height: '50px',
+      width: '100%',
       marginTop: '5px',
-      marginLeft: '15px',
       marginBottom: '10px',
       fontSize: '20px',
       color: 'black',

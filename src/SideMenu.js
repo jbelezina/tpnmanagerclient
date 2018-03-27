@@ -4,7 +4,8 @@ class SideMenu extends Component {
   render() {
     
     let menuItemsStyle = {
-      height: '100%',
+      width: '200px',
+      height: '100vh',
       backgroundColor: 'white',
       borderRight: '2px solid',
       borderColor: '#E8E8E8',

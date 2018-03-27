@@ -85,7 +85,7 @@ class ActivityPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="m-0 p-0 align-left">
         <AddActivitySection tiles={this.state.activityTiles} 
                             selectTile={this.selectTile}
                             selectedTileIndex={this.state.selectedTileIndex} 
