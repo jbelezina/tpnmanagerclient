@@ -1,46 +1,30 @@
 .activityTile {
   background-color: #FFFFFF;
   border-style: solid;
-  border-width: 2px;
+  border-width: 4px;
   border-radius: 5px;
-  border-color:  darkgreen;
-  color: lightgrey;
+  border-color:  #E8E8E8;
+  color: #333333;
   margin: 10px 10px 10px 10px;
   height: 110px;
   width: 110px;
   font-family: 'Barlow Semi Condensed', sans-serif;
-  font-size: 15px;
+  font-size: 10px;
   text-align: center;
-  transition: width 1s, height 1s, margin-top 1s, font-size 1s;  
+  transition: width 0.5s, font-size 0.5s, margin-top 0.5s;  
 }
 
 .activityTile:hover {
-  border-color: darkolivegreen;
-  color: darkolivegreen;
+  border-color: teal;
+  color: teal;
   box-shadow: 0px 0px 20px 0px lightgray;
-  width: 118px;
-  height: 118px;
-  margin-top: 0px;
-  font-size: 17px;
-}
-
-#headerCategoryText{
-  margin: -5px 5px 10px 5px;
-}
-
-.activityTileHeader {
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  font-size: 10px;
-  background-color: #FFFFFF;
-  color: darkgrey; 
-  border-color: darkolivegreen;
-  border-width: 1px;
-  border-bottom-style: solid;
-  border-radius: 5px 5px 0px 0px;
+  width: 115px;
+  margin-top: 8px;
+  font-size: 11px;
 }
 
 .iconAndName {
   margin: 10px 5px 10px 5px;
+  padding: -5px 5px 5px 5px;
 }
 

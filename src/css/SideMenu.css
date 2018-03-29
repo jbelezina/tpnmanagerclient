@@ -1,0 +1,8 @@
+.sideMenuItem {
+ background-color: white;
+ margin-bottom: -17px;
+}
+
+.sideMenuItem:hover {
+  background-color: #E8E8E8;
+ }

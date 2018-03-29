@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import './css/Forms.css';
-import './css/reactDateTime.css';
+import '../css/Forms.css';
+import '../css/reactDateTime.css';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import 'moment/locale/pl';
 
-class OstomyForm extends Component {  
+class UrineForm extends Component {  
     constructor(){
       super();
       this.state = {
-        size: ['active','','',''],
+        portion: '',
         when: '',
         comment: '',
       }
       
-      this.handleSize = this.handleSize.bind(this);
+      this.handlePortion = this.handlePortion.bind(this);
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
@@ -24,16 +24,8 @@ class OstomyForm extends Component {
       console.log(this.state);
     }
 
-    handleSize(index){
-      let oldSelectState = this.state.size;
-      let newSelectState = oldSelectState.map((oldstate, i)=>{
-        if (i === index) {
-          return 'active';
-        } else {
-          return '';
-        }
-      });
-      this.setState({size:newSelectState});
+    handlePortion(e){
+      this.setState({portion:e.target.value})
     }
     
     handleDatePicker(mom){
@@ -83,14 +75,10 @@ class OstomyForm extends Component {
                   </div>
                   <div className="form-group row m-3">  
                   <label className="col-sm-2 col-form-label">Wydalona ilość:</label>
-                    <div className="col-8">
-                      <div className="btn-group btn-group-lg btn-group-justified" role="group" aria-label="buttons">
-                        <button type="button" onClick={()=>{this.handleSize(0)}} className={"btn btn-default" + ' ' + this.state.size[0]}>100 ml</button>
-                        <button type="button" onClick={()=>{this.handleSize(1)}} className={"btn btn-default" + ' ' + this.state.size[1]}>150 ml</button>
-                        <button type="button" onClick={()=>{this.handleSize(2)}} className={"btn btn-default" + ' ' + this.state.size[2]}>200 ml</button>
-                        <button type="button" onClick={()=>{this.handleSize(3)}} className={"btn btn-default" + ' ' + this.state.size[3]}>250 ml</button>
-                      </div>
+                    <div className="col-4">
+                      <input onChange={this.handlePortion} className="form-control"/>
                     </div>
+                  <label className="col-sm-1 col-form-label text-left pl-0">ml</label>
                   </div>
                   <div className="form-group row m-3">
                     <label className="col-sm-2 col-form-label">Kiedy:</label>
@@ -116,6 +104,6 @@ class OstomyForm extends Component {
     }
 }
 
-export default OstomyForm;
+export default UrineForm;
 
 

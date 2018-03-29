@@ -17,7 +17,8 @@ class ActivityTile extends Component {
       return (
         <div className="activityTile" onClick={this.selectTile}>
           <div className="activityTileHeader"><br/><div id='headerCategoryText'>{this.props.data.category}</div></div>
-          <div className="iconAndName">  
+          <div className="iconAndName">
+          <hr style={{marginBottom:'10px', marginTop: '10px'}}/>
           <div><i className={this.props.data.icon}></i></div>
           <div>{this.props.data.name}</div>
           </div>

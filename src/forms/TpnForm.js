@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './css/Forms.css';
-import './css/reactDateTime.css';
+import '../css/Forms.css';
+import '../css/reactDateTime.css';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import 'moment/locale/pl';

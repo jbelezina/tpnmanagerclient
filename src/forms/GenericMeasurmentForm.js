@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import './css/Forms.css';
-import './css/reactDateTime.css';
+import '../css/Forms.css';
+import '../css/reactDateTime.css';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import 'moment/locale/pl';
 
-class UrineForm extends Component {  
+class GenericMeasurmentForm extends Component {  
     constructor(){
       super();
       this.state = {
-        portion: '',
+        value: '',
         when: '',
         comment: '',
       }
       
-      this.handlePortion = this.handlePortion.bind(this);
+      this.handleValue = this.handleValue.bind(this);
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
@@ -24,8 +24,8 @@ class UrineForm extends Component {
       console.log(this.state);
     }
 
-    handlePortion(e){
-      this.setState({portion:e.target.value})
+    handleValue(e){
+      this.setState({value:e.target.value})
     }
     
     handleDatePicker(mom){
@@ -61,7 +61,7 @@ class UrineForm extends Component {
           <div className="row form pl-0 pr-0 m-3">
             <div className="col d-flex flex-row ">
               <div style={iconArea}>
-                <div style={header}><br/>Wydalenie</div>
+                <div style={header}><br/>Pomiar</div>
                 <div className="dropdown-divider"></div>
                 <div><i className={this.props.icon}></i></div>
                 <div>{this.props.name}</div>
@@ -74,11 +74,11 @@ class UrineForm extends Component {
                     </button>
                   </div>
                   <div className="form-group row m-3">  
-                  <label className="col-sm-2 col-form-label">Wydalona ilość:</label>
+                  <label className="col-sm-2 col-form-label">{this.props.measurementType}</label>
                     <div className="col-4">
-                      <input onChange={this.handlePortion} className="form-control"/>
+                      <input onChange={this.handleValue} className="form-control"/>
                     </div>
-                  <label className="col-sm-1 col-form-label text-left pl-0">ml</label>
+                    <label className="col-sm-1 col-form-label text-left pl-0">{this.props.measurementMetric}</label>
                   </div>
                   <div className="form-group row m-3">
                     <label className="col-sm-2 col-form-label">Kiedy:</label>
@@ -104,6 +104,6 @@ class UrineForm extends Component {
     }
 }
 
-export default UrineForm;
+export default GenericMeasurmentForm;
 
 

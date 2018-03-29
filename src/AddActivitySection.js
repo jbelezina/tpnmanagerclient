@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ActivityTile from './ActivityTile';
-import TpnForm from './TpnForm';
-import DripForm from './DripForm';
-import FoodDrinkForm from './FoodDrinkForm';
-import OstomyForm from './OstomyForm';
-import DrugForm from './DrugForm';
-import UrineForm from './UrineForm';
-import PressureForm from './PressureForm';
-import GenericMeasurementForm from './GenericMeasurmentForm';
+import TpnForm from './forms/TpnForm';
+import DripForm from './forms/DripForm';
+import FoodDrinkForm from './forms/FoodDrinkForm';
+import OstomyForm from './forms/OstomyForm';
+import DrugForm from './forms/DrugForm';
+import UrineForm from './forms/UrineForm';
+import PressureForm from './forms/PressureForm';
+import GenericMeasurementForm from './forms/GenericMeasurmentForm';
 
 class AddActivitySection extends Component {  
     
@@ -23,10 +23,10 @@ class AddActivitySection extends Component {
       borderWidth: '2px',
       borderRadius: '5px',
       borderColor: '#E8E8E8',
-      marginLeft: '250px',
+      marginLeft: '130px',
       marginTop: '85px',
       marginRight: '50px',    
-      width: '80vw',
+      width: '90vw',
       fontFamily: "'Barlow Semi Condensed', sans-serif",
       fontSize: '15px',
       fontColor: 'darkgrey',
@@ -92,16 +92,16 @@ class AddActivitySection extends Component {
                            measurementMetric='C'
                              />
     } else {
-      content = <div className="d-flex flex-wrap flex-row ">{activityTiles}</div>
+      content = <div className="d-flex flex-wrap flex-row m-5 m-5">{activityTiles}</div>
     }
 
     return (
       <div className="row">
         <div style={style} className="text-primary">
           <div className="m-3 ml-4">Dodaj aktywność</div>
-            <div className="m-3">
+          <hr/>
               {content}
-            </div>
+            
           </div>
       </div>
     )     

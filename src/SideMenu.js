@@ -1,38 +1,59 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './css/SideMenu.css';
 class SideMenu extends Component {  
   render() {
     
     let menuItemsStyle = {
-      width: '200px',
+      width: '80px',
       height: '100vh',
       backgroundColor: 'white',
       borderRight: '2px solid',
       borderColor: '#E8E8E8',
       color: 'lightgrey',
       position: 'fixed',
-      marginTop: '30px',
-      padding: '0px 0px 0px 0px',
       opacity: '1',
       textAlign: 'center',
+      fontSize: '8px',
+    }
+
+    let icon = {
+      align: 'left',
+      width: '100%',
+      margin: '0px 0px 0px 0px',
+      padding: '10px 0px 10px 0px',
+      alignContent:'center',
     }
 
     return (
-      <div style={menuItemsStyle} className="m-0 p-3">
-        <ul className="nav flex-column">
-          <li className="nav-item">
-            <span className="nav-link"><Link to="/" style={{ textDecoration: 'none', color: 'black' }}>Panel</Link></span>
-          </li>
-          <li className="nav-item">
-            <span className="nav-link"><Link to="/aktywnosci" style={{ textDecoration: 'none', color: 'black' }}>Aktywności</Link></span>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link">Zadania</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link">Magazyn</a>
-          </li>
-        </ul>
+      <div style={menuItemsStyle}>
+        
+        <div style={{marginTop:'141px'}}>
+        <Link to="/">
+          <div className="sideMenuItem">
+            <hr/>
+                <div style={icon}>
+                  <div style={{marginLeft:'18px', color:'teal'}}><i className="fas fa-chart-line fa-2x"></i></div>
+                  <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
+      fontSize: '12px', paddingLeft:'17px', textDecoration: 'none', color: 'black'}}>Panel</div>
+                </div>
+            <hr/>
+          </div>
+        </Link>
+        <Link to="/aktywnosci">
+          <div className="sideMenuItem">
+          <hr/>
+                <div style={icon}>
+                  <div style={{marginLeft:'18px', color:'teal'}}><i className="fas fa-play-circle fa-2x"></i></div>
+                  <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
+      fontSize: '12px', paddingLeft:'13px', textDecoration: 'none', color: 'black' }}>Aktywności</div>
+                </div>
+              
+            <hr/>
+          </div>
+        </Link>
+          
+        </div>
       </div>
     );
   }

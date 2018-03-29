@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
-import './css/Forms.css';
-import './css/reactDateTime.css';
+import '../css/Forms.css';
+import '../css/reactDateTime.css';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import 'moment/locale/pl';
 
-class PressureForm extends Component {  
+class OstomyForm extends Component {  
     constructor(){
       super();
       this.state = {
-        pressure_value1: '',
-        pressure_value2: '',
-        pulse:'',
+        size: ['active','','',''],
         when: '',
         comment: '',
       }
       
-      this.handlePressureOne = this.handlePressureOne.bind(this);
-      this.handlePressureTwo = this.handlePressureTwo.bind(this);
-      this.handlePulse = this.handlePulse.bind(this);
+      this.handleSize = this.handleSize.bind(this);
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
@@ -28,16 +24,16 @@ class PressureForm extends Component {
       console.log(this.state);
     }
 
-    handlePressureOne(e){
-      this.setState({pressure_value1:e.target.value})
-    }
-
-    handlePressureTwo(e){
-      this.setState({pressure_value2:e.target.value})
-    }
-
-    handlePulse(e){
-      this.setState({pulse:e.target.value})
+    handleSize(index){
+      let oldSelectState = this.state.size;
+      let newSelectState = oldSelectState.map((oldstate, i)=>{
+        if (i === index) {
+          return 'active';
+        } else {
+          return '';
+        }
+      });
+      this.setState({size:newSelectState});
     }
     
     handleDatePicker(mom){
@@ -73,7 +69,7 @@ class PressureForm extends Component {
           <div className="row form pl-0 pr-0 m-3">
             <div className="col d-flex flex-row ">
               <div style={iconArea}>
-                <div style={header}><br/>Pomiar</div>
+                <div style={header}><br/>Wydalenie</div>
                 <div className="dropdown-divider"></div>
                 <div><i className={this.props.icon}></i></div>
                 <div>{this.props.name}</div>
@@ -86,19 +82,14 @@ class PressureForm extends Component {
                     </button>
                   </div>
                   <div className="form-group row m-3">  
-                  <label className="col-sm-2 col-form-label">Ciśnienie:</label>
-                    <div className="col-3">
-                      <input onChange={this.handlePressureOne} className="form-control"/>
-                    </div>
-                  <label className="col-sm-1 col-form-label text-left pl-0">na</label>
-                    <div className="col-3">
-                      <input onChange={this.handlePressureTwo} className="form-control"/>
-                    </div>
-                  </div>
-                  <div className="form-group row m-3">  
-                    <label className="col-sm-2 col-form-label">Puls:</label>
-                    <div className="col-3">
-                      <input onChange={this.handlePulse} className="form-control"/>
+                  <label className="col-sm-2 col-form-label">Wydalona ilość:</label>
+                    <div className="col-8">
+                      <div className="btn-group btn-group-lg btn-group-justified" role="group" aria-label="buttons">
+                        <button type="button" onClick={()=>{this.handleSize(0)}} className={"btn btn-default" + ' ' + this.state.size[0]}>100 ml</button>
+                        <button type="button" onClick={()=>{this.handleSize(1)}} className={"btn btn-default" + ' ' + this.state.size[1]}>150 ml</button>
+                        <button type="button" onClick={()=>{this.handleSize(2)}} className={"btn btn-default" + ' ' + this.state.size[2]}>200 ml</button>
+                        <button type="button" onClick={()=>{this.handleSize(3)}} className={"btn btn-default" + ' ' + this.state.size[3]}>250 ml</button>
+                      </div>
                     </div>
                   </div>
                   <div className="form-group row m-3">
@@ -125,6 +116,6 @@ class PressureForm extends Component {
     }
 }
 
-export default PressureForm;
+export default OstomyForm;
 
 

@@ -9,7 +9,7 @@ class LoggedActivitySection extends Component {
         borderWidth: '2px',
         borderRadius: '5px',
         borderColor: '#E8E8E8',
-        marginLeft: '250px',
+        marginLeft: '130px',
         marginRight: '50px',
         marginTop: '40px',
         marginRight: '50px',    

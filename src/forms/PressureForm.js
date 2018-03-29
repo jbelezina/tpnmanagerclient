@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import './css/Forms.css';
-import './css/reactDateTime.css';
+import '../css/Forms.css';
+import '../css/reactDateTime.css';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import 'moment/locale/pl';
 
-class GenericMeasurmentForm extends Component {  
+class PressureForm extends Component {  
     constructor(){
       super();
       this.state = {
-        value: '',
+        pressure_value1: '',
+        pressure_value2: '',
+        pulse:'',
         when: '',
         comment: '',
       }
       
-      this.handleValue = this.handleValue.bind(this);
+      this.handlePressureOne = this.handlePressureOne.bind(this);
+      this.handlePressureTwo = this.handlePressureTwo.bind(this);
+      this.handlePulse = this.handlePulse.bind(this);
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
@@ -24,8 +28,16 @@ class GenericMeasurmentForm extends Component {
       console.log(this.state);
     }
 
-    handleValue(e){
-      this.setState({value:e.target.value})
+    handlePressureOne(e){
+      this.setState({pressure_value1:e.target.value})
+    }
+
+    handlePressureTwo(e){
+      this.setState({pressure_value2:e.target.value})
+    }
+
+    handlePulse(e){
+      this.setState({pulse:e.target.value})
     }
     
     handleDatePicker(mom){
@@ -74,11 +86,20 @@ class GenericMeasurmentForm extends Component {
                     </button>
                   </div>
                   <div className="form-group row m-3">  
-                  <label className="col-sm-2 col-form-label">{this.props.measurementType}</label>
-                    <div className="col-4">
-                      <input onChange={this.handleValue} className="form-control"/>
+                  <label className="col-sm-2 col-form-label">Ciśnienie:</label>
+                    <div className="col-3">
+                      <input onChange={this.handlePressureOne} className="form-control"/>
                     </div>
-                    <label className="col-sm-1 col-form-label text-left pl-0">{this.props.measurementMetric}</label>
+                  <label className="col-sm-1 col-form-label text-left pl-0">na</label>
+                    <div className="col-3">
+                      <input onChange={this.handlePressureTwo} className="form-control"/>
+                    </div>
+                  </div>
+                  <div className="form-group row m-3">  
+                    <label className="col-sm-2 col-form-label">Puls:</label>
+                    <div className="col-3">
+                      <input onChange={this.handlePulse} className="form-control"/>
+                    </div>
                   </div>
                   <div className="form-group row m-3">
                     <label className="col-sm-2 col-form-label">Kiedy:</label>
@@ -104,6 +125,6 @@ class GenericMeasurmentForm extends Component {
     }
 }
 
-export default GenericMeasurmentForm;
+export default PressureForm;
 
 

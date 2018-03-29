@@ -21,13 +21,18 @@ class NavBar extends Component {
       color: '#000000',
     }
 
-    let brandStyle = {
-      padding: '100px',
+    let line = {
+      position: 'fixed',
+      width: '65px',
+      height: '100%',
+      borderRight: 'solid 2px #E8E8E8',
+      paddingRight: '10px',
     }
 
     return (
         <nav style={navStyle}>
-          <div className="p-2 ml-4">
+          <div style={line}></div>
+          <div style={{display:'inline', float:'left', marginLeft: '125px', marginTop:'5px'}}>
             TPN Manager
           </div>
         </nav>
