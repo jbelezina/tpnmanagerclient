@@ -92,7 +92,7 @@ class AddActivitySection extends Component {
                            measurementMetric='C'
                              />
     } else {
-      content = <div className="d-flex flex-wrap flex-row m-5 m-5">{activityTiles}</div>
+      content = <div className="d-flex flex-wrap flex-row m-5">{activityTiles}</div>
     }
 
     return (
@@ -101,7 +101,6 @@ class AddActivitySection extends Component {
           <div className="m-3 ml-4">Dodaj aktywność</div>
           <hr/>
               {content}
-            
           </div>
       </div>
     )     

@@ -23,28 +23,17 @@ class LoggedActivitySection extends Component {
         <div className="row">
           <div style={style} className="text-primary">
             <div className="m-3 ml-4">Zalogowane aktywności</div>
-            <div className="d-flex flex-row ">
-            <LoggedActivity/>
-            </div>
-            <div className="d-flex flex-row ">
-            <LoggedActivity/>
-            </div>
-            <div className="divider"></div>
-            <div className="d-flex flex-row ">
-            <LoggedActivity/>
-            </div>
-            <div className="d-flex flex-row ">
-            <LoggedActivity/>
-            </div>
-            <div className="d-flex flex-row ">
-            <LoggedActivity/>
-            </div>
-            <div className="d-flex flex-row ">
-            <LoggedActivity/>
+            <hr/>
+            <div className="d-flex flex-row flex-wrap m-5">
+              <LoggedActivity/>
+              <LoggedActivity/>
+              <LoggedActivity/>
+              <LoggedActivity/>
+              <LoggedActivity/>
+              <LoggedActivity/>
             </div>
           </div>
         </div>
-
     )     
   }
 }

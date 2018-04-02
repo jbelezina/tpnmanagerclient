@@ -26,14 +26,21 @@ class LoggedActivity extends Component {
       }
 
       let iconHeader = {
-        fontSize: '15px',
-        marginTop: '-15px',
+        fontSize: '0px',
+        marginTop: '0px',
+      }
+
+      let theWholeThing = {
+        width: '100%',
+        display: 'block',
+        marginTop: '10px',
+        marginBottom: '10px',
       }
 
       return (
-        <div className="container">
+        <div style={theWholeThing} className="ml-4 mr-4">
           <div className="row">
-            <div className="col d-flex flex-row loggedActivity pl-0 pr-0 m-4">
+            <div className="col d-flex flex-row loggedActivity pl-0 pr-0">
               <div style={iconArea}>
                 <div style={header}><br/>Pobranie</div>
                 <div className="dropdown-divider"></div>

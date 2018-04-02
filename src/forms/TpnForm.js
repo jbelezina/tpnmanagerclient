@@ -86,12 +86,12 @@ class TpnForm extends Component {
 
       return (
         <div className="container">
-          <div className="row form pl-0 pr-0 m-3">
+          <div className="row form m-5">
             <div className="col d-flex flex-row ">
               <div style={iconArea}>
                 <div style={header}><br/>Przyjęcie</div>
                 <div className="dropdown-divider"></div>
-                <div><i className={this.props.icon}></i></div>
+                <div style={{fontSize: '10px'}}><i className={this.props.icon}></i></div>
                 <div>{this.props.name}</div>
               </div>
               <div style={innerArea}>

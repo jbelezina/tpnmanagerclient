@@ -27,32 +27,29 @@ class SideMenu extends Component {
 
     return (
       <div style={menuItemsStyle}>
-        
         <div style={{marginTop:'141px'}}>
-        <Link to="/">
           <div className="sideMenuItem">
-            <hr/>
+            <Link to="/">
+              <hr/>
                 <div style={icon}>
                   <div style={{marginLeft:'18px', color:'teal'}}><i className="fas fa-chart-line fa-2x"></i></div>
                   <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
       fontSize: '12px', paddingLeft:'17px', textDecoration: 'none', color: 'black'}}>Panel</div>
                 </div>
-            <hr/>
+              <hr/>
+            </Link>
           </div>
-        </Link>
-        <Link to="/aktywnosci">
           <div className="sideMenuItem">
-          <hr/>
+            <Link to="/aktywnosci">
+              <hr/>
                 <div style={icon}>
                   <div style={{marginLeft:'18px', color:'teal'}}><i className="fas fa-play-circle fa-2x"></i></div>
                   <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
       fontSize: '12px', paddingLeft:'13px', textDecoration: 'none', color: 'black' }}>Aktywności</div>
                 </div>
-              
-            <hr/>
-          </div>
-        </Link>
-          
+              <hr/> 
+            </Link>
+          </div> 
         </div>
       </div>
     );

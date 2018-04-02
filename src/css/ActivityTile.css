@@ -11,7 +11,8 @@
   font-family: 'Barlow Semi Condensed', sans-serif;
   font-size: 10px;
   text-align: center;
-  transition: width 0.5s, font-size 0.5s, margin-top 0.5s;  
+  transition: width 0.5s, font-size 0.5s, margin-top 0.5s;
+  padding: 0px 0px 0px 0px;  
 }
 
 .activityTile:hover {

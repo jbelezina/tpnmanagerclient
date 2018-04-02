@@ -1,7 +1,8 @@
 .loggedActivity {
+  width: 90vw;
   background-color: #FFFFFF;
   border-style: solid;
-  border-width: 2px;
+  border-width: 4px;
   border-radius: 5px;
   border-color: #E8E8E8;
   color: lightgrey; 
