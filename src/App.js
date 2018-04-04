@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SideMenu from './SideMenu';
 import NavBar from './NavBar';
 import ActivityPage from './ActivityPage';
+import SettingsPage from './SettingsPage';
 import Panel from './Panel';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
@@ -34,6 +35,7 @@ class App extends Component {
               <SideMenu/>
               <Route exact path='/' component={Panel}/>
               <Route path='/aktywnosci' component={ActivityPage}/>
+              <Route path='/ustawienia' component={SettingsPage}/>
           </div>
         </div>  
     );

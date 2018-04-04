@@ -15,6 +15,7 @@ class SideMenu extends Component {
       opacity: '1',
       textAlign: 'center',
       fontSize: '8px',
+      zIndex: '2'
     }
 
     let icon = {
@@ -25,11 +26,19 @@ class SideMenu extends Component {
       alignContent:'center',
     }
 
+    let topline = {
+      width: '80px',
+      height: '49px',
+      borderBottom: 'solid 2px #E8E8E8',
+      position: 'fixed',
+    }
+
     return (
       <div style={menuItemsStyle}>
+        <div style={topline}></div>
         <div style={{marginTop:'141px'}}>
+        <Link to="/">
           <div className="sideMenuItem">
-            <Link to="/">
               <hr/>
                 <div style={icon}>
                   <div style={{marginLeft:'18px', color:'teal'}}><i className="fas fa-chart-line fa-2x"></i></div>
@@ -37,8 +46,8 @@ class SideMenu extends Component {
       fontSize: '12px', paddingLeft:'17px', textDecoration: 'none', color: 'black'}}>Panel</div>
                 </div>
               <hr/>
-            </Link>
           </div>
+        </Link>
           <div className="sideMenuItem">
             <Link to="/aktywnosci">
               <hr/>
@@ -46,6 +55,17 @@ class SideMenu extends Component {
                   <div style={{marginLeft:'18px', color:'teal'}}><i className="fas fa-play-circle fa-2x"></i></div>
                   <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
       fontSize: '12px', paddingLeft:'13px', textDecoration: 'none', color: 'black' }}>Aktywności</div>
+                </div>
+              <hr/> 
+            </Link>
+          </div>
+          <div className="sideMenuItem">
+            <Link to="/ustawienia">
+              <hr/>
+                <div style={icon}>
+                  <div style={{marginLeft:'18px', color:'teal'}}><i className="fas fa-cog fa-2x"></i></div>
+                  <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
+      fontSize: '12px', paddingLeft:'13px', textDecoration: 'none', color: 'black' }}>Ustawienia</div>
                 </div>
               <hr/> 
             </Link>

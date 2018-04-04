@@ -11,8 +11,37 @@ import GenericMeasurementForm from './forms/GenericMeasurmentForm';
 
 class AddActivitySection extends Component {  
     
+    constructor(){
+      super();
+      this.state = {
+          event_type: 'tpn',
+          time_start: 'dupa',
+          time_stop: 'dupa',
+          comment: 'Hola',
+          values: [1,2,3],
+          product_id: 123,
+          patient_id: 234,  
+      }
+      this.handleFormInput = this.handleFormInput.bind(this);
+    }
+
     componentDidMount(){
       console.log('selected tile index:' + this.props.selectedTileIndex)
+    }
+
+    handleFormInput(){
+
+      let formValues = this.state;
+      formValues.time_start = Date.now();
+      formValues.time_stop = Date.now();
+      console.log(formValues);
+
+      fetch('http://localhost:3000/api/events', {
+        method: 'post',
+        body: JSON.stringify(formValues)
+      }).then(function(response) {
+        return response.json();
+      });
     }
 
     render(){
@@ -99,6 +128,7 @@ class AddActivitySection extends Component {
       <div className="row">
         <div style={style} className="text-primary">
           <div className="m-3 ml-4">Dodaj aktywność</div>
+          <button onClick={this.handleFormInput}>Form input</button>
           <hr/>
               {content}
           </div>
