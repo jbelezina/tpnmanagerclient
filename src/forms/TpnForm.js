@@ -11,10 +11,11 @@ class TpnForm extends Component {
     constructor(){
       super();
       this.state = {
-        tpn: '',
-        portion: '',
-        stop: '',
-        start: 'podaj łączną długość przyjmowania',
+        event_type: 'tpn',
+        product: '',
+        values: '',
+        time_start: 'podaj łączną długość przyjmowania',
+        time_stop: '',
         comment: '',
       }
       this.handleTPNSelect = this.handleTPNSelect.bind(this);
@@ -23,6 +24,12 @@ class TpnForm extends Component {
       this.handleTotalDuration = this.handleTotalDuration.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
+      this.handleForm = this.handleForm.bind(this);
+    }
+
+    handleForm(){
+      let formValues = this.state;
+      this.props.handleFormInput(formValues);
     }
 
     logState(){
@@ -32,30 +39,34 @@ class TpnForm extends Component {
     handleTPNSelect(selected){
       console.log(selected.value);
         if (selected){
-          this.setState({tpn:selected.value})
+          this.setState({product:selected.value})
         } else {
-          this.setState({tpn:[]});
+          this.setState({product:[]});
       }
     }
 
     handlePortion(e){
-      this.setState({portion:e.target.value});
+      this.setState({values:e.target.value});
     }
 
     handleDatePicker(mom){
-      let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({stop:myString});
+      let myString = moment(mom).toISOString(); 
+      this.setState({time_stop:myString});
       console.log(myString);
     }
 
     handleTotalDuration(){      
       let enteredDuration = this.refs.totalDuration.value;
       let enteredDurationNumber = parseInt(enteredDuration, 10);
-      let stop = this.state.stop;
+      let stop = this.state.time_stop;
+      console.log('stop string'+ stop);
       let stopMoment = moment(stop.toString());
       let startTime = stopMoment.subtract(enteredDurationNumber, 'hours');
-      startTime = startTime.format("DD.MM.YYYY HH:mm");
-      this.setState({start:startTime});
+      startTime = startTime.toISOString();
+      console.log(typeof startTime);
+      console.log(startTime);
+      this.setState({time_start:startTime});
+      this.setState({stop_time:stopMoment});
       }
 
       handleComment(e){
@@ -107,7 +118,7 @@ class TpnForm extends Component {
                       <Select
                           menuContainerStyle={{ zIndex: '2' }}
                           name="tpn"
-                          value={this.state.tpn}
+                          value={this.state.product}
                           options={tpnOptions}
                           onChange={this.handleTPNSelect}
                           placeholder="Wybierz TPN"
@@ -136,7 +147,7 @@ class TpnForm extends Component {
                   <div className="form-group row m-3">
                     <label className="col-sm-2 col-form-label">Start:</label>
                     <div className="col-10">
-                      <input className="form-control-plaintext" type="text" value={this.state.start} readOnly/>  
+                      <input className="form-control-plaintext" type="text" value={moment(this.state.time_start).format('DD-MM-YYYY, HH:mm')} readOnly/>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
@@ -146,7 +157,7 @@ class TpnForm extends Component {
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <button type="button" onClick={this.logState} className="pr-3 mt-3 col-12 btn btn-dark">Dodaj</button>
+                    <button type="button" onClick={this.handleForm} className="pr-3 mt-3 col-12 btn btn-dark">Dodaj</button>
                   </div>
                 </form>
               </div>

@@ -13,15 +13,6 @@ class AddActivitySection extends Component {
     
     constructor(){
       super();
-      this.state = {
-          event_type: 'tpn',
-          time_start: 'dupa',
-          time_stop: 'dupa',
-          comment: 'Hola',
-          values: [1,2,3],
-          product_id: 123,
-          patient_id: 234,  
-      }
       this.handleFormInput = this.handleFormInput.bind(this);
     }
 
@@ -29,16 +20,13 @@ class AddActivitySection extends Component {
       console.log('selected tile index:' + this.props.selectedTileIndex)
     }
 
-    handleFormInput(){
-
-      let formValues = this.state;
-      formValues.time_start = Date.now();
-      formValues.time_stop = Date.now();
+    handleFormInput(formValues){
       console.log(formValues);
 
       fetch('http://localhost:3000/api/events', {
         method: 'post',
-        body: JSON.stringify(formValues)
+        body: JSON.stringify(formValues),
+        headers: new Headers({'content-type': 'application/json'}),
       }).then(function(response) {
         return response.json();
       });
@@ -80,7 +68,9 @@ class AddActivitySection extends Component {
       content =  <TpnForm cancelForm={this.props.cancelForm}
                              name={this.props.tiles[this.props.selectedTileIndex]['name']}
                              icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                             handleFormInput={this.handleFormInput}
                              />
+
     } else if (this.props.selectedTileIndex === 2) {
       content =  <DripForm cancelForm={this.props.cancelForm}
                              name={this.props.tiles[this.props.selectedTileIndex]['name']}
@@ -128,7 +118,6 @@ class AddActivitySection extends Component {
       <div className="row">
         <div style={style} className="text-primary">
           <div className="m-3 ml-4">Dodaj aktywność</div>
-          <button onClick={this.handleFormInput}>Form input</button>
           <hr/>
               {content}
           </div>
