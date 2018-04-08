@@ -22,7 +22,6 @@ class AddActivitySection extends Component {
 
     handleFormInput(formValues){
       console.log(formValues);
-
       fetch('http://localhost:3000/api/events', {
         method: 'post',
         body: JSON.stringify(formValues),
@@ -69,6 +68,7 @@ class AddActivitySection extends Component {
                              name={this.props.tiles[this.props.selectedTileIndex]['name']}
                              icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
                              handleFormInput={this.handleFormInput}
+                             selectTile={this.props.selectTile}
                              />
 
     } else if (this.props.selectedTileIndex === 2) {

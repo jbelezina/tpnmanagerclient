@@ -11,6 +11,7 @@ class TpnForm extends Component {
     constructor(){
       super();
       this.state = {
+        event_category: 'przyjecie',
         event_type: 'tpn',
         product: '',
         values: '',
@@ -24,12 +25,27 @@ class TpnForm extends Component {
       this.handleTotalDuration = this.handleTotalDuration.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
+      this.clearState = this.clearState.bind(this);
       this.handleForm = this.handleForm.bind(this);
+    }
+
+    clearState(){
+      this.setState({
+        event_category: 'przyjęcie',
+        event_type: 'tpn',
+        product: '',
+        values: '',
+        time_start: 'podaj łączną długość przyjmowania',
+        time_stop: '',
+        comment: '',
+      }); 
     }
 
     handleForm(){
       let formValues = this.state;
       this.props.handleFormInput(formValues);
+      this.props.selectTile(false);
+      this.clearState();
     }
 
     logState(){
