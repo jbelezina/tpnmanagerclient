@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ProductTable from './ProductTable';
 import AddProductForm from './forms/AddProductForm';
+import SnackBar from './SnackBar';
 
 class ManageProductsSection extends Component {      
     constructor(){
       super();
       this.state = {
+        showSnackBar: false,
         addingProduct: false,
         showInTable: '',
       }
@@ -16,6 +18,7 @@ class ManageProductsSection extends Component {
       this.fetchDrug = this.fetchDrug.bind(this);
       this.fetchFood = this.fetchFood.bind(this);
       this.fetchDrink = this.fetchDrink.bind(this);
+      this.hideSnackbar = this.hideSnackbar.bind(this);
     }
 
     async componentDidMount() {
@@ -23,7 +26,10 @@ class ManageProductsSection extends Component {
       const result = await res.json()
       this.setState({showInTable:result});
     }
-  
+
+    hideSnackbar(){
+      this.setState({showSnackBar:false})
+    }
 
     toggleAddProduct(){
       this.setState({addingProduct: !this.state.addingProduct});
@@ -38,6 +44,8 @@ class ManageProductsSection extends Component {
         }).then(function(response) {
           return response.json();
         });
+
+        this.setState({showSnackBar:true})
     }  
 
     async fetchTPN(){
@@ -106,6 +114,13 @@ class ManageProductsSection extends Component {
                     fetchFood={this.fetchFood}
                     />
     )
+
+    let snackbar;
+    
+    if (this.state.showSnackBar){
+      snackbar = <SnackBar hideSnackbar={this.hideSnackbar} message="Dodano produkt"/>
+    }
+    
       
     return (
       <div className="row">
@@ -115,6 +130,7 @@ class ManageProductsSection extends Component {
                 {addProduct}
                 <hr/>
             {productTable}
+            {snackbar}
           </div>
       </div>
     )     

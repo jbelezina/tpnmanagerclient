@@ -18,23 +18,23 @@ handleProductSelect(selected){
       this.setState({product:selected.value})
     } 
 
-    if(selected='tpn'){
+    if(selected.value ==='tpn'){
         this.props.fetchTPN();
     }
 
-    if(selected='drip'){
+    if(selected.value ==='drip'){
         this.props.fetchDrip();
     }
 
-    if(selected='drug'){
+    if(selected.value ==='drug'){
         this.props.fetchDrug();
     }
 
-    if(selected='drink'){
+    if(selected.value ==='drink'){
         this.props.fetchDrink();
     }
 
-    if(selected='food'){
+    if(selected.value ==='food'){
         this.props.fetchFood();
     }
   }
@@ -61,14 +61,37 @@ render(){
     let tableBody;
 
     if(this.props.showInTable){
-        tableBody = this.props.showInTable.map((item)=>{
+        tableBody = this.props.showInTable.map((item, index)=>{
+            
+            let type;
+
+            switch(item.type) {
+                case 'tpn':
+                    type = 'TPN'
+                    break;
+                case 'drip':
+                    type = 'Kroplówka'
+                    break;
+                case 'drug':
+                    type = 'Lek'
+                    break;
+                case 'drink':
+                    type = 'Picie'
+                    break;
+                case 'food':
+                    type = 'Jedzenie'
+                    break;
+                default:
+                    type = ''
+            }
+            
             return (
-                <tr>
-                    <td>{item.type}</td>
+                <tr key={index}>
+                    <td>{type}</td>
                     <td>{item.name}</td>
                     <td>{item.description}</td>
                     <td>
-                        <button type="button" class="btn btn-primary">Archiwizuj</button> <button type="button" class="btn btn-primary">Edytuj</button>
+                        <button type="button" className="btn btn-primary">Archiwizuj</button> <button type="button" className="btn btn-primary">Edytuj</button>
                     </td>
                 </tr>
             )

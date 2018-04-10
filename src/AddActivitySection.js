@@ -29,6 +29,7 @@ class AddActivitySection extends Component {
       }).then(function(response) {
         return response.json();
       });
+      this.props.showSnackbar();
     }
 
     render(){

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import AddActivitySection from './AddActivitySection';
 import LoggedActivitySection from './LoggedActivitySection';
+import SnackBar from './SnackBar';
 
 class ActivityPage extends Component {
 
   constructor(){
     super()
     this.state={
+      showSnackBar:false,
       loggedEvents: '',
       selectedTileIndex: false,
       activityTiles: [
@@ -74,6 +76,8 @@ class ActivityPage extends Component {
     }
     this.cancelForm = this.cancelForm.bind(this);
     this.selectTile = this.selectTile.bind(this);
+    this.hideSnackbar = this.hideSnackbar.bind(this);
+    this.showSnackbar = this.showSnackbar.bind(this);
   }
 
   async componentDidMount() {
@@ -88,6 +92,14 @@ class ActivityPage extends Component {
     this.setState({loggedEvents:loggedEvents});
   }
 
+  hideSnackbar(){
+    this.setState({showSnackBar:false})
+  }
+
+  showSnackbar(message){
+    this.setState({showSnackBar:true})
+  }
+
   cancelForm(){
     this.setState({selectedTileIndex: false});
   }
@@ -97,15 +109,25 @@ class ActivityPage extends Component {
   }
 
   render() {
+    
+    let snackbar;
+    if (this.state.showSnackBar){
+      snackbar = (
+        <SnackBar message="Dodano aktywność" hideSnackbar={this.hideSnackbar}/>
+      )
+    }
+    
     return (
       <div>
         <AddActivitySection tiles={this.state.activityTiles} 
                             selectTile={this.selectTile}
                             selectedTileIndex={this.state.selectedTileIndex} 
                             cancelForm={this.cancelForm}
+                            showSnackbar={this.showSnackbar}
                             />
 
         <LoggedActivitySection loggedEvents={this.state.loggedEvents}/>
+        {snackbar}
       </div>
       
     );

@@ -15,13 +15,6 @@ class App extends Component {
       backgroundColor: '#F9F9F9',
       width: '100 vmax',
     }
-    
-    let navStyle = {
-      backgroundColor: 'white',
-      borderBottom: '2px solid',
-      borderColor: 'lightgrey',
-      color: 'lightgrey',
-    }
 
     return (
       
