@@ -7,6 +7,7 @@ class ActivityPage extends Component {
   constructor(){
     super()
     this.state={
+      loggedEvents: '',
       selectedTileIndex: false,
       activityTiles: [
         {
@@ -75,6 +76,18 @@ class ActivityPage extends Component {
     this.selectTile = this.selectTile.bind(this);
   }
 
+  async componentDidMount() {
+    const res = await fetch('http://localhost:3000/api/events')
+    const loggedEvents = await res.json()
+    this.setState({loggedEvents:loggedEvents});
+  }
+
+  async componentDidUpdate() {
+    const res = await fetch('http://localhost:3000/api/events')
+    const loggedEvents = await res.json()
+    this.setState({loggedEvents:loggedEvents});
+  }
+
   cancelForm(){
     this.setState({selectedTileIndex: false});
   }
@@ -92,7 +105,7 @@ class ActivityPage extends Component {
                             cancelForm={this.cancelForm}
                             />
 
-        <LoggedActivitySection/>
+        <LoggedActivitySection loggedEvents={this.state.loggedEvents}/>
       </div>
       
     );

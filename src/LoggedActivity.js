@@ -50,7 +50,7 @@ class LoggedActivity extends Component {
         comment = (
           <div>
             <i className="fas fa-comments"></i>
-            <span className="m-2">
+            <span className="m-3 p-2" style={{fontSize:'10px'}}>
               {this.props.data.comment}
             </span> 
           </div>
