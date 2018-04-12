@@ -86,11 +86,12 @@ class ActivityPage extends Component {
     this.setState({loggedEvents:loggedEvents});
   }
 
+  /*
   async componentDidUpdate() {
     const res = await fetch('http://localhost:3000/api/events')
     const loggedEvents = await res.json()
     this.setState({loggedEvents:loggedEvents});
-  }
+  }*/
 
   hideSnackbar(){
     this.setState({showSnackBar:false})

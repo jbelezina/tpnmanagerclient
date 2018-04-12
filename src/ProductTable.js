@@ -37,6 +37,10 @@ handleProductSelect(selected){
     if(selected.value ==='food'){
         this.props.fetchFood();
     }
+
+    if(selected.value ==='all'){
+        this.props.fetchProducts();
+    }
   }
     
 render(){
@@ -61,7 +65,9 @@ render(){
     let tableBody;
 
     if(this.props.showInTable){
-        tableBody = this.props.showInTable.map((item, index)=>{
+
+        let reversed = this.props.showInTable.reverse()
+        tableBody = reversed.map((item, index)=>{
             
             let type;
 
@@ -81,6 +87,8 @@ render(){
                 case 'food':
                     type = 'Jedzenie'
                     break;
+                case 'all':
+                    type = 'Wszystkie'
                 default:
                     type = ''
             }

@@ -19,6 +19,7 @@ class ManageProductsSection extends Component {
       this.fetchFood = this.fetchFood.bind(this);
       this.fetchDrink = this.fetchDrink.bind(this);
       this.hideSnackbar = this.hideSnackbar.bind(this);
+      this.fetchProducts = this.fetchProducts.bind(this);
     }
 
     async componentDidMount() {
@@ -48,6 +49,12 @@ class ManageProductsSection extends Component {
         this.setState({showSnackBar:true})
     }  
 
+    async fetchProducts(){
+      const res = await fetch('http://localhost:3000/api/products')
+      const result = await res.json()
+      this.setState({showInTable:result});
+    }
+    
     async fetchTPN(){
       const res = await fetch('http://localhost:3000/api/products/tpn')
       const result = await res.json()
@@ -112,6 +119,7 @@ class ManageProductsSection extends Component {
                     fetchDrug={this.fetchDrug}
                     fetchDrink={this.fetchDrink}
                     fetchFood={this.fetchFood}
+                    fetchProducts={this.fetchProducts}
                     />
     )
 
