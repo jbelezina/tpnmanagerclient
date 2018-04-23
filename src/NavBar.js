@@ -15,10 +15,10 @@ class NavBar extends Component {
       color: 'black',
       padding: '0px 0px 0px 0px',
       margin: '0px 0px 0px 0px',
-      backgroundColor: '#FFFFFF',
+      background: "#5fa6bf",
       borderBottom: 'solid 2px',
       borderColor: '#E8E8E8',
-      color: '#000000',
+      color: 'white',
     }
 
     let line = {
@@ -27,6 +27,7 @@ class NavBar extends Component {
       height: '100%',
       borderRight: 'solid 2px #E8E8E8',
       paddingRight: '10px',
+      borderColor: 'gray',
     }
 
     return (

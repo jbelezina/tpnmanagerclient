@@ -101,17 +101,6 @@ class ManageProductsSection extends Component {
       fontColor: 'darkgrey',
     }
 
-    let addProduct;
-    if (this.state.addingProduct) {
-      addProduct = <AddProductForm submitForm={this.submitForm} closeForm={this.toggleAddProduct}/>
-    } else {
-      addProduct = (
-        <div className="ml-5">
-          <button type="button" onClick={this.toggleAddProduct} className="btn btn-primary">Dodaj produkt</button>
-        </div>
-              )
-    }
-
     let productTable = (
       <ProductTable showInTable={this.state.showInTable}
                     fetchTPN={this.fetchTPN}
@@ -128,15 +117,21 @@ class ManageProductsSection extends Component {
     if (this.state.showSnackBar){
       snackbar = <SnackBar hideSnackbar={this.hideSnackbar} message="Dodano produkt"/>
     }
+
+    let addProduct = this.state.addingProduct ?
+    <AddProductForm submitForm={this.submitForm} closeForm={this.toggleAddProduct} /> :
+    <div className="m-5">
+      <button className="btn" onClick={this.toggleAddProduct}>Dodaj produkt</button>
+    </div>
     
       
     return (
       <div className="row">
         <div style={style} className="text-primary">
           <div className="m-3 ml-4">Zarządzaj produktami</div>     
-                <hr/>
-                {addProduct}
-                <hr/>
+            <hr/>
+              {addProduct}
+            <hr/>
             {productTable}
             {snackbar}
           </div>

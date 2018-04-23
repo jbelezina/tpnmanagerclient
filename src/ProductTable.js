@@ -111,18 +111,16 @@ render(){
 
      return(
       <div>
-        <div className="ml-5">
-            <div className="col-3">
-                <Select
-                          menuContainerStyle={{ zIndex: '2' }}
-                          name="product"
-                          value={this.state.product}
-                          options={productOptions}
-                          onChange={this.handleProductSelect}
-                          placeholder="Wybierz pokazywane"
-                />
-            </div>                    
-        </div>
+        <div className="mt-5 ml-5 mb-2 float-left">
+            <Select
+                        menuContainerStyle={{ zIndex: '2' }}
+                        name="product"
+                        value={this.state.product}
+                        options={productOptions}
+                        onChange={this.handleProductSelect}
+                        placeholder="Wybierz pokazywane"
+            />
+        </div>                    
         <div className="ml-5 mr-5 mb-5 mt-2">
         <table className="table table-striped" style={tableStyle}>
         <thead>

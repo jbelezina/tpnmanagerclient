@@ -16,9 +16,9 @@ class ActivityTile extends Component {
     render(){
       return (
         <div className="activityTile" onClick={this.selectTile}>
-          <div className="activityTileHeader"><br/><div id='headerCategoryText'>{this.props.data.category}</div></div>
+          <div><br/><div id='headerCategoryText'>{this.props.data.category}</div></div>
           <div className="iconAndName">
-          <hr style={{marginBottom:'10px', marginTop: '10px'}}/>
+          <div className="dropdown-divider"></div>
           <div><i className={this.props.data.icon}></i></div>
           <div>{this.props.data.name}</div>
           </div>

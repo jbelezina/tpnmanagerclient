@@ -1,7 +1,7 @@
 .loggedActivity {
   background-color: #FFFFFF;
   border-style: solid;
-  border-width: 4px;
+  border-width: 1px;
   border-radius: 5px;
   border-color: #E8E8E8;
   color: dimgray; 
@@ -14,4 +14,9 @@
   border-color: darkgrey;
   color: dimgray;
   box-shadow: 0px 0px 10px 2px lightgray;
+}
+
+.loggedActivity:hover {
+  border-color: teal;
+  color: teal;
 }

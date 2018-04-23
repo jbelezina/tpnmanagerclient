@@ -11,6 +11,7 @@ class TpnForm extends Component {
     constructor(){
       super();
       this.state = {
+        showModal: true,
         event_category: 'przyjecie',
         event_type: 'tpn',
         product: '',
@@ -27,6 +28,12 @@ class TpnForm extends Component {
       this.logState = this.logState.bind(this);
       this.clearState = this.clearState.bind(this);
       this.handleForm = this.handleForm.bind(this);
+      this.showModal = this.showModal.bind(this);
+    }
+
+    showModal(){
+      this.setState({showModal:true});
+      console.log('show modal');
     }
 
     clearState(){
@@ -34,7 +41,7 @@ class TpnForm extends Component {
         event_category: 'przyjęcie',
         event_type: 'tpn',
         product: '',
-        values: '',
+        values: [],
         time_start: 'podaj łączną długość przyjmowania',
         time_stop: '',
         comment: '',
@@ -62,7 +69,8 @@ class TpnForm extends Component {
     }
 
     handlePortion(e){
-      this.setState({values:e.target.value});
+      let result = [{value: e.target.value, measure: 'ml'}]
+      this.setState({values: result});
     }
 
     handleDatePicker(mom){
@@ -111,10 +119,11 @@ class TpnForm extends Component {
         fontSize: '10px',
       }
 
+
       return (
         <div className="container">
           <div className="row form m-5">
-            <div className="col d-flex flex-row ">
+            <div className="col d-flex flex-row p-0 ">
               <div style={iconArea}>
                 <div style={header}><br/>Przyjęcie</div>
                 <div className="dropdown-divider"></div>
