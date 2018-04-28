@@ -19,6 +19,7 @@ class TpnForm extends Component {
         time_start: 'podaj łączną długość przyjmowania',
         time_stop: '',
         comment: '',
+        tpnOptions: '',
       }
       this.handleTPNSelect = this.handleTPNSelect.bind(this);
       this.handlePortion = this.handlePortion.bind(this);
@@ -30,6 +31,19 @@ class TpnForm extends Component {
       this.handleForm = this.handleForm.bind(this);
       this.showModal = this.showModal.bind(this);
     }
+        
+    componentDidMount() {
+        fetch('http://localhost:3000/api/products/tpn/dropdown')
+         .then(res=>res.json())
+         .then(res=>{
+           let options = res.map((item)=>{
+             return({value:item.value, label:item.value})
+           })
+           this.setState({tpnOptions: options});
+         })
+         
+    }
+
 
     showModal(){
       this.setState({showModal:true});
@@ -99,10 +113,6 @@ class TpnForm extends Component {
 
     render(){
 
-      const tpnOptions = [
-        { value: 'Multimel', label: 'Multimel' },
-      ];
-
       let iconArea = {
         height: "100%",
         width: "100px",
@@ -144,7 +154,7 @@ class TpnForm extends Component {
                           menuContainerStyle={{ zIndex: '2' }}
                           name="tpn"
                           value={this.state.product}
-                          options={tpnOptions}
+                          options={this.state.tpnOptions}
                           onChange={this.handleTPNSelect}
                           placeholder="Wybierz TPN"
                       />                    

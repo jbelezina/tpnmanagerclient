@@ -6,7 +6,7 @@ class NavBar extends Component {
     let navStyle = {
       fontFamily: "'Barlow Semi Condensed', sans-serif",
       position: 'fixed',
-      zIndex: '2',
+      zIndex: '3',
       height: '50px',
       width: '100%',
       marginTop: '5px',
@@ -23,11 +23,11 @@ class NavBar extends Component {
 
     let line = {
       position: 'fixed',
-      width: '65px',
-      height: '100%',
+      width: '92px',
+      height: '50px',
       borderRight: 'solid 2px #E8E8E8',
       paddingRight: '10px',
-      borderColor: 'gray',
+      borderColor: '#E8E8E8',
     }
 
     return (

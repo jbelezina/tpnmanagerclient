@@ -6,20 +6,33 @@ class SideMenu extends Component {
   constructor(){
     super();
     this.state = {
-      selected: 2,
+      selected: [1,0,0]
     }
   }
+
+  selectFirst = () => {
+    this.setState({selected:[1,0,0]});
+  }
+
+  selectSecond = () => {
+    this.setState({selected: [0,1,0]});
+  }
+
+  selectThird = () => {
+    this.setState({selected: [0,0,1]});
+  }
+
 
   render() {
     
     let menuItemsStyle = {
-      width: '80px',
+      width: '105px',
       height: '100vh',
+      borderTop: 'solid 2px white',
+      borderBotton: 'solid 2px white',
       backgroundColor: '#212121',
-      borderRight: '2px solid',
-      borderColor: '#E8E8E8',
       position: 'fixed',
-      color: 'white',
+      color: '#E8E8E8',
       opacity: '1',
       textAlign: 'center',
       fontSize: '8px',
@@ -27,19 +40,11 @@ class SideMenu extends Component {
     }
 
     let icon = {
-      align: 'left',
+      align: 'center',
       width: '100%',
-      margin: '0px 0px 0px 0px',
-      padding: '10px 0px 10px 0px',
+      margin: '0px',
+      padding: '0px',
       alignContent:'center',
-    }
-
-    let topline = {
-      width: '80px',
-      height: '49px',
-      borderBottom: 'solid 2px #E8E8E8',
-      position: 'fixed',
-      backgroundColor: "#5fa6bf",
     }
 
     let extendedMenu = {
@@ -53,47 +58,58 @@ class SideMenu extends Component {
       visibility: 'hidden',
     }
 
+    let styleOne;
+    let styleTwo;
+    let styleThree;
+    
+    if(this.state.selected[0] === 1){
+      styleOne = "activeSideMenuItem";
+      styleTwo = "sideMenuItem";
+      styleThree = "sideMenuItem";
+    }
+
+    if(this.state.selected[1] === 1){
+      styleOne = "sideMenuItem";
+      styleTwo = "activeSideMenuItem";
+      styleThree = "sideMenuItem";
+    }
+
+    if(this.state.selected[2] === 1){
+      styleOne = "sideMenuItem";
+      styleTwo = "sideMenuItem";
+      styleThree = "activeSideMenuItem";
+    }
+    
+
     return (
       <div>
       <div style={extendedMenu}>
       Hello
       </div>
       <div style={menuItemsStyle}>
-        <div style={topline}></div>
         <div style={{marginTop:'141px'}}>
         <Link to="/">
-          <div className="sideMenuItem">
-              <hr/>
-                <div style={icon}>
-                  <div style={{marginLeft:'18px', color:'gray'}}><i className="fas fa-chart-line fa-2x"></i></div>
-                  <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
-      fontSize: '11px', paddingLeft:'17px', textDecoration: 'none', color: 'gray'}}>Panel</div>
-                </div>
-              <hr/>
+          <div className={styleOne} onClick={this.selectFirst}>
+              <i className=" fas fa-chart-line fa-2x"></i>
+            <div style={{marginLeft:'0px'}}>Panel</div>
           </div>
         </Link>
-          <div className="sideMenuItem">
-            <Link to="/aktywnosci">
-              <hr/>
-                <div style={icon}>
-                  <div style={{marginLeft:'18px', color:'gray'}}><i className="fas fa-play-circle fa-2x"></i></div>
-                  <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
-      fontSize: '11px', paddingLeft:'13px', textDecoration: 'none', color: 'gray' }}>Aktywności</div>
-                </div>
-              <hr/> 
-            </Link>
+        <Link to="/aktywnosci">
+          <div className={styleTwo} onClick={this.selectSecond}>
+            <div style={{textAlign:"center"}}>
+              <i className="fas fa-play-circle fa-2x"></i>
+            </div> 
+            <div>Aktywności</div>
           </div>
-          <div className="sideMenuItem">
-            <Link to="/ustawienia">
-              <hr/>
-                <div style={icon}>
-                  <div style={{marginLeft:'18px', color:'gray'}}><i className="fas fa-cog fa-2x"></i></div>
-                  <div style={{fontFamily: "'Barlow Semi Condensed', sans-serif",
-      fontSize: '11px', paddingLeft:'13px', textDecoration: 'none', color: 'gray' }}>Ustawienia</div>
-                </div>
-              <hr/> 
-            </Link>
+        </Link>
+        <Link to="/ustawienia" onClick={this.selectThird}>
+          <div className={styleThree}>
+            <div style={{textAlign:"center"}}>
+              <i className="fas fa-cog fa-2x"></i>
+            </div>
+            <div>Ustawienia</div>
           </div> 
+        </Link>
         </div>
       </div>
       </div>
