@@ -112,7 +112,7 @@ render(){
      return(
       <div>
         <div className="row">
-            <div className="mt-5 ml-5 mb-2 col-3">
+            <div className="mt-5 ml-5 mb-5 col-3">
                 <Select
                             menuContainerStyle={{ zIndex: '2' }}
                             name="product"

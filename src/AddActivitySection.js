@@ -40,7 +40,7 @@ class AddActivitySection extends Component {
       borderWidth: '2px',
       borderRadius: '5px',
       borderColor: '#E8E8E8',
-      marginLeft: '130px',
+      marginLeft: '150px',
       marginTop: '85px',
       marginRight: '50px',    
       width: '90vw',

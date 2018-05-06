@@ -168,19 +168,19 @@ class TpnForm extends Component {
                     <label className="col-sm-1 col-form-label text-left pl-0">ml</label>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Stop:</label>
+                    <label className="col-sm-2 col-form-label">Zakończono podawanie:</label>
                       <div className="col-4">
                       <Datetime ref='stopTime' onChange={data=>this.handleDatePicker(data)} defaultValue={moment()} locale="pl" timeFormat={true}/>
                       </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Łącznie:</label>
+                    <label className="col-sm-2 col-form-label">Łączny czas podawania:</label>
                     <div className="col-4">
                       <input onChange={this.handleTotalDuration} ref='totalDuration' className="form-control"/>
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Start:</label>
+                    <label className="col-sm-2 col-form-label">Rozpoczęto podawanie:</label>
                     <div className="col-10">
                       <input className="form-control-plaintext" type="text" value={moment(this.state.time_start).format('DD-MM-YYYY, HH:mm')} readOnly/>  
                     </div>

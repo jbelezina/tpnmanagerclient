@@ -23,7 +23,7 @@ class NavBar extends Component {
 
     let line = {
       position: 'fixed',
-      width: '92px',
+      width: '87px',
       height: '50px',
       borderRight: 'solid 2px #E8E8E8',
       paddingRight: '10px',

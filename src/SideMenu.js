@@ -10,6 +10,16 @@ class SideMenu extends Component {
     }
   }
 
+  componentDidMount() {
+    if (window.location.href === "http://localhost:3000/ustawienia") {
+      this.setState({selected: [0,0,1]});
+    } else if (window.location.href === "http://localhost:3000/aktywnosci") {
+      this.setState({selected: [0,1,0]});
+    } else if (window.location.href === "http://localhost:3000/") {
+      this.setState({selected: [1,0,0]});
+    }
+  }
+
   selectFirst = () => {
     this.setState({selected:[1,0,0]});
   }
@@ -26,7 +36,7 @@ class SideMenu extends Component {
   render() {
     
     let menuItemsStyle = {
-      width: '105px',
+      width: '100px',
       height: '100vh',
       borderTop: 'solid 2px white',
       borderBotton: 'solid 2px white',
