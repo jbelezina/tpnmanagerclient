@@ -43,7 +43,7 @@ class Weight extends Component {
         borderWidth: '2px',
         borderRadius: '5px',
         borderColor: '#E8E8E8',    
-        width: '80%',
+        width: '100%',
         height: '50vh',
         fontFamily: "'Barlow Semi Condensed', sans-serif",
         fontSize: '15px',

@@ -6,6 +6,7 @@ import moment from 'moment';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import 'moment/locale/pl';
+import * as styles from './formInlineStyles';
 
 class FoodDrinkForm extends Component {  
     constructor(){
@@ -98,33 +99,17 @@ class FoodDrinkForm extends Component {
         { value: 'Wino czerwone', label: 'Wino czerwone' },
       ];
 
-      let iconArea = {
-        height: "100%",
-        width: "100px",
-        borderRightStyle: 'solid',
-        borderRightWidth: 'thin',
-        borderColor: 'lightgrey',
-      }
-
-      let innerArea = {
-        width: "100%",
-      }
-
-      let header = {
-        fontSize: '10px',
-      }
-
       return (
         <div className="container">
-          <div className="row form pl-0 pr-0 m-3">
-            <div className="col d-flex flex-row ">
-              <div style={iconArea}>
-                <div style={header}><br/>Przyjęcie</div>
+          <div className="row form m-5">
+            <div className="col p-0 d-flex flex-row ">
+              <div style={styles.iconArea}>
+                <div style={styles.header}><br/>Przyjęcie</div>
                 <div className="dropdown-divider"></div>
-                <div><i className={this.props.icon}></i></div>
-                <div>{this.props.name}</div>
+                <div style={styles.icon}><i className={this.props.icon}></i></div>
+                <div style={styles.eventType}>{this.props.name}</div>
               </div>
-              <div style={innerArea}>
+              <div style={styles.innerArea}>
                 <form>
                   <div className="form-group row m-3 justify-content-end">
                     <button onClick={this.props.cancelForm} type="button" className="close" aria-label="Close" style={{color:'black'}}>
@@ -132,8 +117,8 @@ class FoodDrinkForm extends Component {
                     </button>
                   </div>
                   <div className="form-group row m-3">                  
-                    <label className="col-sm-2 col-form-label">Jedzenie:</label>
-                    <div className="col-sm-8">
+                    <label className={styles.label}>Jedzenie:</label>
+                    <div className="col-7">
                       <Select
                         menuContainerStyle={{ zIndex: '2' }}
                         name="jedzenie"
@@ -145,8 +130,8 @@ class FoodDrinkForm extends Component {
                     </div>
                   </div>
                   <div className="form-group row m-3">  
-                  <label className="col-sm-2 col-form-label">Porcja:</label>
-                    <div className="col-8">
+                  <label className={styles.label}>Porcja:</label>
+                    <div className="col-7">
                       <div className="btn-group btn-group-lg btn-group-justified" role="group" aria-label="buttons">
                         <button type="button" onClick={()=>{this.handleFoodSize(0)}} className={"btn btn-default" + ' ' + this.state.foodSelect[0]}>S</button>
                         <button type="button" onClick={()=>{this.handleFoodSize(1)}} className={"btn btn-default" + ' ' + this.state.foodSelect[1]}>M</button>
@@ -157,8 +142,8 @@ class FoodDrinkForm extends Component {
                   </div>
                   <div className="dropdown-divider"></div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Picie:</label>
-                    <div className="col-sm-8">
+                    <label className={styles.label}>Picie:</label>
+                    <div className="col-7">
                       <Select
                         menuContainerStyle={{ zIndex: '2' }}
                         name="university"
@@ -170,8 +155,8 @@ class FoodDrinkForm extends Component {
                     </div>
                   </div>
                   <div className="form-group row m-3">  
-                  <label className="col-sm-2 col-form-label">Porcja:</label>
-                    <div className="col-8">
+                  <label className={styles.label}>Porcja:</label>
+                    <div className="col-7">
                       <div className="btn-group btn-group-lg btn-group-justified" role="group" aria-label="buttons">
                         <button ref='0' type="button" onClick={()=>{this.handleDrinkSize(0)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[0]}>S</button>
                         <button ref='1' type="button" onClick={()=>{this.handleDrinkSize(1)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[1]}>M</button>
@@ -182,19 +167,21 @@ class FoodDrinkForm extends Component {
                   </div>
                   <div className="dropdown-divider"></div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Start:</label>
-                      <div className="col-4">
+                    <label className={styles.label}>Start:</label>
+                      <div className="col-7">
                       <Datetime ref='stopTime' onChange={data=>this.handleDatePicker(data)} defaultValue={moment()} locale="pl" timeFormat={true}/>
                       </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Komentarz:</label>
-                    <div className="col-10">
+                    <label className={styles.label}>Komentarz:</label>
+                    <div className="col-7">
                       <textarea onChange={this.handleComment} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <button onClick={this.logState} type="button" className="pr-3 mt-4 mb-4 col-12 btn btn-dark">Dodaj</button>
+                    <div className="offset-3 col-7">
+                      <button onClick={this.logState} type="button" className="pr-3 mt-4 mb-4 col-12 btn btn-dark">Dodaj</button>
+                    </div>
                   </div>
                 </form>
               </div>

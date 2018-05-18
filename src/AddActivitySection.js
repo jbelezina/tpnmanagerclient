@@ -120,7 +120,7 @@ class AddActivitySection extends Component {
         <div style={style} className="text-primary">
           <div className="m-3 ml-4">Dodaj aktywność</div>
           <div className="dropdown-divider"></div>
-          <div className="pt-4 pb-4">
+          <div className="pt-2 pb-2">
               {content}
           </div>
         </div>

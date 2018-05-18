@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'moment/locale/pl';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import * as styles from './formInlineStyles';
 
 class TpnForm extends Component {  
     constructor(){
@@ -16,7 +17,7 @@ class TpnForm extends Component {
         event_type: 'tpn',
         product: '',
         values: '',
-        time_start: 'podaj łączną długość przyjmowania',
+        time_start: '',
         time_stop: '',
         comment: '',
         tpnOptions: '',
@@ -41,7 +42,6 @@ class TpnForm extends Component {
            })
            this.setState({tpnOptions: options});
          })
-         
     }
 
 
@@ -97,12 +97,9 @@ class TpnForm extends Component {
       let enteredDuration = this.refs.totalDuration.value;
       let enteredDurationNumber = parseInt(enteredDuration, 10);
       let stop = this.state.time_stop;
-      console.log('stop string'+ stop);
       let stopMoment = moment(stop.toString());
       let startTime = stopMoment.subtract(enteredDurationNumber, 'hours');
       startTime = startTime.toISOString();
-      console.log(typeof startTime);
-      console.log(startTime);
       this.setState({time_start:startTime});
       this.setState({stop_time:stopMoment});
       }
@@ -112,35 +109,24 @@ class TpnForm extends Component {
       }
 
     render(){
-
-      let iconArea = {
-        height: "100%",
-        width: "100px",
-        borderRightStyle: 'solid',
-        borderRightWidth: 'thin',
-        borderColor: 'lightgrey',
+      let startedValue;
+      if (this.state.time_start) {
+        startedValue = moment(this.state.time_start).format('DD-MM-YYYY, HH:mm');
+      } else {
+        startedValue = 'podaj czas zakończenia podawania'
       }
-
-      let innerArea = {
-        width: "100%",
-      }
-
-      let header = {
-        fontSize: '10px',
-      }
-
 
       return (
         <div className="container">
           <div className="row form m-5">
             <div className="col d-flex flex-row p-0 ">
-              <div style={iconArea}>
-                <div style={header}><br/>Przyjęcie</div>
+              <div style={styles.iconArea}>
+                <div style={styles.header}><br/>Przyjęcie</div>
                 <div className="dropdown-divider"></div>
-                <div style={{fontSize: '10px'}}><i className={this.props.icon}></i></div>
-                <div>{this.props.name}</div>
+                <div style={styles.icon}><i className={this.props.icon}></i></div>
+                <div style={styles.eventType}>{this.props.name}</div>
               </div>
-              <div style={innerArea}>
+              <div style={styles.innerArea}>
                 <form>
                   <div className="form-group row m-3 justify-content-end">
                     <button onClick={this.props.cancelForm} type="button" className="close" aria-label="Close" style={{color:'black'}}>
@@ -148,8 +134,8 @@ class TpnForm extends Component {
                     </button>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">TPN:</label>
-                    <div className="col-sm-10">
+                    <label className={styles.label}>TPN:</label>
+                    <div className="col-sm-7">
                       <Select
                           menuContainerStyle={{ zIndex: '2' }}
                           name="tpn"
@@ -161,38 +147,40 @@ class TpnForm extends Component {
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Porcja:</label>
-                    <div className="col-4">
+                    <label className={styles.label}>Porcja:</label>
+                    <div className="col-7">
                       <input onChange={this.handlePortion} className="form-control"/>
                     </div>
                     <label className="col-sm-1 col-form-label text-left pl-0">ml</label>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Zakończono podawanie:</label>
-                      <div className="col-4">
+                    <label className="col-sm-3 text-right col-form-label">Zakończono podawanie:</label>
+                      <div className="col-7">
                       <Datetime ref='stopTime' onChange={data=>this.handleDatePicker(data)} defaultValue={moment()} locale="pl" timeFormat={true}/>
                       </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Łączny czas podawania:</label>
-                    <div className="col-4">
+                    <label className={styles.label}>Łączny czas podawania:</label>
+                    <div className="col-7">
                       <input onChange={this.handleTotalDuration} ref='totalDuration' className="form-control"/>
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Rozpoczęto podawanie:</label>
-                    <div className="col-10">
-                      <input className="form-control-plaintext" type="text" value={moment(this.state.time_start).format('DD-MM-YYYY, HH:mm')} readOnly/>  
+                    <label className={styles.label}>Rozpoczęto podawanie:</label>
+                    <div className="col-7">
+                      <input className="form-control-plaintext" type="text" value={startedValue} readOnly/>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Komentarz:</label>
-                    <div className="col-10">
+                    <label className={styles.label}>Komentarz:</label>
+                    <div className="col-7">
                       <textarea onChange={this.handleComment} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <button type="button" onClick={this.handleForm} className="pr-3 mt-3 col-12 btn btn-dark">Dodaj</button>
+                    <div className="col-7 offset-3">
+                      <button type="button" onClick={this.handleForm} className="mt-3 mb-3 col-12 btn btn-dark">Dodaj</button>
+                    </div>
                   </div>
                 </form>
               </div>

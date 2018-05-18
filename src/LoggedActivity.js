@@ -17,7 +17,7 @@ class LoggedActivity extends Component {
 
       let iconArea = {
         minHeight: "110px",
-        width: "100px",
+        width: "110px",
         borderRightStyle: 'solid',
         borderRightWidth: 'thin',
         borderColor: '#E8E8E8',

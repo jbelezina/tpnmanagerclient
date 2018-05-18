@@ -8,20 +8,20 @@ class Panel extends Component {
 
   render() {
     return (
-      <div style={{marginLeft:'40px', marginTop:'80px'}}>
+      <div style={{marginLeft:'130px', marginTop:'60px', display:'fixed', width:'88%'}}>
         <div className="row">
-          <div className="col-4 d-flex flex-row justify-content-end p-0">
+          <div className="col-4 d-flex flex-row justify-content-center p-4 pt-0">
             <Temperature />
           </div>
-          <div className="col-4 d-flex flex-row justify-content-center p-0">
+          <div className="col-4 d-flex flex-row justify-content-center p-4">
             <Pressure />
           </div>
-          <div className="col-4 d-flex flex-row justify-content-start p-0">
+          <div className="col-4 d-flex flex-row justify-content-center p-4">
             <Weight />
           </div>
         </div>
         <div className="row">
-        <div className="col-4 d-flex flex-row justify-content-end p-0"> 
+          <div className="col-12 d-flex flex-row justify-content-center p-4"> 
             <InVsOut />
           </div>
         </div>

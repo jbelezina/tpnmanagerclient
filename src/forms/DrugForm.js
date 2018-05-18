@@ -59,7 +59,7 @@ class DrugForm extends Component {
 
       let iconArea = {
         height: "100%",
-        width: "100px",
+        width: "110px",
         borderRightStyle: 'solid',
         borderRightWidth: 'thin',
         borderColor: 'lightgrey',
@@ -75,7 +75,7 @@ class DrugForm extends Component {
 
       return (
         <div className="container">
-          <div className="row form pl-0 pr-0 m-3">
+          <div className="row form m-5">
             <div className="col d-flex flex-row ">
               <div style={iconArea}>
                 <div style={header}><br/>Przyjęcie</div>

@@ -51,18 +51,15 @@ class InVsOut extends Component {
         borderStyle: 'solid',
         borderWidth: '2px',
         borderRadius: '5px',
-        borderColor: '#E8E8E8',
-        marginLeft: '300px',
-        marginTop: '50px',
-        marginRight: '50px',    
-        width: '90vw',
+        borderColor: '#E8E8E8',  
+        width: '100%',
         fontFamily: "'Barlow Semi Condensed', sans-serif",
         fontSize: '15px',
         fontColor: 'darkgrey',
         }
 
     let graphStyle = {
-        margin: '50px 50px 50px 50px',
+        margin: '10px 10px 10px 10px',
     }
 
     return (
