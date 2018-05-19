@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'moment/locale/pl';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import * as styles from './formInlineStyles';
 
 class DripForm extends Component {  
     constructor(){
@@ -88,13 +89,13 @@ class DripForm extends Component {
 
       return (
         <div className="container">
-          <div className="row form pl-0 pr-0 m-3">
-            <div className="col d-flex flex-row ">
-              <div style={iconArea}>
-                <div style={header}><br/>Przyjęcie</div>
+          <div className="row form m-5">
+            <div className="col d-flex flex-row p-0">
+              <div style={styles.iconArea}>
+                <div style={styles.header}><br/>Przyjęcie</div>
                 <div className="dropdown-divider"></div>
-                <div><i className={this.props.icon}></i></div>
-                <div>{this.props.name}</div>
+                <div style={styles.icon}><i className={this.props.icon}></i></div>
+                <div style={styles.eventType}>{this.props.name}</div>
               </div>
               <div style={innerArea}>
                 <form>
@@ -104,8 +105,8 @@ class DripForm extends Component {
                     </button>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Kroplówka:</label>
-                    <div className="col-sm-10">
+                    <label className={styles.label}>Kroplówka:</label>
+                    <div className="col-7">
                       <Select
                           menuContainerStyle={{ zIndex: '2' }}
                           name="drip"
@@ -117,38 +118,40 @@ class DripForm extends Component {
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Porcja:</label>
-                    <div className="col-4">
+                    <label className={styles.label}>Porcja:</label>
+                    <div className="col-7">
                       <input onChange={this.handlePortion} className="form-control"/>
                     </div>
                     <label className="col-sm-1 col-form-label text-left pl-0">ml</label>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Stop:</label>
-                      <div className="col-4">
+                    <label className={styles.label}>Stop:</label>
+                      <div className="col-7">
                       <Datetime ref='stopTime' onChange={data=>this.handleDatePicker(data)} defaultValue={moment()} locale="pl" timeFormat={true}/>
                       </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Łącznie:</label>
-                    <div className="col-4">
+                    <label className={styles.label}>Łącznie:</label>
+                    <div className="col-7">
                       <input onChange={this.handleTotalDuration} ref='totalDuration' className="form-control"/>
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Start:</label>
-                    <div className="col-10">
+                    <label className={styles.label}>Start:</label>
+                    <div className="col-7">
                       <input className="form-control-plaintext" type="text" value={this.state.start} readOnly/>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Komentarz:</label>
-                    <div className="col-10">
+                    <label className={styles.label}>Komentarz:</label>
+                    <div className="col-7">
                       <textarea onChange={this.handleComment} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <button type="button" onClick={this.logState} className="pr-3 mt-3 col-12 btn btn-dark">Dodaj</button>
+                    <div className="col-7 offset-3">
+                      <button type="button" onClick={this.logState} className={styles.addButton}>Dodaj</button>
+                    </div>
                   </div>
                 </form>
               </div>

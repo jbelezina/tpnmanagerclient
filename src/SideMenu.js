@@ -36,6 +36,7 @@ class SideMenu extends Component {
   render() {
     
     let menuItemsStyle = {
+      position: "absolute",
       width: '100px',
       height: '100vh',
       borderTop: 'solid 2px white',

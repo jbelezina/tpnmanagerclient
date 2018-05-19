@@ -8,7 +8,7 @@ class Panel extends Component {
 
   render() {
     return (
-      <div style={{marginLeft:'130px', marginTop:'60px', display:'fixed', width:'88%'}}>
+      <div style={{marginLeft:'130px', marginTop:'60px', display:'fixed', width:'86%'}}>
         <div className="row">
           <div className="col-4 d-flex flex-row justify-content-center p-4 pt-0">
             <Temperature />

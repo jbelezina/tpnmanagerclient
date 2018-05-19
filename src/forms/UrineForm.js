@@ -4,6 +4,7 @@ import '../css/reactDateTime.css';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import 'moment/locale/pl';
+import * as styles from './formInlineStyles';
 
 class UrineForm extends Component {  
     constructor(){
@@ -58,13 +59,13 @@ class UrineForm extends Component {
 
       return (
         <div className="container">
-          <div className="row form pl-0 pr-0 m-3">
-            <div className="col d-flex flex-row ">
-              <div style={iconArea}>
-                <div style={header}><br/>Wydalenie</div>
+          <div className="row form m-5">
+            <div className="col d-flex flex-row p-0">
+              <div style={styles.iconArea}>
+                <div style={styles.header}><br/>Wydalenie</div>
                 <div className="dropdown-divider"></div>
-                <div><i className={this.props.icon}></i></div>
-                <div>{this.props.name}</div>
+                <div style={styles.icon}><i className={this.props.icon}></i></div>
+                <div style={styles.eventType}>{this.props.name}</div>
               </div>
               <div style={innerArea}>
                 <form>
@@ -74,26 +75,28 @@ class UrineForm extends Component {
                     </button>
                   </div>
                   <div className="form-group row m-3">  
-                  <label className="col-sm-2 col-form-label">Wydalona ilość:</label>
-                    <div className="col-4">
+                  <label className={styles.label}>Wydalona ilość:</label>
+                    <div className="col-7">
                       <input onChange={this.handlePortion} className="form-control"/>
                     </div>
                   <label className="col-sm-1 col-form-label text-left pl-0">ml</label>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Kiedy:</label>
-                      <div className="col-4">
+                    <label className={styles.label}>Kiedy:</label>
+                      <div className="col-7">
                       <Datetime ref='stopTime' onChange={data=>this.handleDatePicker(data)} defaultValue={moment()} locale="pl" timeFormat={true}/>
                       </div>
                   </div>
                   <div className="form-group row m-3">
-                    <label className="col-sm-2 col-form-label">Komentarz:</label>
-                    <div className="col-10">
+                    <label className={styles.label}>Komentarz:</label>
+                    <div className="col-7">
                       <textarea onChange={this.handleComment} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
-                    <button onClick={this.logState} type="button" className="pr-3 mt-4 mb-4 col-12 btn btn-dark">Dodaj</button>
+                    <div className="col-7 offset-3">
+                      <button onClick={this.logState} type="button" className={styles.addButton}>Dodaj</button>
+                    </div>
                   </div>
                 </form>
               </div>

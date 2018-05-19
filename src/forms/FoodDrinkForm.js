@@ -180,7 +180,7 @@ class FoodDrinkForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <div className="offset-3 col-7">
-                      <button onClick={this.logState} type="button" className="pr-3 mt-4 mb-4 col-12 btn btn-dark">Dodaj</button>
+                      <button onClick={this.logState} type="button" className={styles.addButton}>Dodaj</button>
                     </div>
                   </div>
                 </form>

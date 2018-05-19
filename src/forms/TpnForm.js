@@ -119,7 +119,7 @@ class TpnForm extends Component {
       return (
         <div className="container">
           <div className="row form m-5">
-            <div className="col d-flex flex-row p-0 ">
+            <div className="col d-flex flex-row p-0">
               <div style={styles.iconArea}>
                 <div style={styles.header}><br/>Przyjęcie</div>
                 <div className="dropdown-divider"></div>
@@ -135,7 +135,7 @@ class TpnForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <label className={styles.label}>TPN:</label>
-                    <div className="col-sm-7">
+                    <div className="col-7">
                       <Select
                           menuContainerStyle={{ zIndex: '2' }}
                           name="tpn"
@@ -179,7 +179,7 @@ class TpnForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <div className="col-7 offset-3">
-                      <button type="button" onClick={this.handleForm} className="mt-3 mb-3 col-12 btn btn-dark">Dodaj</button>
+                      <button type="button" onClick={this.handleForm} className={styles.addButton}>Dodaj</button>
                     </div>
                   </div>
                 </form>

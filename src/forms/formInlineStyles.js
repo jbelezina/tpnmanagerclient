@@ -18,5 +18,6 @@ module.exports = {
       eventType: {
         fontSize: '10px'
       },
-      label: "col-sm-3 text-right col-form-label"
+      label: "col-sm-3 text-right col-form-label",
+      addButton: "mt-3 mb-3 col-12 btn btn-dark"
 }
