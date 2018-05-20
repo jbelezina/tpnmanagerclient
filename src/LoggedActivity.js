@@ -13,7 +13,11 @@ class LoggedActivity extends Component {
             categoryIcon = "fas fa-tint fa-2x";
             break;
         case 'drip':
-            categoryIcon = "fas fa-tint fa-2x";    
+            categoryIcon = "fas fa-tint fa-2x";
+            break;
+        case 'drug':
+            categoryIcon = "fas fa-pills fa-2x";
+            break;    
       }
 
       let eventType;
@@ -22,7 +26,11 @@ class LoggedActivity extends Component {
             eventType = 'TPN';
             break;
         case 'drip':
-            eventType = 'Kroplówka';    
+            eventType = 'Kroplówka';
+            break;
+        case 'drug':
+            eventType = "Leki";
+            break;    
       }
       
 
@@ -65,6 +73,13 @@ class LoggedActivity extends Component {
           </div>
         ) 
       }
+
+      let time_start;
+      if (this.props.data.time_start) {
+        time_start = <div>Start: {moment(this.props.data.time_start).format('DD-MM-YYYY, HH:mm')}</div>
+      } else {
+        time_start = <div></div>
+      }
       
       return (
         <div style={theWholeThing} className="ml-4 mr-4">
@@ -79,8 +94,8 @@ class LoggedActivity extends Component {
               <div style={innerArea}>
                 <div style={iconHeader}><br/><i className="far fa-clock"></i></div>
                 <div className="dropdown-divider"></div>
-                <div>Start:{moment(this.props.data.time_start).format('DD-MM-YYYY, HH:mm')}</div>
-                <div>Stop:{moment(this.props.data.time_stop).format('DD-MM-YYYY, HH:mm')}</div>
+                {time_start}
+                <div>Stop: {moment(this.props.data.time_stop).format('DD-MM-YYYY, HH:mm')}</div>
               </div>
               <div style={innerArea}>
                 <div style={iconHeader}><br/><i className="far fa-question-circle"></i></div>

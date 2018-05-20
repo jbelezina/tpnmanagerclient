@@ -76,7 +76,7 @@ class TpnForm extends Component {
     }
 
     handlePortion(e){
-      let result = [{value: e.target.value, measure: 'ml'}]
+      let result = [{value: parseInt(e.target.value), measure: 'ml'}]
       this.setState({values: result});
     }
 

@@ -12,9 +12,9 @@ class DrugForm extends Component {
     constructor(){
       super();
       this.state = {
-        drug: '',
-        portion: '',
-        kiedy: '',
+        product: '',
+        values: [],
+        time_stop: '',
         comment: '',
       }
       this.handleDrugSelect = this.handleDrugSelect.bind(this);
@@ -22,6 +22,27 @@ class DrugForm extends Component {
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
+      this.clearState = this.clearState.bind(this);
+      this.handleForm = this.handleForm.bind(this);
+    }
+
+    clearState(){
+      this.setState({
+        product: '',
+        values: [],
+        time_stop: '',
+        comment: '',
+      }); 
+    }
+
+    handleForm(){
+      let formValues = this.state;
+      formValues.event_category = 'przyjecie';
+      formValues.event_type = 'drug';
+      console.log('drug form values just before sending', formValues);
+      this.props.handleFormInput(formValues);
+      this.props.selectTile(false);
+      this.clearState();
     }
 
     logState(){
@@ -30,19 +51,25 @@ class DrugForm extends Component {
 
     handleDrugSelect(selected){
       if (selected){
-        this.setState({ drug: selected.value })
+        this.setState({ product: selected.value })
       } else {
-        this.setState({ drug: '' });
+        this.setState({ product: '' });
       }
     }
 
     handlePortion(e){
-      this.setState({portion:e.target.value});
+      let values = [];
+      let newValue = {
+        value: parseInt(e.target.value),
+        measure: 'ml'
+      }
+      values.push(newValue);
+      this.setState({values});
     }
 
     handleDatePicker(mom){
       let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({kiedy:myString});
+      this.setState({time_stop:myString});
       console.log(myString);
     }
 
@@ -96,7 +123,7 @@ class DrugForm extends Component {
                       <Select
                           menuContainerStyle={{ zIndex: '2' }}
                           name="leki"
-                          value={this.state.drug}
+                          value={this.state.product}
                           options={drugOptions}
                           onChange={this.handleDrugSelect}
                           placeholder="Wybierz lek"
@@ -124,7 +151,7 @@ class DrugForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <div className="col-7 offset-3">
-                      <button type="button" onClick={this.logState} className={styles.addButton}>Dodaj</button>
+                      <button type="button" onClick={this.handleForm} className={styles.addButton}>Dodaj</button>
                     </div>
                   </div>
                 </form>
