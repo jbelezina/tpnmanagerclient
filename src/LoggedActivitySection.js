@@ -18,7 +18,7 @@ class LoggedActivitySection extends Component {
         marginRight: '50px',
         marginTop: '40px',
         marginRight: '50px',    
-        width: '100%',
+        width: '83%',
         fontFamily: "'Barlow Semi Condensed', sans-serif",
         fontSize: '15px',
         fontColor: 'darkgrey',

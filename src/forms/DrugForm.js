@@ -80,7 +80,7 @@ class DrugForm extends Component {
               <div style={styles.iconArea}>
                 <div style={styles.header}><br/>Przyjęcie</div>
                 <div className="dropdown-divider"></div>
-                <div style={styles.incon}><i className={this.props.icon}></i></div>
+                <div style={styles.icon}><i className={this.props.icon}></i></div>
                 <div style={styles.eventType}>{this.props.name}</div>
               </div>
               <div style={styles.innerArea}>

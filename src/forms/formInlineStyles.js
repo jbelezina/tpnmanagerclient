@@ -13,7 +13,8 @@ module.exports = {
         fontSize: '10px',
       },
       icon: {
-          fontSize: '10px'
+        marginTop: '30px',  
+        fontSize: '15px'
       },
       eventType: {
         fontSize: '10px'

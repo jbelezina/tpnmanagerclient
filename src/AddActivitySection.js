@@ -43,7 +43,7 @@ class AddActivitySection extends Component {
       marginLeft: '150px',
       marginTop: '85px',
       marginRight: '50px',    
-      width: '90vw',
+      width: '83%',
       fontFamily: "'Barlow Semi Condensed', sans-serif",
       fontSize: '15px',
       fontColor: 'darkgrey',
@@ -76,11 +76,15 @@ class AddActivitySection extends Component {
       content =  <DripForm cancelForm={this.props.cancelForm}
                              name={this.props.tiles[this.props.selectedTileIndex]['name']}
                              icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                             handleFormInput={this.handleFormInput}
+                             selectTile={this.props.selectTile}
                              />
     } else if (this.props.selectedTileIndex === 3){
       content =  <DrugForm cancelForm={this.props.cancelForm}
                            name={this.props.tiles[this.props.selectedTileIndex]['name']}
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                           handleFormInput={this.handleFormInput}
+                           selectTile={this.props.selectTile}
                              />
     } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 5 ){
       content =  <OstomyForm cancelForm={this.props.cancelForm}

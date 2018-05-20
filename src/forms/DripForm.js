@@ -12,10 +12,10 @@ class DripForm extends Component {
     constructor(){
       super();
       this.state = {
-        drip: '',
-        portion: '',
-        stop: '',
-        start: 'podaj łączną długość przyjmowania',
+        product: '',
+        values: [],
+        time_stop: '',
+        time_start: '',
         comment: '',
       }
       this.handleDripSelect = this.handleDripSelect.bind(this);
@@ -24,6 +24,28 @@ class DripForm extends Component {
       this.handleTotalDuration = this.handleTotalDuration.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
+      this.clearState = this.clearState.bind(this);
+      this.handleForm = this.handleForm.bind(this);
+    }
+
+    clearState(){
+      this.setState({
+        product: '',
+        values: [],
+        time_stop: '',
+        time_start: 'podaj łączną długość przyjmowania',
+        comment: '',
+      }); 
+    }
+
+    handleForm(){
+      let formValues = this.state;
+      formValues.event_category = 'przyjecie';
+      formValues.event_type = 'drip';
+      console.log('drip form values just before sending', formValues);
+      this.props.handleFormInput(formValues);
+      this.props.selectTile(false);
+      this.clearState();
     }
 
     logState(){
@@ -33,30 +55,36 @@ class DripForm extends Component {
     handleDripSelect(selected){
       console.log(selected.value);
         if (selected){
-          this.setState({drip:selected.value})
+          this.setState({product:selected.value})
         } else {
-          this.setState({drip:[]});
+          this.setState({product:[]});
       }
     }
 
     handlePortion(e){
-      this.setState({portion:e.target.value});
+      let values = [];
+      let newValue = {
+        value: parseInt(e.target.value),
+        measure: 'ml'
+      }
+      values.push(newValue);
+      this.setState({values});
     }
 
     handleDatePicker(mom){
       let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({stop:myString});
+      this.setState({time_stop:myString});
       console.log(myString);
     }
 
     handleTotalDuration(){      
       let enteredDuration = this.refs.totalDuration.value;
       let enteredDurationNumber = parseInt(enteredDuration, 10);
-      let stop = this.state.stop;
+      let stop = this.state.time_stop;
       let stopMoment = moment(stop.toString());
       let startTime = stopMoment.subtract(enteredDurationNumber, 'hours');
-      startTime = startTime.format("DD.MM.YYYY HH:mm");
-      this.setState({start:startTime});
+      startTime = startTime.toISOString();
+      this.setState({time_start:startTime});
       }
 
       handleComment(e){
@@ -71,20 +99,11 @@ class DripForm extends Component {
         { value: 'WHO', label: 'WHO' },
       ];
 
-      let iconArea = {
-        height: "100%",
-        width: "100px",
-        borderRightStyle: 'solid',
-        borderRightWidth: 'thin',
-        borderColor: 'lightgrey',
-      }
-
-      let innerArea = {
-        width: "100%",
-      }
-
-      let header = {
-        fontSize: '10px',
+      let startedValue;
+      if (this.state.time_start) {
+        startedValue = moment(this.state.time_start).format('DD-MM-YYYY, HH:mm');
+      } else {
+        startedValue = 'podaj czas zakończenia podawania'
       }
 
       return (
@@ -97,7 +116,7 @@ class DripForm extends Component {
                 <div style={styles.icon}><i className={this.props.icon}></i></div>
                 <div style={styles.eventType}>{this.props.name}</div>
               </div>
-              <div style={innerArea}>
+              <div style={styles.innerArea}>
                 <form>
                   <div className="form-group row m-3 justify-content-end">
                     <button onClick={this.props.cancelForm} type="button" className="close" aria-label="Close" style={{color:'black'}}>
@@ -110,7 +129,7 @@ class DripForm extends Component {
                       <Select
                           menuContainerStyle={{ zIndex: '2' }}
                           name="drip"
-                          value={this.state.drip}
+                          value={this.state.product}
                           options={dripOptions}
                           onChange={this.handleDripSelect}
                           placeholder="Wybierz kroplówkę"
@@ -139,7 +158,7 @@ class DripForm extends Component {
                   <div className="form-group row m-3">
                     <label className={styles.label}>Start:</label>
                     <div className="col-7">
-                      <input className="form-control-plaintext" type="text" value={this.state.start} readOnly/>  
+                      <input className="form-control-plaintext" type="text" value={startedValue} readOnly/>  
                     </div>
                   </div>
                   <div className="form-group row m-3">
@@ -150,7 +169,7 @@ class DripForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <div className="col-7 offset-3">
-                      <button type="button" onClick={this.logState} className={styles.addButton}>Dodaj</button>
+                      <button type="button" onClick={this.handleForm} className={styles.addButton}>Dodaj</button>
                     </div>
                   </div>
                 </form>

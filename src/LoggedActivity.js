@@ -8,12 +8,23 @@ class LoggedActivity extends Component {
     render(){
 
       let categoryIcon;
-
       switch (this.props.data.event_type) {
         case 'tpn':
             categoryIcon = "fas fa-tint fa-2x";
             break;
+        case 'drip':
+            categoryIcon = "fas fa-tint fa-2x";    
       }
+
+      let eventType;
+      switch (this.props.data.event_type) {
+        case 'tpn':
+            eventType = 'TPN';
+            break;
+        case 'drip':
+            eventType = 'Kroplówka';    
+      }
+      
 
       let iconArea = {
         minHeight: "110px",
@@ -63,7 +74,7 @@ class LoggedActivity extends Component {
                 <div style={header}><br/>{this.props.data.event_category}</div>
                 <div className="dropdown-divider"></div>
                 <div><i style={{marginTop:'10px'}} className={categoryIcon}></i></div>
-                <div>{this.props.data.event_type}</div>
+                <div>{eventType}</div>
               </div>
               <div style={innerArea}>
                 <div style={iconHeader}><br/><i className="far fa-clock"></i></div>

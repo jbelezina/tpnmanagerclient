@@ -12,7 +12,6 @@ class TpnForm extends Component {
     constructor(){
       super();
       this.state = {
-        showModal: true,
         event_category: 'przyjecie',
         event_type: 'tpn',
         product: '',
@@ -30,7 +29,6 @@ class TpnForm extends Component {
       this.logState = this.logState.bind(this);
       this.clearState = this.clearState.bind(this);
       this.handleForm = this.handleForm.bind(this);
-      this.showModal = this.showModal.bind(this);
     }
         
     componentDidMount() {
@@ -42,12 +40,6 @@ class TpnForm extends Component {
            })
            this.setState({tpnOptions: options});
          })
-    }
-
-
-    showModal(){
-      this.setState({showModal:true});
-      console.log('show modal');
     }
 
     clearState(){
@@ -64,6 +56,7 @@ class TpnForm extends Component {
 
     handleForm(){
       let formValues = this.state;
+      console.log('tpn form before sending', formValues);
       this.props.handleFormInput(formValues);
       this.props.selectTile(false);
       this.clearState();
