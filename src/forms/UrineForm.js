@@ -10,8 +10,8 @@ class UrineForm extends Component {
     constructor(){
       super();
       this.state = {
-        portion: '',
-        when: '',
+        values: [],
+        time_stop: '',
         comment: '',
       }
       
@@ -19,6 +19,28 @@ class UrineForm extends Component {
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
+      this.clearState = this.clearState.bind(this);
+      this.handleForm = this.handleForm.bind(this);
+    }
+
+    clearState(){
+      this.setState({
+        values: [],
+        time_stop: '',
+        comment: '',
+      }); 
+    }
+
+    handleForm(){
+      let formValues = this.state;
+      formValues.event_category = 'wydalenie';
+      formValues.event_type = 'urine';
+      console.log('urine form before sending', formValues);
+      console.log(this.props);
+      this.props.handleFormInput(formValues);
+      this.props.showSnackbar();
+      this.props.selectTile(false);
+      this.clearState();
     }
 
     logState(){
@@ -26,13 +48,11 @@ class UrineForm extends Component {
     }
 
     handlePortion(e){
-      this.setState({portion:e.target.value})
+      this.setState({values: [{value: e.target.value, measure:'ml'}]});
     }
     
-    handleDatePicker(mom){
-      let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({when:myString});
-      console.log(myString);
+    handleDatePicker(mom){ 
+      this.setState({time_stop:mom});
     }
 
     handleComment(e){
@@ -95,7 +115,7 @@ class UrineForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <div className="col-7 offset-3">
-                      <button onClick={this.logState} type="button" className={styles.addButton}>Dodaj</button>
+                      <button onClick={this.handleForm} type="button" className={styles.addButton}>Dodaj</button>
                     </div>
                   </div>
                 </form>

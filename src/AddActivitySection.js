@@ -10,26 +10,9 @@ import PressureForm from './forms/PressureForm';
 import GenericMeasurementForm from './forms/GenericMeasurmentForm';
 
 class AddActivitySection extends Component {  
-    
-    constructor(){
-      super();
-      this.handleFormInput = this.handleFormInput.bind(this);
-    }
 
     componentDidMount(){
       console.log('selected tile index:' + this.props.selectedTileIndex)
-    }
-
-    handleFormInput(formValues){
-      console.log(formValues);
-      fetch('http://localhost:3000/api/events', {
-        method: 'post',
-        body: JSON.stringify(formValues),
-        headers: new Headers({'content-type': 'application/json'}),
-      }).then(function(response) {
-        return response.json();
-      });
-      this.props.showSnackbar();
     }
 
     render(){
@@ -68,38 +51,50 @@ class AddActivitySection extends Component {
       content =  <TpnForm cancelForm={this.props.cancelForm}
                              name={this.props.tiles[this.props.selectedTileIndex]['name']}
                              icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                             handleFormInput={this.handleFormInput}
+                             handleFormInput={this.props.handleFormInput}
                              selectTile={this.props.selectTile}
+                             showSnackbar={this.props.showSnackbar}
                              />
 
     } else if (this.props.selectedTileIndex === 2) {
       content =  <DripForm cancelForm={this.props.cancelForm}
                              name={this.props.tiles[this.props.selectedTileIndex]['name']}
                              icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                             handleFormInput={this.handleFormInput}
+                             handleFormInput={this.props.handleFormInput}
                              selectTile={this.props.selectTile}
+                             showSnackbar={this.props.showSnackbar}
                              />
     } else if (this.props.selectedTileIndex === 3){
       content =  <DrugForm cancelForm={this.props.cancelForm}
                            name={this.props.tiles[this.props.selectedTileIndex]['name']}
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           handleFormInput={this.handleFormInput}
+                           handleFormInput={this.props.handleFormInput}
                            selectTile={this.props.selectTile}
+                           showSnackbar={this.props.showSnackbar}
                              />
     } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 5 ){
       content =  <OstomyForm cancelForm={this.props.cancelForm}
                            name={this.props.tiles[this.props.selectedTileIndex]['name']}
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                           handleFormInput={this.props.handleFormInput}
+                           selectTile={this.props.selectTile}
+                           showSnackbar={this.props.showSnackbar}
                              />
     } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 6 ){
       content =  <UrineForm cancelForm={this.props.cancelForm}
                            name={this.props.tiles[this.props.selectedTileIndex]['name']}
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                           handleFormInput={this.props.handleFormInput}
+                           selectTile={this.props.selectTile}
+                           showSnackbar={this.props.showSnackbar}
                              />
     } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 7 ){
       content =  <PressureForm cancelForm={this.props.cancelForm}
                            name={this.props.tiles[this.props.selectedTileIndex]['name']}
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                           handleFormInput={this.props.handleFormInput}
+                           selectTile={this.props.selectTile}
+                           showSnackbar={this.props.showSnackbar}
                              />
     } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 8 ){
       content =  <GenericMeasurementForm cancelForm={this.props.cancelForm}
@@ -107,6 +102,9 @@ class AddActivitySection extends Component {
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
                            measurementType='Waga'
                            measurementMetric='kg'
+                           handleFormInput={this.props.handleFormInput}
+                           selectTile={this.props.selectTile}
+                           showSnackbar={this.props.showSnackbar}
                              />
     } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 9 ){
       content = <GenericMeasurementForm cancelForm={this.props.cancelForm}
@@ -114,6 +112,9 @@ class AddActivitySection extends Component {
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
                            measurementType='Temperatura'
                            measurementMetric='C'
+                           handleFormInput={this.props.handleFormInput}
+                           selectTile={this.props.selectTile}
+                           showSnackbar={this.props.showSnackbar}
                              />
     } else {
       content = <div className="d-flex flex-wrap flex-row m-5">{activityTiles}</div>

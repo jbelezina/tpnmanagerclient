@@ -13,7 +13,6 @@ class App extends Component {
   render() {
     let contentStyle = {
       backgroundColor: '#F9F9F9',
-      width: '100 vmax',
     }
 
     return (

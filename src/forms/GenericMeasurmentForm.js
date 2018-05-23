@@ -10,8 +10,8 @@ class GenericMeasurmentForm extends Component {
     constructor(){
       super();
       this.state = {
-        value: '',
-        when: '',
+        values: [],
+        time_stop: '',
         comment: '',
       }
       
@@ -26,12 +26,12 @@ class GenericMeasurmentForm extends Component {
     }
 
     handleValue(e){
-      this.setState({value:e.target.value})
+      this.setState({values: [{value: e.target.value, measure:'ml'}]});
     }
     
     handleDatePicker(mom){
       let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({when:myString});
+      this.setState({time_stop:myString});
       console.log(myString);
     }
 

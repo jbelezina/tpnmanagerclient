@@ -27,10 +27,9 @@ class LoggedActivitySection extends Component {
       let logged;
 
       if (this.props.loggedEvents) {
-
         logged = this.props.loggedEvents.map((item)=>{
             return (
-              <LoggedActivity data={item}/>
+              <LoggedActivity loggedEvent={item}/>
             )
         });
 

@@ -11,7 +11,7 @@ class OstomyForm extends Component {
       super();
       this.state = {
         size: ['active','','',''],
-        when: '',
+        time_stop: '',
         comment: '',
       }
       
@@ -19,7 +19,63 @@ class OstomyForm extends Component {
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
+      this.clearState = this.clearState.bind(this);
+      this.handleForm = this.handleForm.bind(this);
     }
+
+    clearState(){
+      this.setState({
+        size: ['active','','',''],
+        time_stop: '',
+        comment: '',
+      }); 
+    }
+
+    handleForm(){
+      let value;
+      let selectedSize = this.state.size.indexOf('active');
+
+      if (selectedSize === 0) {
+        value = 100;
+      } else if (selectedSize === 1) {
+        value = 150;
+      } else if (selectedSize === 2) {
+        value = 200;
+      } else if (selectedSize === 3) {
+        value = 250;
+      }
+
+      let values = [];
+      values.push({
+        value,
+        measure: 'ml'
+      })
+
+      let event_type;
+      let icon;
+      switch(this.props.name) {
+        case 'Kolostomia':
+            event_type = 'colostomy';
+            break;
+        case 'Ilestomia':
+            event_type = 'ilestomy';
+            break;
+      }  
+
+      let formValues = {
+        event_category: 'wydalenie',
+        event_type,
+        time_stop: this.state.time_stop.toISOString(),
+        values,
+        comment: this.state.comment,
+      }
+
+      console.log('ostomy form before sending', formValues);
+      this.props.handleFormInput(formValues);
+      this.props.selectTile(false);
+      this.clearState();
+    }
+
 
     logState(){
       console.log(this.state);
@@ -37,10 +93,8 @@ class OstomyForm extends Component {
       this.setState({size:newSelectState});
     }
     
-    handleDatePicker(mom){
-      let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({when:myString});
-      console.log(myString);
+    handleDatePicker(mom){ 
+      this.setState({time_stop:mom});
     }
 
     handleComment(e){
@@ -107,7 +161,7 @@ class OstomyForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <div className="col-7 offset-3">
-                      <button onClick={this.logState} type="button" className={styles.addButton}>Dodaj</button>
+                      <button onClick={this.handleForm} type="button" className={styles.addButton}>Dodaj</button>
                     </div>
                   </div>
                 </form>

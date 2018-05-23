@@ -1,6 +1,4 @@
 import React from 'react';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
 
 class ProductTable extends React.Component {
  
@@ -9,39 +7,7 @@ constructor(){
     this.state = {
         product: '',
     }
-
-    this.handleProductSelect = this.handleProductSelect.bind(this);
 }
-
-handleProductSelect(selected){
-    if (selected){
-      this.setState({product:selected.value})
-    } 
-
-    if(selected.value ==='tpn'){
-        this.props.fetchTPN();
-    }
-
-    if(selected.value ==='drip'){
-        this.props.fetchDrip();
-    }
-
-    if(selected.value ==='drug'){
-        this.props.fetchDrug();
-    }
-
-    if(selected.value ==='drink'){
-        this.props.fetchDrink();
-    }
-
-    if(selected.value ==='food'){
-        this.props.fetchFood();
-    }
-
-    if(selected.value ==='all'){
-        this.props.fetchProducts();
-    }
-  }
     
 render(){
 
@@ -53,21 +19,12 @@ render(){
         textAlign: 'center',
       } 
 
-    const productOptions = [
-        { value: 'all', label: 'Wszystkie' },
-        { value: 'tpn', label: 'TPN' },
-        { value: 'drip', label: 'Kroplówka' },
-        { value: 'food', label: 'Jedzenie' },
-        { value: 'drink', label: 'Picie' },
-        { value: 'drug', label: 'Lek' },
-    ];
-
     let tableBody;
 
     if(this.props.showInTable){
 
-        let reversed = this.props.showInTable.reverse()
-        tableBody = reversed.map((item, index)=>{
+        
+        tableBody = this.props.showInTable.map((item, index)=>{
             
             let type;
 
@@ -99,7 +56,7 @@ render(){
                     <td>{item.name}</td>
                     <td>{item.description}</td>
                     <td>
-                        <button type="button" className="btn btn-primary">Archiwizuj</button> <button type="button" className="btn btn-primary">Edytuj</button>
+                        <button style={{minWidth:'150px'}}type="button" className="btn btn-primary">Edytuj</button>
                     </td>
                 </tr>
             )
@@ -110,19 +67,7 @@ render(){
     
 
      return(
-      <div>
-        <div className="row">
-            <div className="mt-5 ml-5 mb-5 col-3">
-                <Select
-                            menuContainerStyle={{ zIndex: '2' }}
-                            name="product"
-                            value={this.state.product}
-                            options={productOptions}
-                            onChange={this.handleProductSelect}
-                            placeholder="Wybierz pokazywane"
-                />
-            </div>
-        </div>                    
+      <div>                  
         <div className="ml-5 mr-5 mb-5 mt-2">
         <table className="table table-striped" style={tableStyle}>
         <thead>

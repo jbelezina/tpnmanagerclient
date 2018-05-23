@@ -8,28 +8,31 @@ class LoggedActivity extends Component {
     render(){
 
       let categoryIcon;
-      switch (this.props.data.event_type) {
-        case 'tpn':
-            categoryIcon = "fas fa-tint fa-2x";
-            break;
-        case 'drip':
-            categoryIcon = "fas fa-tint fa-2x";
-            break;
-        case 'drug':
-            categoryIcon = "fas fa-pills fa-2x";
-            break;    
-      }
-
       let eventType;
-      switch (this.props.data.event_type) {
+      switch (this.props.loggedEvent.event_type) {
         case 'tpn':
+            categoryIcon = "fas fa-tint fa-2x";
             eventType = 'TPN';
             break;
         case 'drip':
+            categoryIcon = "fas fa-tint fa-2x";
             eventType = 'Kroplówka';
             break;
         case 'drug':
+            categoryIcon = "fas fa-pills fa-2x";
             eventType = "Leki";
+            break;
+        case 'colostomy':
+            categoryIcon = 'far fa-dot-circle fa-2x',
+            eventType = "Kolostomia";
+            break;
+        case 'ilestomy':
+            categoryIcon = 'far fa-dot-circle fa-2x',
+            eventType = "Ilestomia";
+            break;
+        case 'urine':
+            categoryIcon = 'fas fa-flask fa-2x',
+            eventType = "Mocz";
             break;    
       }
       
@@ -64,19 +67,19 @@ class LoggedActivity extends Component {
       }
 
       let comment;
-      if (this.props.data.comment) {
+      if (this.props.loggedEvent.comment) {
         comment = (
           <div>
             <span className="m-3 p-2" style={{fontSize:'12px'}}>
-              {this.props.data.comment}
+              komentarz: {this.props.loggedEvent.comment}
             </span> 
           </div>
         ) 
       }
 
       let time_start;
-      if (this.props.data.time_start) {
-        time_start = <div>Start: {moment(this.props.data.time_start).format('DD-MM-YYYY, HH:mm')}</div>
+      if (this.props.loggedEvent.time_start) {
+        time_start = <div>Start: {moment(this.props.loggedEvent.time_start).format('DD-MM-YYYY, HH:mm')}</div>
       } else {
         time_start = <div></div>
       }
@@ -86,7 +89,7 @@ class LoggedActivity extends Component {
           <div className="row">
             <div className="col d-flex flex-row loggedActivity pl-0 pr-0">
               <div style={iconArea}>
-                <div style={header}><br/>{this.props.data.event_category}</div>
+                <div style={header}><br/>{eventType}</div>
                 <div className="dropdown-divider"></div>
                 <div><i style={{marginTop:'10px'}} className={categoryIcon}></i></div>
                 <div>{eventType}</div>
@@ -95,18 +98,18 @@ class LoggedActivity extends Component {
                 <div style={iconHeader}><br/><i className="far fa-clock"></i></div>
                 <div className="dropdown-divider"></div>
                 {time_start}
-                <div>Stop: {moment(this.props.data.time_stop).format('DD-MM-YYYY, HH:mm')}</div>
+                <div>Stop: {moment(this.props.loggedEvent.time_stop).format('DD-MM-YYYY, HH:mm')}</div>
               </div>
               <div style={innerArea}>
                 <div style={iconHeader}><br/><i className="far fa-question-circle"></i></div>
                 <div className="dropdown-divider"></div>
-                <div>{this.props.data.product}</div>
+                <div>{this.props.loggedEvent.product}</div>
                 {comment}
               </div>
               <div style={innerArea}>
                 <div style={iconHeader}><br/><i className="far fas fa-tachometer-alt"></i></div>
                 <div className="dropdown-divider"></div>
-                <div>Ilość:{this.props.data.values[0]["value"]}</div>
+                <div>Ilość: {this.props.loggedEvent.values[0]["value"]} {this.props.loggedEvent.values[0]["measure"]}</div>
               </div>
             </div>
           </div>
