@@ -9,30 +9,52 @@ class LoggedActivity extends Component {
 
       let categoryIcon;
       let eventType;
+      let eventCategory;
       switch (this.props.loggedEvent.event_type) {
         case 'tpn':
             categoryIcon = "fas fa-tint fa-2x";
             eventType = 'TPN';
+            eventCategory = "Przyjęcie";
             break;
         case 'drip':
             categoryIcon = "fas fa-tint fa-2x";
             eventType = 'Kroplówka';
+            eventCategory = "Przyjęcie";
             break;
         case 'drug':
             categoryIcon = "fas fa-pills fa-2x";
             eventType = "Leki";
+            eventCategory = "Przyjęcie";
             break;
         case 'colostomy':
             categoryIcon = 'far fa-dot-circle fa-2x',
             eventType = "Kolostomia";
+            eventCategory = "Wydalenie";
             break;
         case 'ilestomy':
             categoryIcon = 'far fa-dot-circle fa-2x',
             eventType = "Ilestomia";
+            eventCategory = "Wydalenie";
             break;
         case 'urine':
             categoryIcon = 'fas fa-flask fa-2x',
             eventType = "Mocz";
+            eventCategory = "Wydalenie";
+            break;
+        case 'pressure':
+            categoryIcon = 'fas fa-heartbeat fa-2x',
+            eventType = "Ciśnienie";
+            eventCategory = "Pomiar";
+            break;
+        case 'weight':
+            categoryIcon = 'fas fa-weight fa-2x',
+            eventType = "Waga";
+            eventCategory = "Pomiar";
+            break;
+        case 'temperature':
+            categoryIcon = 'fas fa-thermometer fa-2x',
+            eventType = "Temperatura";
+            eventCategory = "Pomiar";
             break;    
       }
       
@@ -47,7 +69,7 @@ class LoggedActivity extends Component {
       }
 
       let innerArea = {
-        height: "110px",
+        minHeight: "110px",
         width: "33%",
         borderColor: '#E8E8E8',
       }
@@ -83,13 +105,21 @@ class LoggedActivity extends Component {
       } else {
         time_start = <div></div>
       }
+
+      let measurements = this.props.loggedEvent.values.map(item => {
+          return <li>{item.value} {item.measure}</li>
+        });
       
+      
+      
+      
+
       return (
         <div style={theWholeThing} className="ml-4 mr-4">
           <div className="row">
             <div className="col d-flex flex-row loggedActivity pl-0 pr-0">
               <div style={iconArea}>
-                <div style={header}><br/>{eventType}</div>
+                <div style={header}><br/>{eventCategory}</div>
                 <div className="dropdown-divider"></div>
                 <div><i style={{marginTop:'10px'}} className={categoryIcon}></i></div>
                 <div>{eventType}</div>
@@ -109,7 +139,7 @@ class LoggedActivity extends Component {
               <div style={innerArea}>
                 <div style={iconHeader}><br/><i className="far fas fa-tachometer-alt"></i></div>
                 <div className="dropdown-divider"></div>
-                <div>Ilość: {this.props.loggedEvent.values[0]["value"]} {this.props.loggedEvent.values[0]["measure"]}</div>
+                <div className="m-2 text-center"><ul style={{listStyleType: "none", paddingBottom:'10px'}}>{measurements}</ul></div>
               </div>
             </div>
           </div>

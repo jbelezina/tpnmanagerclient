@@ -100,7 +100,7 @@ class AddActivitySection extends Component {
       content =  <GenericMeasurementForm cancelForm={this.props.cancelForm}
                            name={this.props.tiles[this.props.selectedTileIndex]['name']}
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           measurementType='Waga'
+                           measurementType='weight'
                            measurementMetric='kg'
                            handleFormInput={this.props.handleFormInput}
                            selectTile={this.props.selectTile}
@@ -110,7 +110,7 @@ class AddActivitySection extends Component {
       content = <GenericMeasurementForm cancelForm={this.props.cancelForm}
                            name={this.props.tiles[this.props.selectedTileIndex]['name']}
                            icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           measurementType='Temperatura'
+                           measurementType='temperature'
                            measurementMetric='C'
                            handleFormInput={this.props.handleFormInput}
                            selectTile={this.props.selectTile}

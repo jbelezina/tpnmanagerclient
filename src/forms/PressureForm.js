@@ -10,10 +10,8 @@ class PressureForm extends Component {
     constructor(){
       super();
       this.state = {
-        pressure_value1: '',
-        pressure_value2: '',
-        pulse:'',
-        when: '',
+        values: [],
+        time_stop: '',
         comment: '',
       }
       
@@ -22,28 +20,59 @@ class PressureForm extends Component {
       this.handlePulse = this.handlePulse.bind(this);
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleComment = this.handleComment.bind(this);
-      this.logState = this.logState.bind(this);
+      this.clearState = this.clearState.bind(this);
+      this.handleForm = this.handleForm.bind(this)
     }
 
-    logState(){
-      console.log(this.state);
+    clearState(){
+      this.setState({
+        values: [],
+        time_stop: '',
+        comment: '',
+      }); 
+    }
+
+    handleForm(){
+      let formValues = this.state;
+      formValues.event_category = 'pomiar';
+      formValues.event_type = 'pressure';
+      console.log('pressure form before sending', formValues);
+      this.props.handleFormInput(formValues);
+      this.props.showSnackbar();
+      this.props.selectTile(false);
+      this.clearState();
     }
 
     handlePressureOne(e){
-      this.setState({pressure_value1:e.target.value})
+      let values = this.state.values.slice(0);       
+      values[0] = {
+        value: e.target.value,
+        measure: 'mmHg'
+      }  
+      this.setState({values})
     }
 
     handlePressureTwo(e){
-      this.setState({pressure_value2:e.target.value})
+      let values = this.state.values.slice(0);
+      values[1] = {
+        value: e.target.value,
+        measure: 'mmHg'
+      }  
+      this.setState({values})
     }
 
     handlePulse(e){
-      this.setState({pulse:e.target.value})
+      let values = this.state.values.slice(0);
+      values[2] = {
+        value: e.target.value,
+        measure: 'uderzeń/min'
+      }  
+      this.setState({values})    
     }
-    
+
     handleDatePicker(mom){
-      let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({when:myString});
+      let myString = moment(mom).toISOString(); 
+      this.setState({time_stop:myString});
       console.log(myString);
     }
 
@@ -118,7 +147,7 @@ class PressureForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <div className="col-7 offset-3">
-                      <button onClick={this.logState} type="button" className={styles.addButton}>Dodaj</button>
+                      <button onClick={this.handleForm} type="button" className={styles.addButton}>Dodaj</button>
                     </div>
                   </div>
                 </form>

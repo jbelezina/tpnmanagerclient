@@ -22,7 +22,6 @@ render(){
     let tableBody;
 
     if(this.props.showInTable){
-
         
         tableBody = this.props.showInTable.map((item, index)=>{
             
