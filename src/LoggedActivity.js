@@ -55,7 +55,17 @@ class LoggedActivity extends Component {
             categoryIcon = 'fas fa-thermometer fa-2x',
             eventType = "Temperatura";
             eventCategory = "Pomiar";
-            break;    
+            break;
+        case 'food':
+            categoryIcon = 'fas fa-utensils fa-2x',
+            eventType = "Jedzenie";
+            eventCategory = "Przyjęcie";
+            break;
+        case 'drink':
+            categoryIcon = 'fas fa-coffee fa-2x',
+            eventType = "Picie";
+            eventCategory = "Przyjęcie";
+            break;
       }
       
 

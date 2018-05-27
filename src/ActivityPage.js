@@ -15,7 +15,7 @@ class ActivityPage extends Component {
         {
           name: 'Jedzenie i Picie',
           category: 'Przyjęcie',
-          icon: 'fas fas fa-utensils fa-2x',
+          icon: 'fas fa-utensils fa-2x',
           isSelected: false,
         },
         {

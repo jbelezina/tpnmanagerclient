@@ -46,6 +46,9 @@ class AddActivitySection extends Component {
       content =  <FoodDrinkForm cancelForm={this.props.cancelForm}
                              name={this.props.tiles[this.props.selectedTileIndex]['name']}
                              icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                             handleFormInput={this.props.handleFormInput}
+                             selectTile={this.props.selectTile}
+                             showSnackbar={this.props.showSnackbar}
                              />
     } else if (this.props.selectedTileIndex === 1) {
       content =  <TpnForm cancelForm={this.props.cancelForm}

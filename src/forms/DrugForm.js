@@ -16,6 +16,7 @@ class DrugForm extends Component {
         values: [],
         time_stop: '',
         comment: '',
+        drugOptions: '',
       }
       this.handleDrugSelect = this.handleDrugSelect.bind(this);
       this.handlePortion = this.handlePortion.bind(this);
@@ -24,6 +25,17 @@ class DrugForm extends Component {
       this.logState = this.logState.bind(this);
       this.clearState = this.clearState.bind(this);
       this.handleForm = this.handleForm.bind(this);
+    }
+
+    componentDidMount() {
+      fetch('http://localhost:3000/api/products/drug/dropdown')
+       .then(res=>res.json())
+       .then(res=>{
+         let options = res.map((item)=>{
+           return({value:item.value, label:item.label})
+         })
+         this.setState({drugOptions: options});
+       })
     }
 
     clearState(){
@@ -78,12 +90,6 @@ class DrugForm extends Component {
     }
 
     render(){
-      const drugOptions = [
-        { value: 'Panadol', label: 'Panadol' },
-        { value: 'Apap', label: 'Apap' },
-        { value: 'Whiskey', label: 'Whiskey' },
-      ];
-
       let iconArea = {
         height: "100%",
         width: "110px",
@@ -124,7 +130,7 @@ class DrugForm extends Component {
                           menuContainerStyle={{ zIndex: '2' }}
                           name="leki"
                           value={this.state.product}
-                          options={drugOptions}
+                          options={this.state.drugOptions}
                           onChange={this.handleDrugSelect}
                           placeholder="Wybierz lek"
                         />

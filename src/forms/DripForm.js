@@ -17,6 +17,7 @@ class DripForm extends Component {
         time_stop: '',
         time_start: '',
         comment: '',
+        dripOptions: '',
       }
       this.handleDripSelect = this.handleDripSelect.bind(this);
       this.handlePortion = this.handlePortion.bind(this);
@@ -26,6 +27,17 @@ class DripForm extends Component {
       this.logState = this.logState.bind(this);
       this.clearState = this.clearState.bind(this);
       this.handleForm = this.handleForm.bind(this);
+    }
+
+    componentDidMount() {
+      fetch('http://localhost:3000/api/products/drip/dropdown')
+       .then(res=>res.json())
+       .then(res=>{
+         let options = res.map((item)=>{
+           return({value:item.value, label:item.label})
+         })
+         this.setState({dripOptions: options});
+       })
     }
 
     clearState(){
@@ -93,12 +105,6 @@ class DripForm extends Component {
 
     render(){
 
-      const dripOptions = [
-        { value: 'NaCl', label: 'NaCl' },
-        { value: 'H20', label: 'H20' },
-        { value: 'WHO', label: 'WHO' },
-      ];
-
       let startedValue;
       if (this.state.time_start) {
         startedValue = moment(this.state.time_start).format('DD-MM-YYYY, HH:mm');
@@ -130,7 +136,7 @@ class DripForm extends Component {
                           menuContainerStyle={{ zIndex: '2' }}
                           name="drip"
                           value={this.state.product}
-                          options={dripOptions}
+                          options={this.state.dripOptions}
                           onChange={this.handleDripSelect}
                           placeholder="Wybierz kroplówkę"
                       />                    

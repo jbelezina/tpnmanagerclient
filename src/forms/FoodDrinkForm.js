@@ -16,8 +16,10 @@ class FoodDrinkForm extends Component {
         foodSelect: ['active','','',''],
         drink: '',
         drinkSelect: ['active','','',''],
-        start: '',
+        time_stop: '',
         comment: '',
+        foodOptions: '',
+        drinkOptions: '',
       }
       this.handleDatePicker = this.handleDatePicker.bind(this);
       this.handleFoodSize = this.handleFoodSize.bind(this);
@@ -26,6 +28,104 @@ class FoodDrinkForm extends Component {
       this.handleFoodSelect = this.handleFoodSelect.bind(this);
       this.handleComment = this.handleComment.bind(this);
       this.logState = this.logState.bind(this);
+      this.clearState = this.clearState.bind(this);
+      this.handleForm = this.handleForm.bind(this);
+    }
+
+    componentDidMount() {
+      fetch('http://localhost:3000/api/products/food/dropdown')
+       .then(res=>res.json())
+       .then(res=>{
+         let options = res.map((item)=>{
+           return({value:item.value, label:item.label})
+         })
+         this.setState({foodOptions: options});
+       })
+
+       fetch('http://localhost:3000/api/products/drink/dropdown')
+       .then(res=>res.json())
+       .then(res=>{
+         let options = res.map((item)=>{
+           return({value:item.value, label:item.label})
+         })
+         this.setState({drinkOptions: options});
+       })
+    }
+
+    clearState(){
+      this.setState({
+        food: '',
+        foodSelect: ['active','','',''],
+        drink: '',
+        drinkSelect: ['active','','',''],
+        time_stop: '',
+        comment: '',
+        foodOptions: '',
+        drinkOptions: '',
+      }); 
+    }
+
+    handleForm(){
+      if (this.state.food) {
+        let formValues = {
+          event_category: 'przyjecie',
+          event_type: 'food',
+          product: this.state.food,
+          time_stop: this.state.time_stop,
+          comment: this.state.comment,
+        }
+        
+        let foodSelect = this.state.foodSelect;
+        let value;
+        if (foodSelect[0] === "active"){
+          value = '150';
+        } else if (foodSelect[1] === "active"){
+          value = '250';
+        } else if (foodSelect[2] === "active"){
+          value = '350';
+        } else if (foodSelect[3] === "active"){
+          value = '500';
+        } 
+        formValues.values = [{
+          value,
+          measure:'mg'
+        }]
+        
+        console.log('food form before sending', formValues);
+        this.props.handleFormInput(formValues);        
+      }
+
+      if (this.state.drink) {
+        let formValues = {
+          event_category: 'przyjecie',
+          event_type: 'drink',
+          product: this.state.drink,
+          time_stop: this.state.time_stop,
+          comment: this.state.comment,
+        }
+        
+        let drinkSelect = this.state.drinkSelect;
+        let value;
+        if (drinkSelect[0] === "active"){
+          value = '100';
+        } else if (drinkSelect[1] === "active"){
+          value = '150';
+        } else if (drinkSelect[2] === "active"){
+          value = '200';
+        } else if (drinkSelect[3] === "active"){
+          value = '300';
+        } 
+        formValues.values = [{
+          value,
+          measure:'ml'
+        }]
+        
+        console.log('drink form before sending', formValues);
+        this.props.handleFormInput(formValues);        
+      }
+
+      this.props.selectTile(false);
+      this.clearState();
     }
 
     logState(){
@@ -80,24 +180,12 @@ class FoodDrinkForm extends Component {
     }
 
     handleDatePicker(mom){
-      let myString = moment(mom).format("YYYY-MM-DD HH:mm:ss"); 
-      this.setState({start:myString});
+      let myString = moment(mom).toISOString(); 
+      this.setState({time_stop:myString});
       console.log(myString);
     }
 
     render(){
-      
-      const foodOptions = [
-        { value: 'Kluski z makiem', label: 'Kluski z makiem' },
-        { value: 'Kotlety mielone z ziemniakami', label: 'Mielone z ziemniakami' },
-        { value: 'Kulesza', label: 'Kulesza' },
-      ];
-      
-      const drinkOptions = [
-        { value: 'Woda', label: 'Woda' },
-        { value: 'Herbata', label: 'Herbata' },
-        { value: 'Wino czerwone', label: 'Wino czerwone' },
-      ];
 
       return (
         <div className="container">
@@ -123,7 +211,7 @@ class FoodDrinkForm extends Component {
                         menuContainerStyle={{ zIndex: '2' }}
                         name="jedzenie"
                         value={this.state.food}
-                        options={foodOptions}
+                        options={this.state.foodOptions}
                         onChange={this.handleFoodSelect}
                         placeholder="Wybierz jedzenie"
                       />
@@ -148,7 +236,7 @@ class FoodDrinkForm extends Component {
                         menuContainerStyle={{ zIndex: '2' }}
                         name="university"
                         value={this.state.drink}
-                        options={drinkOptions}
+                        options={this.state.drinkOptions}
                         onChange={this.handleDrinkSelect}
                         placeholder="Wybierz napój"
                       />
@@ -167,7 +255,7 @@ class FoodDrinkForm extends Component {
                   </div>
                   <div className="dropdown-divider"></div>
                   <div className="form-group row m-3">
-                    <label className={styles.label}>Start:</label>
+                    <label className={styles.label}>Stop:</label>
                       <div className="col-7">
                       <Datetime ref='stopTime' onChange={data=>this.handleDatePicker(data)} defaultValue={moment()} locale="pl" timeFormat={true}/>
                       </div>
@@ -180,7 +268,7 @@ class FoodDrinkForm extends Component {
                   </div>
                   <div className="form-group row m-3">
                     <div className="offset-3 col-7">
-                      <button onClick={this.logState} type="button" className={styles.addButton}>Dodaj</button>
+                      <button onClick={this.handleForm} type="button" className={styles.addButton}>Dodaj</button>
                     </div>
                   </div>
                 </form>

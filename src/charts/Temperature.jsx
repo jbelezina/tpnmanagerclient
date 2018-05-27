@@ -1,39 +1,51 @@
 import React, { Component } from 'react';
 import Chart from 'chart.js'
+import moment from 'moment';
+import 'moment/locale/pl';
 
-class Weight extends Component {  
-
-    constructor(){
-        super();
-        this.state = {
-            data: {
-                labels: ['24 sty', '25 sty', '26 sty', '27 sty', '28 sty', '29 sty', '30 sty'],
-
-                datasets: [{ 
-                    data: [36.6,36.7,38.0,37,36.6,36.6,36.6],
-                    label: "Temperatura - ostatnie 7 dni",
-                    borderColor: "#3e95cd",
-                    fill: false
-                  }
-                ]
-              },
-              options: {
-                title: {
-                  display: true,
-                  text: 'Temperatura - ostatnie 7 dni'
-                }
-              }
-        }
-    }
+class Temperature extends Component {  
 
     componentDidMount(){
-        let canvas = this.refs.graph; 
-        let myLineChart = new Chart(canvas, {
-            type: 'line',
-            data: this.state.data,
-            label: "dupa"
-        });
-        this.refs.canvas = canvas;
+
+      let formattedData;
+      let data = [];
+      let labels = [];
+
+      fetch('http://localhost:3000/api/events/temperature?limit=14')
+       .then(res=>res.json())
+       .then(res=>{
+        for (let x = 0; x<res.length; x++){
+          data.push(res[x].values[0]["value"])
+          var mom = moment(res[x].time_stop.toString());
+          var label = mom.format("DD MMMM");
+          labels.push(label)
+        }  
+       })
+       .then(()=>{
+          console.log(data);
+          console.log(labels);
+          formattedData = {
+            labels: labels,
+            datasets: [{ 
+                data: data,
+                label: "Temperatura - ostatnie 7 dni",
+                borderColor: "#3e95cd",
+                fill: false
+              }
+            ]
+          }
+        }
+       )
+       .then(()=>{
+          let canvas = this.refs.graph; 
+          let myLineChart = new Chart(canvas, {
+              type: 'line',
+              data: formattedData,
+              label: "temperatura"
+          });
+          this.refs.canvas = canvas;
+        }
+       )   
     }
 
     render(){
@@ -70,4 +82,4 @@ class Weight extends Component {
   }
 }
 
-export default Weight;
+export default Temperature;
