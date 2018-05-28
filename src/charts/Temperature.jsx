@@ -22,8 +22,6 @@ class Temperature extends Component {
         }  
        })
        .then(()=>{
-          console.log(data);
-          console.log(labels);
           formattedData = {
             labels: labels,
             datasets: [{ 
