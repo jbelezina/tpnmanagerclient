@@ -33,8 +33,11 @@ class GenericMeasurmentForm extends Component {
     handleForm(){
       let formValues = this.state;
       formValues.event_category = 'pomiar';
-      formValues.event_type = this.props.measurementType;
-      console.log('pressure form before sending', formValues);
+      if (this.props.measurementType === "Waga") {
+        formValues.event_type = "weight";
+      } else if (this.props.measurementType === "Temperatura") {
+        formValues.event_type = "temperature";
+      }
       this.props.handleFormInput(formValues);
       this.props.showSnackbar();
       this.props.selectTile(false);

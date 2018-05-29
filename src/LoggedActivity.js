@@ -37,7 +37,7 @@ class LoggedActivity extends Component {
             eventCategory = "Wydalenie";
             break;
         case 'urine':
-            categoryIcon = 'fas fa-flask fa-2x',
+            categoryIcon = 'fas fa-prescription-bottle fa-2x',
             eventType = "Mocz";
             eventCategory = "Wydalenie";
             break;
@@ -141,13 +141,13 @@ class LoggedActivity extends Component {
                 <div>Stop: {moment(this.props.loggedEvent.time_stop).format('DD-MM-YYYY, HH:mm')}</div>
               </div>
               <div style={innerArea}>
-                <div style={iconHeader}><br/><i className="far fa-question-circle"></i></div>
+                <div style={iconHeader}><br/><i className="fas fa-info-circle"></i></div>
                 <div className="dropdown-divider"></div>
                 <div>{this.props.loggedEvent.product}</div>
                 {comment}
               </div>
               <div style={innerArea}>
-                <div style={iconHeader}><br/><i className="far fas fa-tachometer-alt"></i></div>
+                <div style={iconHeader}><br/><i className="fas fa-balance-scale"></i></div>
                 <div className="dropdown-divider"></div>
                 <div className="m-2 text-center"><ul style={{listStyleType: "none", paddingBottom:'10px'}}>{measurements}</ul></div>
               </div>

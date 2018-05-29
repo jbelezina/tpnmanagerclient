@@ -154,7 +154,7 @@ class InVsOut extends Component {
     return (
       <div style={style}>
         <div className="text-primary">
-          <div className="m-3 ml-4">Przyjęcia vs wydalenia</div>
+          <div className="m-3 ml-4">Przyjęcia vs wydalenia - ostatnie 30 dni</div>
           <div className="dropdown-divider"></div>
           <div className="row">
             <div className="col-7 p-0 pl-5 pt-5">

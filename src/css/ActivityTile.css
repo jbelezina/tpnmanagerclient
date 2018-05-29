@@ -17,8 +17,6 @@
 .activityTile:hover {
   border-color: teal;
   color: teal;
-  width: 115px;
-  margin-top: 8px;
 }
 
 .iconAndName {

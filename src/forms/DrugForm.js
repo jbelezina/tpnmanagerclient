@@ -141,7 +141,7 @@ class DrugForm extends Component {
                     <div className="col-7">
                       <input onChange={this.handlePortion} className="form-control"/>
                     </div>
-                    <label className="col-sm-1 col-form-label text-left pl-0">ml</label>
+                    <label className="col-sm-1 col-form-label text-left pl-0">tabl.</label>
                   </div>
                   <div className="form-group row m-3">
                     <label className={styles.label}>Kiedy:</label>

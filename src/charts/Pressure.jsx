@@ -13,7 +13,7 @@ class Pressure extends Component {
       let pulse = [];
       let labels = [];
 
-      fetch('http://localhost:3000/api/events/pressure?limit=7')
+      fetch('http://localhost:3000/api/events/pressure?limit=5')
        .then(res=>res.json())
        .then(res=>{
         for (let x = 0; x<res.length; x++){
@@ -83,7 +83,7 @@ class Pressure extends Component {
     return (
       <div style={style}>
         <div className="text-primary">
-          <div className="m-3 ml-4">Ciśnienie</div>
+          <div className="m-3 ml-4">Ciśnienie i puls - ostatnie 5 pomiarów</div>
           <div className="dropdown-divider"></div>
           <div style={graphStyle}>
             <canvas ref="graph"/>

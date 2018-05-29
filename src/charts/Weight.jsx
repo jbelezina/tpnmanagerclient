@@ -11,7 +11,7 @@ class Weight extends Component {
       let data = [];
       let labels = [];
 
-      fetch('http://localhost:3000/api/events/weight?limit=7')
+      fetch('http://localhost:3000/api/events/weight?limit=5')
        .then(res=>res.json())
        .then(res=>{
         for (let x = 0; x<res.length; x++){
@@ -67,7 +67,7 @@ class Weight extends Component {
     return (
       <div style={style}>
         <div className="text-primary">
-          <div className="m-3 ml-4">Waga</div>
+          <div className="m-3 ml-4">Waga - ostatnie 5 pomiarów</div>
           <div className="dropdown-divider"></div>
           <div style={graphStyle}>
             <canvas ref="graph"/>

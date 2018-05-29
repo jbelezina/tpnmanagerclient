@@ -51,7 +51,7 @@ class ActivityPage extends Component {
         {
           name: 'Mocz',
           category: 'Wydalenie',
-          icon: 'fas fa-flask fa-2x',
+          icon: 'fas fa-prescription-bottle fa-2x',
           isSelected: false,
         },
         {

@@ -11,7 +11,7 @@ class Temperature extends Component {
       let data = [];
       let labels = [];
 
-      fetch('http://localhost:3000/api/events/temperature?limit=14')
+      fetch('http://localhost:3000/api/events/temperature?limit=5')
        .then(res=>res.json())
        .then(res=>{
         for (let x = 0; x<res.length; x++){
@@ -26,7 +26,7 @@ class Temperature extends Component {
             labels: labels,
             datasets: [{ 
                 data: data,
-                label: "Temperatura - ostatnie 7 dni",
+                label: "Temperatura C",
                 borderColor: "#3e95cd",
                 fill: false
               }
@@ -67,7 +67,7 @@ class Temperature extends Component {
     return (
       <div style={style}>
         <div className="text-primary">
-          <div className="m-3 ml-4">Temperatura</div>
+          <div className="m-3 ml-4">Temperatura - ostatnie 5 pomiarów</div>
           <div className="dropdown-divider"></div>
           <div style={graphStyle}>
             <canvas ref="graph"/>
