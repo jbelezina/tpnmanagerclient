@@ -11,7 +11,7 @@ class GenericMeasurmentForm extends Component {
       super();
       this.state = {
         values: [],
-        time_stop: '',
+        time_stop: moment(),
         comment: '',
       }
       
@@ -25,7 +25,7 @@ class GenericMeasurmentForm extends Component {
     clearState(){
       this.setState({
         values: [],
-        time_stop: '',
+        time_stop: moment(),
         comment: '',
       }); 
     }

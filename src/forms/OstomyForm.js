@@ -11,7 +11,7 @@ class OstomyForm extends Component {
       super();
       this.state = {
         size: ['active','','',''],
-        time_stop: '',
+        time_stop: moment(),
         comment: '',
       }
       
@@ -26,7 +26,7 @@ class OstomyForm extends Component {
     clearState(){
       this.setState({
         size: ['active','','',''],
-        time_stop: '',
+        time_stop: moment(),
         comment: '',
       }); 
     }

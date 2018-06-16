@@ -38,7 +38,8 @@ class TpnForm extends Component {
            let options = res.map((item)=>{
              return({value:item.value, label:item.value})
            })
-           this.setState({tpnOptions: options});
+           this.setState({tpnOptions: options,
+                          time_stop:moment()});
          })
     }
 

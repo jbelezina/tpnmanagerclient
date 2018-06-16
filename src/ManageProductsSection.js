@@ -24,12 +24,22 @@ class ManageProductsSection extends Component {
       this.hideSnackbar = this.hideSnackbar.bind(this);
       this.fetchProducts = this.fetchProducts.bind(this);
       this.handleSelectDisplayed = this.handleSelectDisplayed.bind(this);
+      this.removeProduct = this.removeProduct.bind(this);
     }
 
     async componentDidMount() {
       const res = await fetch('http://localhost:3000/api/products')
       const result = await res.json()
       this.setState({showInTable:result});
+    }
+
+    removeProduct(id){
+      fetch(`http://localhost:3000/api/products/${id}`, {
+        method: 'DELETE',
+      })
+      .then(()=>{
+        this.fetchProducts();
+      })
     }
 
     hideSnackbar(){
@@ -79,37 +89,37 @@ class ManageProductsSection extends Component {
     async fetchProducts(){
       const res = await fetch('http://localhost:3000/api/products')
       const result = await res.json()
-      this.setState({showInTable:result.reverse()});
+      this.setState({showInTable:result});
     }
     
     async fetchTPN(){
       const res = await fetch('http://localhost:3000/api/products/tpn')
       const result = await res.json()
-      this.setState({showInTable:result.reverse()});
+      this.setState({showInTable:result});
     }
 
     async fetchDrip(){
       const res = await fetch('http://localhost:3000/api/products/drip')
       const result = await res.json()
-      this.setState({showInTable:result.reverse()});
+      this.setState({showInTable:result});
     }
 
     async fetchDrug(){
       const res = await fetch('http://localhost:3000/api/products/drug')
       const result = await res.json()
-      this.setState({showInTable:result.reverse()});
+      this.setState({showInTable:result});
     }
 
     async fetchFood(){
       const res = await fetch('http://localhost:3000/api/products/food')
       const result = await res.json()
-      this.setState({showInTable:result.reverse()});
+      this.setState({showInTable:result});
     }
 
     async fetchDrink(){
       const res = await fetch('http://localhost:3000/api/products/drink')
       const result = await res.json()
-      this.setState({showInTable:result.reverse()});
+      this.setState({showInTable:result});
     }
 
     handleSelectDisplayed(selected){
@@ -160,7 +170,7 @@ class ManageProductsSection extends Component {
     }
 
     let productTable = (
-      <ProductTable showInTable={this.state.showInTable}/>
+      <ProductTable showInTable={this.state.showInTable} removeProduct={this.removeProduct}/>
     )
 
     let snackbar;

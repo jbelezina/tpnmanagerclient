@@ -34,7 +34,8 @@ class DrugForm extends Component {
          let options = res.map((item)=>{
            return({value:item.value, label:item.label})
          })
-         this.setState({drugOptions: options});
+         this.setState({drugOptions: options,
+                        time_stop: moment()});
        })
     }
 

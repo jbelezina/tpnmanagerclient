@@ -11,7 +11,7 @@ class UrineForm extends Component {
       super();
       this.state = {
         values: [],
-        time_stop: '',
+        time_stop: moment(),
         comment: '',
       }
       

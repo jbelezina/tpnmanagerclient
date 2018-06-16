@@ -50,20 +50,20 @@ render(){
             }
             
             return (
-                <tr key={index}>
-                    <td>{type}</td>
+                <tr key={item._id}>
+                    <td>{item.type}</td>
                     <td>{item.name}</td>
                     <td>{item.description}</td>
                     <td>
-                        <button style={{minWidth:'150px'}}type="button" className="btn btn-primary">Edytuj</button>
+                        <button key={item._id} onClick={()=>{this.props.removeProduct(item._id); console.log(item._id)}} 
+                                style={{minWidth:'150px'}}type="button" 
+                                className="btn btn-primary">
+                                Usuń</button>
                     </td>
                 </tr>
-            )
-        })
-    }
-    
-    
-    
+                    )
+                })
+            }
 
      return(
       <div>                  

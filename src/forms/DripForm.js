@@ -36,7 +36,8 @@ class DripForm extends Component {
          let options = res.map((item)=>{
            return({value:item.value, label:item.label})
          })
-         this.setState({dripOptions: options});
+         this.setState({dripOptions: options,
+                        time_stop: moment()});
        })
     }
 

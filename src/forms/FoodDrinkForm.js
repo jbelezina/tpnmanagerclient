@@ -48,7 +48,9 @@ class FoodDrinkForm extends Component {
          let options = res.map((item)=>{
            return({value:item.value, label:item.label})
          })
-         this.setState({drinkOptions: options});
+         this.setState({drinkOptions: options,
+                        time_stop: moment() 
+        });
        })
     }
 
@@ -58,7 +60,7 @@ class FoodDrinkForm extends Component {
         foodSelect: ['active','','',''],
         drink: '',
         drinkSelect: ['active','','',''],
-        time_stop: '',
+        time_stop: moment(),
         comment: '',
         foodOptions: '',
         drinkOptions: '',
@@ -221,10 +223,10 @@ class FoodDrinkForm extends Component {
                   <label className={styles.label}>Porcja:</label>
                     <div className="col-7">
                       <div className="btn-group btn-group-lg btn-group-justified" role="group" aria-label="buttons">
-                        <button type="button" onClick={()=>{this.handleFoodSize(0)}} className={"btn btn-default" + ' ' + this.state.foodSelect[0]}>S</button>
-                        <button type="button" onClick={()=>{this.handleFoodSize(1)}} className={"btn btn-default" + ' ' + this.state.foodSelect[1]}>M</button>
-                        <button type="button" onClick={()=>{this.handleFoodSize(2)}} className={"btn btn-default" + ' ' + this.state.foodSelect[2]}>L</button>
-                        <button type="button" onClick={()=>{this.handleFoodSize(3)}} className={"btn btn-default" + ' ' + this.state.foodSelect[3]}>XL</button>
+                        <button type="button" onClick={()=>{this.handleFoodSize(0)}} className={"btn btn-default" + ' ' + this.state.foodSelect[0]}>150g</button>
+                        <button type="button" onClick={()=>{this.handleFoodSize(1)}} className={"btn btn-default" + ' ' + this.state.foodSelect[1]}>250g</button>
+                        <button type="button" onClick={()=>{this.handleFoodSize(2)}} className={"btn btn-default" + ' ' + this.state.foodSelect[2]}>350g</button>
+                        <button type="button" onClick={()=>{this.handleFoodSize(3)}} className={"btn btn-default" + ' ' + this.state.foodSelect[3]}>500g</button>
                       </div>
                     </div>
                   </div>
@@ -246,10 +248,10 @@ class FoodDrinkForm extends Component {
                   <label className={styles.label}>Porcja:</label>
                     <div className="col-7">
                       <div className="btn-group btn-group-lg btn-group-justified" role="group" aria-label="buttons">
-                        <button ref='0' type="button" onClick={()=>{this.handleDrinkSize(0)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[0]}>S</button>
-                        <button ref='1' type="button" onClick={()=>{this.handleDrinkSize(1)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[1]}>M</button>
-                        <button ref='2' type="button" onClick={()=>{this.handleDrinkSize(2)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[2]}>L</button>
-                        <button ref='3' type="button" onClick={()=>{this.handleDrinkSize(3)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[3]}>XL</button>
+                        <button ref='0' type="button" onClick={()=>{this.handleDrinkSize(0)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[0]}>100ml</button>
+                        <button ref='1' type="button" onClick={()=>{this.handleDrinkSize(1)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[1]}>150ml</button>
+                        <button ref='2' type="button" onClick={()=>{this.handleDrinkSize(2)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[2]}>200ml</button>
+                        <button ref='3' type="button" onClick={()=>{this.handleDrinkSize(3)}} className={"btn btn-default" + ' ' + this.state.drinkSelect[3]}>300ml</button>
                       </div>
                     </div>
                   </div>
