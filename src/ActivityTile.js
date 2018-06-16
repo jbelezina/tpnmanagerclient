@@ -10,15 +10,13 @@ class ActivityTile extends Component {
     }
 
     selectTile(){
-      this.props.selectTile(this.props.index); 
+      this.props.selectTile(this.props.data.name); 
     }
 
     render(){
       return (
         <div className="activityTile" onClick={this.selectTile}>
-          <div><br/><div id='headerCategoryText'>{this.props.data.category}</div></div>
           <div className="iconAndName">
-          <div className="dropdown-divider"></div>
           <div><i className={this.props.data.icon}></i></div>
           <div>{this.props.data.name}</div>
           </div>

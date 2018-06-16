@@ -8,15 +8,73 @@ import DrugForm from './forms/DrugForm';
 import UrineForm from './forms/UrineForm';
 import PressureForm from './forms/PressureForm';
 import GenericMeasurementForm from './forms/GenericMeasurmentForm';
+import Card from './Card';
 
 class AddActivitySection extends Component {  
 
-    componentDidMount(){
-      console.log('selected tile index:' + this.props.selectedTileIndex)
+    constructor(){
+      super();
+      this.state = {
+        in: [
+          {
+            name: 'Jedzenie i Picie',
+            icon: 'fas fa-utensils fa-2x',
+            isSelected: false,
+          },
+          {
+            name: 'TPN',
+            icon: 'fas fa-tint fa-2x',
+            isSelected: false,
+          },
+          {
+            name: 'Kroplówka',
+            icon: 'fas fa-tint fa-2x',
+            isSelected: false,
+          },
+          {
+            name: 'Lek',
+            icon: 'fas fa-pills fa-2x',
+            isSelected: false,
+          }
+        ],
+        out: [
+          {
+            name: 'Kolostomia',
+            icon: 'far fa-dot-circle fa-2x',
+            isSelected: false,
+          },
+          {
+            name: 'Ilestomia',
+            icon: 'far fa-dot-circle fa-2x',
+            isSelected: false,
+          },
+          {
+            name: 'Mocz',
+            icon: 'fas fa-prescription-bottle fa-2x',
+            isSelected: false,
+          },
+        ],
+        measure: [
+          {
+            name: 'Ciśnienie',
+            icon: 'fas fa-heartbeat fa-2x',
+            isSelected: false,
+          },
+          {
+            name: 'Waga',
+            icon: 'fas fa-weight fa-2x',
+            isSelected: false,
+          },
+          {
+            name: 'Temperatura',
+            icon: 'fas fa-thermometer fa-2x',
+            isSelected: false,
+          }
+        ]
+      }
     }
-
+    
     render(){
-
     let style={
       backgroundColor: 'white',
       borderStyle: 'solid',
@@ -31,96 +89,105 @@ class AddActivitySection extends Component {
       fontSize: '15px',
       fontColor: 'darkgrey',
     }
-    
-    let activityTiles = this.props.tiles.map((tile, index)=>{
-      return (
-        <ActivityTile key={index} index={index} 
-                      data={tile} 
-                      selectTile={this.props.selectTile}/>
-      )
-    })
 
     let content; 
 
-    if (this.props.selectedTileIndex === 0){
+    if (this.props.selectedTile === this.state.in[0]["name"]){
+      let index = 0;
       content =  <FoodDrinkForm cancelForm={this.props.cancelForm}
-                             name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                             icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
+                             name={this.state.in[index]["name"]}
+                             icon={this.state.in[index]["icon"]}
                              handleFormInput={this.props.handleFormInput}
                              selectTile={this.props.selectTile}
                              showSnackbar={this.props.showSnackbar}
                              />
-    } else if (this.props.selectedTileIndex === 1) {
+    } else if (this.props.selectedTile === this.state.in[1]["name"]) {
+      let index = 1;
       content =  <TpnForm cancelForm={this.props.cancelForm}
-                             name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                             icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                             handleFormInput={this.props.handleFormInput}
-                             selectTile={this.props.selectTile}
-                             showSnackbar={this.props.showSnackbar}
+                            name={this.state.in[index]["name"]}
+                            icon={this.state.in[index]["icon"]}
+                            handleFormInput={this.props.handleFormInput}
+                            selectTile={this.props.selectTile}
+                            showSnackbar={this.props.showSnackbar}
                              />
 
-    } else if (this.props.selectedTileIndex === 2) {
+    } else if (this.props.selectedTile === this.state.in[2]["name"]) {
+      let index = 2;
       content =  <DripForm cancelForm={this.props.cancelForm}
-                             name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                             icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                             handleFormInput={this.props.handleFormInput}
-                             selectTile={this.props.selectTile}
-                             showSnackbar={this.props.showSnackbar}
+                            name={this.state.in[index]["name"]}
+                            icon={this.state.in[index]["icon"]}
+                            handleFormInput={this.props.handleFormInput}
+                            selectTile={this.props.selectTile}
+                            showSnackbar={this.props.showSnackbar}
                              />
-    } else if (this.props.selectedTileIndex === 3){
+    } else if (this.props.selectedTile === this.state.in[3]["name"]){
+      let index = 3;
       content =  <DrugForm cancelForm={this.props.cancelForm}
-                           name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                           icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           handleFormInput={this.props.handleFormInput}
-                           selectTile={this.props.selectTile}
-                           showSnackbar={this.props.showSnackbar}
+                            name={this.state.in[index]["name"]}
+                            icon={this.state.in[index]["icon"]}
+                            handleFormInput={this.props.handleFormInput}
+                            selectTile={this.props.selectTile}
+                            showSnackbar={this.props.showSnackbar}
                              />
-    } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 5 ){
+    } else if (this.props.selectedTile === this.state.out[0]["name"] || 
+                this.props.selectedTile === this.state.out[1]["name"]
+              ){
+      let index;
+      (this.props.selectedTile === "Kolostomia") ? index = 0 : index = 1; 
       content =  <OstomyForm cancelForm={this.props.cancelForm}
-                           name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                           icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           handleFormInput={this.props.handleFormInput}
-                           selectTile={this.props.selectTile}
-                           showSnackbar={this.props.showSnackbar}
+                          name={this.state.out[index]["name"]}
+                          icon={this.state.out[index]["icon"]}
+                          handleFormInput={this.props.handleFormInput}
+                          selectTile={this.props.selectTile}
+                          showSnackbar={this.props.showSnackbar}
                              />
-    } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 6 ){
+    } else if (this.props.selectedTile === this.state.out[2]["name"]){
+      let index = 2;
       content =  <UrineForm cancelForm={this.props.cancelForm}
-                           name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                           icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           handleFormInput={this.props.handleFormInput}
-                           selectTile={this.props.selectTile}
-                           showSnackbar={this.props.showSnackbar}
+                          name={this.state.out[index]["name"]}
+                          icon={this.state.out[index]["icon"]}
+                          handleFormInput={this.props.handleFormInput}
+                          selectTile={this.props.selectTile}
+                          showSnackbar={this.props.showSnackbar}
                              />
-    } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 7 ){
+    } else if (this.props.selectedTile === this.state.measure[0]["name"]){
+      let index = 0;
       content =  <PressureForm cancelForm={this.props.cancelForm}
-                           name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                           icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           handleFormInput={this.props.handleFormInput}
-                           selectTile={this.props.selectTile}
-                           showSnackbar={this.props.showSnackbar}
+                          name={this.state.measure[index]["name"]}
+                          icon={this.state.measure[index]["icon"]}
+                          handleFormInput={this.props.handleFormInput}
+                          selectTile={this.props.selectTile}
+                          showSnackbar={this.props.showSnackbar}
                              />
-    } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 8 ){
+    } else if (this.props.selectedTile === this.state.measure[1]["name"]){
+      let index = 1;
       content =  <GenericMeasurementForm cancelForm={this.props.cancelForm}
-                           name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                           icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           measurementType='Waga'
-                           measurementMetric='kg'
-                           handleFormInput={this.props.handleFormInput}
-                           selectTile={this.props.selectTile}
-                           showSnackbar={this.props.showSnackbar}
+                          name={this.state.measure[index]["name"]}
+                          icon={this.state.measure[index]["icon"]}
+                          measurementType='Waga'
+                          measurementMetric='kg'
+                          handleFormInput={this.props.handleFormInput}
+                          selectTile={this.props.selectTile}
+                          showSnackbar={this.props.showSnackbar}
                              />
-    } else if (this.props.selectedTileIndex === 4 || this.props.selectedTileIndex === 9 ){
+    } else if (this.props.selectedTile === this.state.measure[2]["name"]){
+      let index = 2;
       content = <GenericMeasurementForm cancelForm={this.props.cancelForm}
-                           name={this.props.tiles[this.props.selectedTileIndex]['name']}
-                           icon={this.props.tiles[this.props.selectedTileIndex]['icon']}
-                           measurementType='Temperatura'
-                           measurementMetric='C'
-                           handleFormInput={this.props.handleFormInput}
-                           selectTile={this.props.selectTile}
-                           showSnackbar={this.props.showSnackbar}
+                          name={this.state.measure[index]["name"]}
+                          icon={this.state.measure[index]["icon"]}
+                          measurementType='Temperatura'
+                          measurementMetric='C'
+                          handleFormInput={this.props.handleFormInput}
+                          selectTile={this.props.selectTile}
+                          showSnackbar={this.props.showSnackbar}
                              />
     } else {
-      content = <div className="d-flex flex-wrap flex-row m-5">{activityTiles}</div>
+      content = 
+      <div className="d-flex flex-row justify-content-around">
+          <Card tiles={this.state.in} title="Przyjęcia" selectTile={this.props.selectTile}/>
+          <Card tiles={this.state.out} title="Wydalenia" selectTile={this.props.selectTile}/>
+          <Card tiles={this.state.measure} title="Pomiary" selectTile={this.props.selectTile}/>
+      </div>
     }
 
     return (

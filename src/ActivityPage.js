@@ -10,70 +10,9 @@ class ActivityPage extends Component {
     this.state={
       showSnackBar:false,
       loggedEvents: '',
-      selectedTileIndex: false,
-      activityTiles: [
-        {
-          name: 'Jedzenie i Picie',
-          category: 'Przyjęcie',
-          icon: 'fas fa-utensils fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'TPN',
-          category: 'Przyjęcie',
-          icon: 'fas fa-tint fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'Kroplówka',
-          category: 'Przyjęcie',
-          icon: 'fas fa-tint fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'Lek',
-          category: 'Przyjęcie',
-          icon: 'fas fa-pills fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'Kolostomia',
-          category: 'Wydalenie',
-          icon: 'far fa-dot-circle fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'Ilestomia',
-          category: 'Wydalenie',
-          icon: 'far fa-dot-circle fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'Mocz',
-          category: 'Wydalenie',
-          icon: 'fas fa-prescription-bottle fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'Ciśnienie',
-          category: 'Pomiar',
-          icon: 'fas fa-heartbeat fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'Waga',
-          category: 'Pomiar',
-          icon: 'fas fa-weight fa-2x',
-          isSelected: false,
-        },
-        {
-          name: 'Temperatura',
-          category: 'Pomiar',
-          icon: 'fas fa-thermometer fa-2x',
-          isSelected: false,
-        },
-      ]
+      selectedTile: false,
     }
+
     this.cancelForm = this.cancelForm.bind(this);
     this.selectTile = this.selectTile.bind(this);
     this.hideSnackbar = this.hideSnackbar.bind(this);
@@ -112,11 +51,11 @@ class ActivityPage extends Component {
   }
 
   cancelForm(){
-    this.setState({selectedTileIndex: false});
+    this.setState({selectedTile: false});
   }
 
-  selectTile(index){
-    this.setState({selectedTileIndex: index});
+  selectTile(tile){
+    this.setState({selectedTile: tile});
   }
 
   render() {
@@ -130,9 +69,8 @@ class ActivityPage extends Component {
     
     return (
       <div>
-        <AddActivitySection tiles={this.state.activityTiles} 
-                            selectTile={this.selectTile}
-                            selectedTileIndex={this.state.selectedTileIndex} 
+        <AddActivitySection selectTile={this.selectTile}
+                            selectedTile={this.state.selectedTile} 
                             cancelForm={this.cancelForm}
                             showSnackbar={this.showSnackbar}
                             handleFormInput={this.handleFormInput}
