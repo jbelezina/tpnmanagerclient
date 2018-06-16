@@ -17,7 +17,7 @@ class Card extends Component {
         <div className="card-header">
           {this.props.title}
         </div>
-        <div className="card-body bg-light d-flex flex-row">
+        <div className="card-body bg-light d-flex flex-row justify-content-around">
           {activityTiles}
         </div>
       </div>
