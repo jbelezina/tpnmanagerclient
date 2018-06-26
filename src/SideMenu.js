@@ -46,7 +46,6 @@ class SideMenu extends Component {
       color: '#E8E8E8',
       opacity: '1',
       textAlign: 'center',
-      fontSize: '8px',
       zIndex: '2'
     }
 
@@ -99,13 +98,13 @@ class SideMenu extends Component {
       </div>
       <div style={menuItemsStyle}>
         <div style={{marginTop:'141px'}}>
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <div className={styleOne} onClick={this.selectFirst}>
               <i className=" fas fa-chart-line fa-2x"></i>
             <div style={{marginLeft:'0px'}}>Panel</div>
           </div>
         </Link>
-        <Link to="/aktywnosci">
+        <Link to="/aktywnosci" style={{ textDecoration: 'none' }}>
           <div className={styleTwo} onClick={this.selectSecond}>
             <div style={{textAlign:"center"}}>
               <i className="fas fa-play-circle fa-2x"></i>
@@ -113,7 +112,7 @@ class SideMenu extends Component {
             <div>Aktywności</div>
           </div>
         </Link>
-        <Link to="/ustawienia" onClick={this.selectThird}>
+        <Link to="/ustawienia" onClick={this.selectThird} style={{ textDecoration: 'none' }}>
           <div className={styleThree}>
             <div style={{textAlign:"center"}}>
               <i className="fas fa-cog fa-2x"></i>

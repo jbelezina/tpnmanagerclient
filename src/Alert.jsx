@@ -8,6 +8,7 @@ class Alert extends Component {
     width: '100%',
     fontFamily: "'Barlow Semi Condensed', sans-serif",
     fontColor: 'white',
+    paddingBottom: '0px',
     }
 
     let icon;
@@ -15,14 +16,14 @@ class Alert extends Component {
 
     if (this.props.data.actual >= this.props.data.max) {
       icon= (
-        <div className="p-5" style={{fontSize:"26px"}}>
+        <div className="p-3" style={{fontSize:"20px"}}>
           <i class="fas fa-exclamation-circle fa-5x"></i>
         </div>
             );
       backgroundColor = "alert alert-danger";
     } else {
       icon= (
-        <div className="p-5" style={{fontSize:"26px"}}>
+        <div className="p-3" style={{fontSize:"20px"}}>
           <i class="fa fa-thumbs-o-up fa-5x" aria-hidden="true"></i>
         </div>
             );
@@ -37,9 +38,9 @@ class Alert extends Component {
         <div className="d-flex flex-column justify-content-center">
           {icon}
         </div>
-        <div className="p-3 pt-4 text-center">
-          <p class="mb-0">Wartość maksymalna:</p><h2>{this.props.data.max} {this.props.data.measure}</h2>
-          <p class="mb-0">Wartość faktyczna:</p><h2>{this.props.data.actual}</h2>
+        <div className="p-2 pt-2 pl-5">
+          <p className="mb-0">Wartość maksymalna:</p><h4>{this.props.data.max} {this.props.data.measure}</h4>
+          <p className="mb-0">Wartość faktyczna:</p><h4>{this.props.data.actual} {this.props.data.measure}</h4>
         </div>
       </div>
     </div>

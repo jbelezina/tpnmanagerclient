@@ -68,18 +68,18 @@ class Panel extends Component {
     return (
       <div style={{marginLeft:'130px', marginTop:'60px', display:'fixed', width:'86%'}}>
         <div className="row">
-          <div className="col-4 d-flex flex-row justify-content-center p-4 pt-0">
+          <div className="col-4 d-flex flex-row justify-content-center pt-4 pr-4 pl-4">
             {maxWeeklyTpn}       
           </div>
-          <div className="col-4 d-flex flex-row justify-content-center p-4">
+          <div className="col-4 d-flex flex-row justify-content-center pt-4 pr-4 pl-4">
             {maxDailyFood}
           </div>
-          <div className="col-4 d-flex flex-row justify-content-center p-4">
+          <div className="col-4 d-flex flex-row justify-content-center pt-4 pr-4 pl-4">
             {maxDailyDrink}
           </div>
         </div>
         <div className="row">
-          <div className="col-4 d-flex flex-row justify-content-center p-4 pt-0">
+          <div className="col-4 d-flex flex-row justify-content-center p-4">
             <Temperature />
           </div>
           <div className="col-4 d-flex flex-row justify-content-center p-4">
